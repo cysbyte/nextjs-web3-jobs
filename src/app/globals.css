@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body{
+  height: 100%;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -30,4 +35,25 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer components {
+  .btn-border {
+    @apply flex mx-auto justify-center hover:bg-indigo-600 hover:text-white duration-300 items-center border-[2px] rounded-md px-3 py-2 cursor-pointer;
+  }
+  
+  .input-border{
+    @apply appearance-none border rounded-md w-full py-4 text-gray-700 leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-3
+  }
+
+  .text-stroke-1 {
+    -webkit-text-stroke: 1px black;
+    background: -webkit-linear-gradient(left, #8636F8, #F020B3, #F8475E, #FF9421);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+    font-weight: 1000;
+    letter-spacing: -3px;
+}
+
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { relative } from "path";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="fixed top-[50%] -translate-y-[50%] -right-10 hover:-right-9 transition-all">
+          <button className="bg-blue-950 text-white font-normal py-2 px-5 rounded-b rotate-90">
+            Feedback
+          </button>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
