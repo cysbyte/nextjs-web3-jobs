@@ -8,12 +8,12 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main >
-      <div className="bg-[url('/bg-hero.png')] bg-no-repeat bg-cover bg-center">
+      <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-contain bg-current">
       <Header />
         <Hero />
         <Search /> 
       </div>
-
+      <Jobs/>
 
     </main>
   );

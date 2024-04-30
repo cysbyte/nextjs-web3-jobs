@@ -7,13 +7,13 @@ import Wrapper from "./Wrapper";
 const Header = () => {
 
   return (
-    <header className="h-auto z-20 inset-0 backdrop-blur-sm py-0 bg-white bg-opacity-0">
+    <header className="h-auto z-20 inset-0 py-0 bg-white bg-opacity-0">
       <Wrapper>
         <div className="flex justify-between py-5 items-center">
           <Link className="hover:text-teal-700 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
               <Image className="w-[69]" src={logo} alt="Minimax AI Voice Generator" />
-              <p className="text-lg">Mobile Dev Jobs</p>
+              <p className="text-lg text-white">Mobile Dev Jobs</p>
             </div>
           </Link>
           
@@ -22,7 +22,7 @@ const Header = () => {
             <ul className="flex h-full items-center duration-300 gap-x-4 sm:gap-x-8 text-16">
               <li className="group cursor-pointer hover:text-teal-700">
                 <div className="group relative flex gap-x-2 items-center justify-center">
-                  <p className="text-lg">Jobs</p>
+                  <p className="text-lg text-white">Jobs</p>
                   <div className="relative ml-1 flex h-full items-center justify-center">
                     <svg
                       width="13"
@@ -70,21 +70,21 @@ const Header = () => {
                 </div>
               </li>
               <Link className="hover:text-teal-700 duration-300" href={"/price"}>
-                <p  className="text-lg">Salaris</p>
+                <p  className="text-lg text-white">Salaris</p>
               </Link>
 
               <Link className="hover:text-teal-700 duration-300" href={""}>
-                <p  className="text-lg">Talents</p>
+                <p  className="text-lg text-white">Talents</p>
               </Link>
 
               <Link className="hover:text-teal-700 duration-300" href={""}>
-                <p className="text-lg">Resources</p>
+                <p className="text-lg text-white">Resources</p>
               </Link>
             </ul>
           </div>
 
            <Link
-              className="px-5 py-2 hover:shadow-lg hover:scale-105 bg-blue-950 text-white hover:bg-black hover:text-white active:scale-100 duration-300 border-2 border-white rounded-md"
+              className="px-5 py-2 hover:shadow-lg hover:scale-105 bg-[#f14669] text-white hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
               href='/signup'
             >
               Post a Job

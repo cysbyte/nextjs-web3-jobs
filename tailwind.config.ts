@@ -16,6 +16,7 @@ const config: Config = {
     },
     fontFamily: {
       'hel': ['Helvetica'],
+      'fut': ['Futura'],
     }
   },
   plugins: [],
