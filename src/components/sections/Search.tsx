@@ -30,7 +30,7 @@ const skills = [
 
 const Search = () => {
   return (
-    <div className="bg-white pt-40 px-40 h-auto">
+    <div className="bg-white pt-32 px-40 h-auto">
       <div className="flex gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
           <div className="w-full h-auto flex items-center border rounded-md">

@@ -7,7 +7,8 @@ import Wrapper from "./Wrapper";
 const Header = () => {
 
   return (
-    <header className="h-auto z-20 inset-0 py-0 bg-white bg-opacity-0">
+    <header className="h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
+    style={{backdropFilter: 'blur(2px)'}}>
       <Wrapper>
         <div className="flex justify-between py-5 items-center">
           <Link className="hover:text-teal-700 duration-300" href={"/"}>

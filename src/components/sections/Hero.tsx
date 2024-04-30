@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel"
-    style={{backdropFilter: 'blur(3px)'}}>
+    <div className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
+    style={{backdropFilter: 'blur(2px)'}}>
       <div className="w-full h-auto font-fut">
         <h1 className=" text-center font-bold text-6xl w-full leading-tight text-white ">
           Find Your Next
