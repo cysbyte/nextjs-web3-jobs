@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main >
       <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-cover bg-center">
-      <Header />
+        <Header />
         <Hero />
       </div>
       <JobsAlert/>

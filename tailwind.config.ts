@@ -19,6 +19,9 @@ const config: Config = {
       'fut': ['Futura'],
     }
   },
+  variants: {
+    fill: ['hover'],
+  },
   plugins: [],
 };
 export default config;

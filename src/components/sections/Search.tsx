@@ -6,6 +6,7 @@ const skills = [
   "React Native",
   "Flutter",
   "Android",
+  "Java",
   "Kotlin",
   "Gradle",
   "iOS",
@@ -33,7 +34,7 @@ const Search = () => {
     <div className="bg-white pt-32 px-40 h-auto">
       <div className="flex gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
-          <div className="w-full h-auto flex items-center border rounded-md">
+          <div className="w-full h-auto flex items-center border rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
             <svg
               className="mx-3 opacity-50"
               width="17"
@@ -44,13 +45,13 @@ const Search = () => {
               <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path>{" "}
             </svg>
             <input
-              className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-0"
+              className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-0 shadow-slate-900"
               type="text"
               placeholder="Job Roles, Tags"
             />
           </div>
 
-          <div className="w-full h-auto flex items-center border rounded-md">
+          <div className="w-full h-auto flex items-center border rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
             <svg
               className="mx-3 opacity-50"
               width="17"
@@ -68,10 +69,10 @@ const Search = () => {
         </div>
         <Toggle />
       </div>
-      <div className="mt-10 h-auto flex flex-wrap items-center justify-center gap-3 border-b py-20">
+      <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-5 py-10">
         {skills.map((skill) => (
           <button
-            className="border px-4 py-2 rounded-md border-gray-500 text-gray-600 bg-slate-100 hover:bg-purple-500 hover:text-white"
+            className="border px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
             key={skill}
           >
             {skill}

@@ -58,7 +58,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="invisible absolute z-50 pt-4 flex w-[15%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl group-hover:visible">
-                  <Link href='/product/text-to-speech' className="y-2 block border-b border-gray-100 py-2 font-normal text-black hover:bg-gray-100 rounded-md md:mx-2">
+                  <Link href='/product/text-to-speech' className="my-2 block border-b border-gray-100 py-2 font-normal text-black hover:bg-gray-100 rounded-md md:mx-2">
                     All Jobs
                   </Link>
 
@@ -86,7 +86,7 @@ const Header = () => {
 
            <Link
               className="px-5 py-2 hover:shadow-lg hover:scale-105 bg-[#f14669] text-white hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
-              href='/signup'
+              href='/hire-mobile-developers'
             >
               Post a Job
             </Link>

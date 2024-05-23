@@ -13,7 +13,7 @@ body{
   }
   
   .input-border{
-    @apply appearance-none border rounded-md w-full py-4 text-gray-700 leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-3
+    @apply appearance-none border rounded-md w-full py-4 text-gray-700 leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-3 focus:outline-purple-500 focus:shadow-sm
   }
 
   .text-stroke-1 {
