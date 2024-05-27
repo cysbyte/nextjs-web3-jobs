@@ -9,7 +9,7 @@ interface IProps {
     options?: string[];
 }
 
-const PostisionDetailInput = (props: IProps) => {
+const JobDetailInput = (props: IProps) => {
 
     const [isOptionsShowing, setIsOptionsShowing] = useState(false)
     const [isCancelShowing, setIsCancelShowing] = useState(false)
@@ -25,7 +25,7 @@ const PostisionDetailInput = (props: IProps) => {
         <div className='relative group w-auto h-auto'>
             <div className="group w-full h-auto flex items-center border rounded-md px-2 mt-2 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
                 <input ref={inputRef}
-                    className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-0 shadow-slate-900"
+                    className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
                     type="text"
                     id={props.id}
                     placeholder={props.placeHolder}
@@ -41,9 +41,9 @@ const PostisionDetailInput = (props: IProps) => {
                 </div>
                 }
             </div>
-            {props.hasDropdown && isOptionsShowing && <div className="absolute z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
+            {props.hasDropdown && isOptionsShowing && <div className="absolute max-h-96 overflow-auto z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
                 {props.options?.map((item, index)=>
-                    <p key={item} className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover: rounded-md md:mx-2 cursor-pointer"
+                    <p key={item} className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
                         onMouseDown={
                             (e: React.MouseEvent) => {
                                 e.preventDefault()
@@ -64,4 +64,4 @@ const PostisionDetailInput = (props: IProps) => {
     );
 }
 
-export default PostisionDetailInput
+export default JobDetailInput

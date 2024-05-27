@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import PositionForm from './PositionForm'
+import PositionForm from './JobInputForm'
 
 const PostJob = () => {
     const [step, setStep] = useState('create')

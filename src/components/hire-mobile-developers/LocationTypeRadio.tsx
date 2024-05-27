@@ -1,8 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ActionType, FormContext } from './FormContext'
+
 
 const LocationRadio = () => {
+
+  const { state, locationTypeDispatch } = useContext(FormContext)
 
   const [locationTypes, setLocationTypes] = useState([
     {
@@ -10,7 +14,7 @@ const LocationRadio = () => {
       checked: false
     },
     {
-      type: 'Partly Remote',
+      type: 'Hybrid',
       checked: false
     },
     {
@@ -19,13 +23,13 @@ const LocationRadio = () => {
     }
   ])
 
-  const [type, setType] = useState('Remote');
+  
   return (
     <div className='flex gap-7 mt-2'>
       {locationTypes.map((item, index) => (
         <div key={item.type} className='flex gap-2 items-center justify-center'
-          onClick={() => {
-            setType(item.type)
+          onClick={() => {         
+            console.log(item.type)
             const newLocationTypes = [ ...locationTypes ]
             newLocationTypes.forEach((locationType) => {
               locationType.checked = false
@@ -34,6 +38,8 @@ const LocationRadio = () => {
               }
             })
             setLocationTypes(newLocationTypes)
+            locationTypeDispatch({ type: ActionType.CHANGE_LOCATION_TYPE, value: item.type })
+            console.log(state)
           }}
         >
           {!item.checked && <div className='w-[19px] h-[19px] bg-white border-[1px] border-gray-400 rounded-full'></div>}
