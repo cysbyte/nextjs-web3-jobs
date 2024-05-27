@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
+    <div className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
     style={{backdropFilter: 'blur(2px)'}}>
-      <div className="w-full px-[12%] h-auto font-fut">
-        <h1 className=" text-left font-bold text-5xl w-full leading-tight text-white ">
+      <div className="w-full px-[12%] h-auto">
+        <h1 className=" text-left font-bold text-[3.3rem] w-full leading-tight text-white ">
           Hire develpers to grow your team
         </h1>
         <h6 className="mt-6 w-full text-white text-left text-xl">

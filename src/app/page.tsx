@@ -1,9 +1,9 @@
 import Header from "@/components/layout/Header";
 import Test from "@/components/layout/Test";
-import Hero from "@/components/sections/Hero";
-import Jobs from "@/components/sections/Jobs";
-import JobsAlert from "@/components/sections/JobsAlert";
-import Search from "@/components/sections/Search";
+import Hero from "@/components/home/Hero";
+import Jobs from "@/components/home/Jobs";
+import JobsAlert from "@/components/home/JobsAlert";
+import Search from "@/components/home/Search";
 import Image from "next/image";
 
 export default function Home() {

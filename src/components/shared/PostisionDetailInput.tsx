@@ -41,7 +41,7 @@ const PostisionDetailInput = (props: IProps) => {
                 </div>
                 }
             </div>
-            {props.hasDropdown && isOptionsShowing && <div className="absolute z-50 mt-0 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
+            {props.hasDropdown && isOptionsShowing && <div className="absolute z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
                 {props.options?.map((item, index)=>
                     <p key={item} className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover: rounded-md md:mx-2 cursor-pointer"
                         onMouseDown={
