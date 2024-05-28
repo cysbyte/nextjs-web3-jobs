@@ -29,7 +29,6 @@ const LocationRadio = () => {
       {locationTypes.map((item, index) => (
         <div key={item.type} className='flex gap-2 items-center justify-center'
           onClick={() => {         
-            console.log(item.type)
             const newLocationTypes = [ ...locationTypes ]
             newLocationTypes.forEach((locationType) => {
               locationType.checked = false
@@ -39,7 +38,6 @@ const LocationRadio = () => {
             })
             setLocationTypes(newLocationTypes)
             locationTypeDispatch({ type: ActionType.CHANGE_LOCATION_TYPE, value: item.type })
-            console.log(state)
           }}
         >
           {!item.checked && <div className='w-[19px] h-[19px] bg-white border-[1px] border-gray-400 rounded-full'></div>}

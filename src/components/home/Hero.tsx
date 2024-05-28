@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
+    <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
     style={{backdropFilter: 'blur(2px)'}}>
       <div className="w-full h-auto px-[12%]">
         <h1 className=" text-left font-bold text-[3.3rem] w-full leading-tight text-white ">
@@ -30,7 +30,7 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const PostJob = () => {
     const [step, setStep] = useState('create')
     
   return (
-      <div className='py-32 px-[15%]'>
+      <section className='py-32 px-[15%]'>
           <h1 className=' text-4xl text-center font-semibold'> Post A Job</h1>
           <div className='flex justify-center items-center my-10'>
               <div className='flex justify-evenly w-full text-xl'>
@@ -21,7 +21,7 @@ const PostJob = () => {
               
           </div>
           {step === 'create' && <PositionForm />}
-    </div>
+    </section>
   )
 }
 
