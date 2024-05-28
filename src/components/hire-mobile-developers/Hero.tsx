@@ -6,7 +6,7 @@ const Hero = () => {
     <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
     style={{backdropFilter: 'blur(2px)'}}>
       <div className="w-full px-[12%] h-auto">
-        <h1 className=" text-left font-bold text-[3.3rem] w-full leading-tight text-white ">
+        <h1 className=" text-left font-[550] text-[3.3rem] tracking-normal w-full leading-tight text-white ">
           Hire develpers to grow your team
         </h1>
         <h6 className="mt-6 w-full text-white text-left text-xl">

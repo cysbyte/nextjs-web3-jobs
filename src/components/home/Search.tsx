@@ -34,7 +34,7 @@ const Search = () => {
     <section className="bg-white pt-32 px-40 h-auto">
       <div className="flex gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
-          <div className="w-full h-auto flex items-center border rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
+          <div className="w-full h-auto flex items-center border border-gray-300 rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
             <svg
               className="mx-3 opacity-50"
               width="17"
@@ -51,7 +51,7 @@ const Search = () => {
             />
           </div>
 
-          <div className="w-full h-auto flex items-center border rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
+          <div className="w-full h-auto flex items-center border border-gray-300 rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
             <svg
               className="mx-3 opacity-50"
               width="17"

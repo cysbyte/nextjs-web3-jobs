@@ -5,18 +5,20 @@ import Jobs from "@/components/home/Jobs";
 import JobsAlert from "@/components/home/JobsAlert";
 import Search from "@/components/home/Search";
 import Image from "next/image";
+import Feedback from "@/components/feedback/feedback";
 
 export default function Home() {
   return (
-    <main >
+    <main>
       <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-cover bg-center">
         <Header />
         <Hero />
       </div>
-      <JobsAlert/>
-      <Search /> 
-      <Jobs/>
 
+      <JobsAlert />
+      <Search />
+      <Jobs />
+      
     </main>
   );
 }

@@ -1,3 +1,4 @@
+import Feedback from "@/components/feedback/feedback";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { relative } from "path";
@@ -18,12 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="fixed top-[50%] -translate-y-[50%] -right-10 hover:-right-9 transition-all z-10 hover:scale-[1.02]">
-          <button className="bg-blue-800 hover:bg-blue-700 text-white font-normal py-2 px-5 rounded-b rotate-90 transition-all">
-            Feedback
-          </button>
-        </div>
         {children}
+        <div id='feedbackPortal' />
       </body>
     </html>
   );

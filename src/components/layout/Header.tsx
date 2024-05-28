@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import logo from "/public/logo.svg";
 import Wrapper from "./Wrapper";
+import Feedback from "../feedback/feedback";
 
 const Header = () => {
 
@@ -92,6 +93,7 @@ const Header = () => {
             </Link>
         </div>
       </Wrapper>
+      <Feedback/>
     </header>
   );
 };
