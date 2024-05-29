@@ -16,7 +16,9 @@ const config: Config = {
     },
     fontFamily: {
       'hel': ['Helvetica'],
-      'fut': ['Futura'],
+      'fut1': ['Futura', 'sans-serif'],
+      'comic': ["Comic Sans MS", "Comic Sans"],
+      'fut': ['Gill Sans', 'sans-serif'],
     }
   },
   variants: {

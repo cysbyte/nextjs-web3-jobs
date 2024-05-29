@@ -9,6 +9,7 @@ const skills = [
   "Java",
   "Kotlin",
   "Gradle",
+  "NDK",
   "iOS",
   "Swift",
   "Objective-C",
@@ -18,7 +19,7 @@ const skills = [
   "Ionic",
   "Unity",
   "Unreal",
-  "Cocos2d-x",
+  "Cocos2d",
   "Godot",
   "GameMaker",
   "Non-Tech",
@@ -31,7 +32,7 @@ const skills = [
 
 const Search = () => {
   return (
-    <section className="bg-white pt-32 px-40 h-auto">
+    <section className="bg-white pt-32 w-full h-auto">
       <div className="flex gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
           <div className="w-full h-auto flex items-center border border-gray-300 rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">

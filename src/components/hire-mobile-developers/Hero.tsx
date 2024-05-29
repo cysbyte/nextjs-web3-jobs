@@ -3,8 +3,9 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
-    style={{backdropFilter: 'blur(2px)'}}>
+    // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
+    // style={{backdropFilter: 'blur(2px)'}}>
+    <section className="w-full h-[560px] mt-0 py-0 flex justify-center items-center">
       <div className="w-full px-[12%] h-auto">
         <h1 className=" text-left font-[550] text-[3.3rem] tracking-normal w-full leading-tight text-white ">
           Hire develpers to grow your team
