@@ -4,7 +4,7 @@ import companyLogo from "/public/company-logo.jpg";
 
 const JobCard = () => {
   return (
-    <div className="flex h-auto px-10 border-b justify-start items-center bg-slate-50/50">
+    <div className="flex h-auto border-b justify-start items-center bg-slate-50/50">
       <div className="flex gap-5 py-6 w-full">
         <div className="w-auto h-auto">
           <Image

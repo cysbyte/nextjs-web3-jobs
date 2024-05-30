@@ -11,9 +11,9 @@ interface IProps {
 const CustomInput = (props: IProps) => {
     const inputRef = useRef<HTMLInputElement>(null!);
     return (
-        <div className="group w-full h-auto flex items-center border border-gray-300 rounded-md px-2 mt-2 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
+        <div className="group w-full h-auto flex items-center border-t border-b border-l bg-[#01192E] border-gray-400 rounded-tl-full rounded-bl-full pl-3 focus-within:border-blue-800 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
             <input ref={inputRef}
-                className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-500 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
+                className="appearance-none focus:outline-none w-full bg-[#01192E] py-3 text-white leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
                 type={props.type || 'text'}
                 id={props.id}
                 placeholder={props.placeHolder}

@@ -4,6 +4,7 @@ import React from "react";
 import logo from "/public/logo.svg";
 import Wrapper from "./Wrapper";
 import Feedback from "../feedback/feedback";
+import Subscription from "../subscription/subscription";
 
 const Header = () => {
 
@@ -38,8 +39,8 @@ const Header = () => {
                       <path
                         d="M3.5 4.5L6.5 7.5L9.5 4.5"
                         stroke="#111827"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>                    
                   </div>
@@ -81,7 +82,8 @@ const Header = () => {
           </div>
            
         </div>
-      <Feedback/>
+      <Feedback />
+      <Subscription/>
     </header>
   );
 };

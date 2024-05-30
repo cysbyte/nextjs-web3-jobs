@@ -7,7 +7,7 @@ const PostJob = () => {
     const [step, setStep] = useState('create')
     
   return (
-      <section className='py-32 w-full'>
+      <section className='py-24 w-full'>
           <h1 className=' text-4xl text-center font-semibold'> Post A Job</h1>
           <div className='flex justify-center items-center my-10'>
               <div className='flex justify-evenly w-full text-xl'>

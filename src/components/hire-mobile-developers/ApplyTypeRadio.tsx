@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useState } from "react";
-import JobDetailInput from "../shared/JobDetailInput";
+import JobDetailInput from "./JobDetailInput";
 
 const ApplyTypeRadio = () => {
   const [types, setTypes] = useState([

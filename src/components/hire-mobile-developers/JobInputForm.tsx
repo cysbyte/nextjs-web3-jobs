@@ -9,7 +9,7 @@ import React, {
   useState,
 } from "react";
 import { useForm } from "react-hook-form";
-import JobDetailInput from "../shared/JobDetailInput";
+import JobDetailInput from "./JobDetailInput";
 import LocationRadio from "./LocationTypeRadio";
 import * as z from "zod";
 import { EditorConvertToHTML } from "./RichTextEditor";

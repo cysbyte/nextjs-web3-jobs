@@ -1,33 +1,38 @@
 import React, { FC } from "react";
 import Link from "next/link";
+import hero0 from "/public/hero1.png";
+import Image from "next/image";
 
 const Hero = () => {
   return (
     // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
     // style={{backdropFilter: 'blur(2px)'}}>
-    <section className="w-full h-[560px] mt-0 py-0 flex justify-center items-center">
-      <div className="w-full px-[12%] h-auto">
-        <h1 className=" text-left font-[550] text-[3.3rem] tracking-normal w-full leading-tight text-white ">
+    <section className="w-full h-[560px] mt-0 py-0 flex justify-center items-center font-comic">
+      <div className="basis-3/5 w-full h-auto">
+        <h1 className=" text-left font-[900] text-[3.3rem] w-full leading-tight tracking-wider text-[#14202E] ">
           Hire develpers to grow your team
         </h1>
-        <h6 className="mt-6 w-full text-white text-left text-xl">
+        <h6 className="mt-6 w-full text-[#14202E] text-left text-xl">
           Find the best Mobile Development jobs at leading companies <br/> & hire the
           best Mobile developers
         </h6>
-        <div className="flex gap-5 justify-start items-center mt-8">
+        <div className="flex gap-5 justify-start items-center mt-10">
           <Link
-            className="py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white hover:bg-white hover:text-blue-950 active:scale-100 duration-300 border-1 border-white rounded-md"
+            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
             href={""}
           >
             Get started
           </Link>
           <Link
-            className="py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-[#363b43] text-white active:scale-100 duration-300 rounded-md"
+            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg border border-[#14202E] font-bold text-center hover:shadow-lg hover:scale-105 text-[#14202E]  active:scale-100 duration-300 rounded-md"
             href={""}
           >
             Learn more
           </Link>
         </div>
+      </div>
+      <div className="basis-2/5 w-full flex justify-end">
+        <Image src={hero0} width={500} height={500} alt="" />
       </div>
     </section>
   );

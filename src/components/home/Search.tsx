@@ -24,6 +24,8 @@ const skills = [
   "GameMaker",
   "Non-Tech",
   "Design",
+  "Web3",
+  "AI",
   "Marketing",
   "Customer Support",
   "Product",

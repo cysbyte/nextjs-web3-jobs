@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import Wrapper from "../layout/Wrapper";
 import hero0 from "/public/hero0.png";
-import androidIcon from "/public/android-icon.png";
 import Image from "next/image";
 
 const Hero = () => {
@@ -20,9 +18,9 @@ const Hero = () => {
           Find the best Mobile Development jobs at leading companies <br /> &
           hire the best Mobile developers
         </h6>
-        <div className="flex gap-5 justify-start items-center mt-10">
+        <div className="flex gap-5 justify-start items-center mt-10 ml-2">
           <Link
-            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border-1 border-white rounded-md"
+            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
             href={"/hire-mobile-developers"}
           >
             <p> Post a Job</p>
@@ -35,9 +33,9 @@ const Hero = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -56,9 +54,9 @@ const Hero = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>

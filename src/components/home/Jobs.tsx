@@ -1,5 +1,5 @@
 import React from 'react'
-import JobCard from '../shared/JobCard'
+import JobCard from './JobCard'
 
 const Jobs = () => {
   return (

@@ -21,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <div id='feedbackPortal' />
+        <div id='subscriptionPortal'/>
       </body>
     </html>
   );

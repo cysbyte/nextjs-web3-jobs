@@ -9,11 +9,10 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-cover bg-center">
+      <Wrapper>
         <Header />
         <Hero />
-      </div>
-      <Wrapper>
+
         <PostJob />
         <Footer />
       </Wrapper>

@@ -25,16 +25,16 @@ const FeedbackForm = ({
           <path
             d="M15 5L5 15"
             stroke="#636363"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></path>
           <path
             d="M5 5L15 15"
             stroke="#636363"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></path>
         </svg>
         <h1 className=" font-normal text-2xl">Send Feedback</h1>
@@ -50,7 +50,7 @@ const FeedbackForm = ({
             placeHolder="Your Email Address"
           />
           <textarea
-            className="input-border mt-4 focus:outline-none focus:shadow-outline placeholder-gray-400 text-base"
+            className="input-border mt-4 focus:outline-none focus:shadow-outline placeholder-gray-500 text-base"
             id="description"
             name="description"
             rows={7}
