@@ -1,12 +1,13 @@
 "use client";
 
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useRef, useState } from "react";
 import {
   FieldErrors,
   UseFormRegister,
   UseFormRegisterReturn,
   UseFormSetValue,
   Validate,
+  ValidationRule,
 } from "react-hook-form";
 import { FormFields } from "./JobInputForm";
 
@@ -17,13 +18,14 @@ interface IProps {
   type?: string;
   options?: string[];
   labelText?: string;
-  register?: UseFormRegister<FormFields>;
+  register: UseFormRegister<FormFields>;
   setValue?: UseFormSetValue<FormFields>;
   errors?: FieldErrors<FormFields>;
   validate?:
     | Validate<string | number, FormFields>
     | Record<string, Validate<string | number, FormFields>>
-    | undefined;
+  | undefined;
+  pattern?: ValidationRule<RegExp> | undefined;
 }
 
 const JobDetailInput = (props: IProps) => {
@@ -33,10 +35,10 @@ const JobDetailInput = (props: IProps) => {
 
   //   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const handleCancelClick = () => {
+  const handleCancelClick = useCallback(() => {
     setIsCancelShowing(false);
     setInputValue("");
-  };
+  }, []);
 
   const {
     hasDropdown,
@@ -45,10 +47,13 @@ const JobDetailInput = (props: IProps) => {
     setValue,
     register,
     validate,
+    pattern,
     errors,
     options,
     ...otherProps
   } = props;
+
+  const currencyDetail = labelText ? labelText : props.placeholder
 
   return (
     <div className="relative group w-full h-auto">
@@ -61,16 +66,17 @@ const JobDetailInput = (props: IProps) => {
         <input
           className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           {...register?.(name, {
-            required: `${labelText} can not be empty`,
+            required: `${currencyDetail}  can not be empty`,
             minLength: {
-              value: 5,
-              message: `${labelText} must be at least 5 characters long`,
+              value: 2,
+              message: `${labelText} must be at least 2 characters long`,
             },
             maxLength: {
               value: 100,
               message: `${labelText} must be at most 100 characters long`,
             },
             validate: validate,
+            pattern: pattern,
           })}
           {...otherProps}
           onClick={() => setIsOptionsShowing(!isOptionsShowing)}

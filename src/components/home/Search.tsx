@@ -1,36 +1,38 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Toggle from "../shared/Toggle";
 
-const skills = [
-  "All Jobs",
-  "React Native",
-  "Flutter",
-  "Android",
-  "Java",
-  "Kotlin",
-  "Gradle",
-  "NDK",
-  "iOS",
-  "Swift",
-  "Objective-C",
-  "Swift UI",
-  "Cocoa Touch",
-  "Xamarin",
-  "Ionic",
-  "Unity",
-  "Unreal",
-  "Cocos2d",
-  "Godot",
-  "GameMaker",
-  "Non-Tech",
-  "Design",
-  "Web3",
-  "AI",
-  "Marketing",
-  "Customer Support",
-  "Product",
-  "Sales",
-];
+const skills = useMemo(() => {
+  return [
+    "All Jobs",
+    "React Native",
+    "Flutter",
+    "Android",
+    "Java",
+    "Kotlin",
+    "Gradle",
+    "NDK",
+    "iOS",
+    "Swift",
+    "Objective-C",
+    "Swift UI",
+    "Cocoa Touch",
+    "Xamarin",
+    "Ionic",
+    "Unity",
+    "Unreal",
+    "Cocos2d",
+    "Godot",
+    "GameMaker",
+    "Non-Tech",
+    "Design",
+    "Web3",
+    "AI",
+    "Marketing",
+    "Customer Support",
+    "Product",
+    "Sales",
+  ]
+}, []);
 
 const Search = () => {
   return (

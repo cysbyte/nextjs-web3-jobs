@@ -1,50 +1,58 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 const Footer = () => {
-  const hireSkills = [
-    "React Native",
-    "Flutter",
-    "Android",
-    "Java",
-    "Kotlin",
-    "iOS",
-    "Swift",
-    "Objective-C",
-    "Unity",
-    "Unreal",
-    "Cocos2d",
-    "Xamarin",
-  ];
 
-  const jobSkills = [
-    "React Native",
-    "Flutter",
-    "Android",
-    "Java",
-    "Kotlin",
-    "iOS",
-    "Swift",
-    "Objective-C",
-    "Unity",
-    "Unreal",
-    "Cocos2d",
-  ];
+  const hireSkills = useMemo(() => {
+    return [
+      "React Native",
+      "Flutter",
+      "Android",
+      "Java",
+      "Kotlin",
+      "iOS",
+      "Swift",
+      "Objective-C",
+      "Unity",
+      "Unreal",
+      "Cocos2d",
+      "Xamarin",
+    ]
+  }, []);
 
-  const regions = [
-    "United States",
-    "Europe",
-    "United Kingdom",
-    "Canada",
-    "Germany",
-    "France",
-    "Asia",
-    "India",
-    "Australia",
-    "Ireland",
-    "Israel",
-    "Italy",
-    "Porland",
-  ];
+  const jobSkills = useMemo(() => {
+    return [
+      "React Native",
+      "Flutter",
+      "Android",
+      "Java",
+      "Kotlin",
+      "iOS",
+      "Swift",
+      "Objective-C",
+      "Unity",
+      "Unreal",
+      "Cocos2d",
+    ]
+  }, []);
+
+  const regions = useMemo(() => {
+    return [
+      "United States",
+      "Europe",
+      "United Kingdom",
+      "Canada",
+      "Germany",
+      "France",
+      "Asia",
+      "India",
+      "Australia",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Porland",
+    ]
+  }, []);
+  
   return (
     <>
       <section className="flex py-16 h-[580px]">

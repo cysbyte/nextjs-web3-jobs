@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { SubmitHandler, useForm, useFormContext } from "react-hook-form";
 import JobDetailInput from "./JobDetailInput";
-import LocationRadio from "./LocationTypeRadio";
+import LocationTypeRadioGroup from "./LocationTypeRadioGroup";
 import * as z from "zod";
 import { EditorConvertToHTML } from "./RichTextEditor";
 import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
@@ -37,7 +37,7 @@ export type FormFields = {
   applyMethod: string;
   applyDetail: string;
   companyName: string;
-}
+};
 
 const PositionForm = () => {
   const [state, locationTypeDispatch] = useReducer(
@@ -66,22 +66,30 @@ const PositionForm = () => {
   //     description: "",
   //   },
   // });
-  
 
-  const { register, handleSubmit, setValue, formState: {errors} } = useForm<FormFields>()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
-  const jobTypeOptions = [
-    "FullTime",
-    "Contract",
-    "Freelance",
-    "PartTime",
-    "Internship",
-  ];
-  const jobRoleOptions = [
+  const jobTypeOptions = useMemo(() => {
+    return [
+      "FullTime",
+      "Contract",
+      "Freelance",
+      "PartTime",
+      "Internship",
+    ]
+  }, []);
+
+  const jobRoleOptions = useMemo(() => {
+    return [
     "Engineering",
     "Design",
     "Marketing",
@@ -89,7 +97,8 @@ const PositionForm = () => {
     "Customer Support",
     "Sales",
     "Others",
-  ];
+  ]
+  }, []);
 
   const currencyOptions = useMemo(
     () =>
@@ -106,9 +115,14 @@ const PositionForm = () => {
         locationTypeDispatch: locationTypeDispatch,
       }}
     >
-      <form className="w-full mx-auto mb-10" onSubmit={handleSubmit(onSubmit, (error)=>{console.log(error)})}>
+      <form
+        className="w-full mx-auto mb-10"
+        onSubmit={handleSubmit(onSubmit, (error) => {
+          console.log(error);
+        })}
+      >
         <h2 className="text-2xl font-semibold">Job Details</h2>
-        <div className="mt-8">     
+        <div className="mt-8">
           <JobDetailInput
             hasDropdown={false}
             name="jobTitle"
@@ -118,7 +132,6 @@ const PositionForm = () => {
             errors={errors}
             setValue={setValue}
           />
-
         </div>
 
         <div className="mt-8">
@@ -133,9 +146,9 @@ const PositionForm = () => {
             setValue={setValue}
             validate={(value) => {
               if (!jobTypeOptions.includes(value as string)) {
-                return 'Invalid Job Type, please select a valid Job Type'
+                return "Invalid Job Type, please select a valid Job Type";
               }
-              return true
+              return true;
             }}
           />
         </div>
@@ -152,18 +165,18 @@ const PositionForm = () => {
             setValue={setValue}
             validate={(value) => {
               if (!jobRoleOptions.includes(value as string)) {
-                return 'Invalid Job Role, please select a valid Job'
+                return "Invalid Job Role, please select a valid Job";
               }
-              return true
+              return true;
             }}
           />
         </div>
 
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]">
-            Job Location <span className='text-red-alert'>*</span>
+            Job Location <span className="text-red-alert">*</span>
           </label>
-          <LocationRadio />
+          <LocationTypeRadioGroup />
         </div>
 
         <div className="mt-8">
@@ -171,7 +184,7 @@ const PositionForm = () => {
             className="block text-black text-lg font-[500]"
             htmlFor="description"
           >
-            Job Description <span className='text-red-alert'>*</span>
+            Job Description <span className="text-red-alert">*</span>
           </label>
           <EditorConvertToHTML />
         </div>
@@ -179,9 +192,9 @@ const PositionForm = () => {
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]" htmlFor="type">
             Preferred Applicant Locations{" "}
-            <span className='text-red-alert'>*</span>
+            <span className="text-red-alert">*</span>
           </label>
-          <PreferredLocationsDropdown id="jobLocation"/>
+          <PreferredLocationsDropdown id="jobLocation" />
         </div>
 
         <div className="mt-8">
@@ -190,6 +203,7 @@ const PositionForm = () => {
             name="keywords"
             labelText="Keywords"
             placeholder="e.g. ReactNative, Flutter, Android, iOS"
+            register={register}
             errors={errors}
             setValue={setValue}
           />
@@ -199,9 +213,9 @@ const PositionForm = () => {
         </div>
 
         <div className="mt-8">
-        <label className="block text-black text-lg font-[500]" htmlFor="type">
+          <label className="block text-black text-lg font-[500]" htmlFor="type">
             Preferred Applicant Locations{" "}
-            <span className='text-red-alert'>*</span>
+            <span className="text-red-alert">*</span>
           </label>
           <div className="flex justify-between items-center gap-4 w-full">
             <JobDetailInput
@@ -209,32 +223,47 @@ const PositionForm = () => {
               name="currency"
               placeholder="Currency"
               options={currencyOptions}
+              register={register}
               errors={errors}
-            setValue={setValue}
+              setValue={setValue}
+              pattern={{
+                value: /^[0-9]+$/i,
+                message: "Please enter a valid number.",
+              }}
             />
             <JobDetailInput
               hasDropdown={false}
               name="minSalary"
               type="number"
               placeholder="Min Salary"
+              register={register}
               errors={errors}
               setValue={setValue}
+              pattern={{
+                value: /^[0-9]+$/i,
+                message: "Please enter a valid number.",
+              }}
             />
             <JobDetailInput
               hasDropdown={false}
               name="maxSalary"
               placeholder="Max Salary"
+              register={register}
               errors={errors}
               setValue={setValue}
+              pattern={{
+                value: /^[0-9]+$/i,
+                message: "Please enter a valid number.",
+              }}
             />
           </div>
         </div>
 
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]">
-            How to apply <span className='text-red-alert'>*</span>
+            How to apply <span className="text-red-alert">*</span>
           </label>
-          <ApplyTypeRadio register={register}/>
+          <ApplyTypeRadio register={register} />
         </div>
 
         <h2 className="mt-10 text-2xl font-semibold">Company Details</h2>
@@ -245,11 +274,17 @@ const PositionForm = () => {
             name="companyName"
             labelText="Company Name"
             placeholder="Your Company Name"
+            register={register}
             errors={errors}
             setValue={setValue}
           />
         </div>
-        <button type="submit" className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800">Submit</button>
+        <button
+          type="submit"
+          className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800"
+        >
+          Submit
+        </button>
       </form>
     </FormContext.Provider>
   );
