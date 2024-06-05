@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         'deep-blue': '#14202E',
+        'red-alert': 'rgba(255,50,50,1)'
       },
     },
 

@@ -30,7 +30,7 @@ const LocationRadio = (props: IProps) => {
 
   
   return (
-    <div className='flex gap-7 mt-2'>
+    <div className='flex gap-7 mt-4'>
       {locationTypes.map((item, index) => (
         <div key={item.type} className='flex gap-2 items-center justify-center'
           onClick={() => {         

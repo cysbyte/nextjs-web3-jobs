@@ -40,7 +40,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
 
   return (
     <div className="relative group w-auto h-auto">
-      <div className="group w-full h-auto flex items-center border rounded-md px-2 mt-2 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
+      <div className="group w-full h-auto flex items-center border rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
         <div className="flex gap-2 mr-2">
           {selectedLocations.map((item, index) => (
             <div
@@ -73,7 +73,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
         <input
           {...props.registers}
           ref={inputRef}
-          className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
+          className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           type="text"
           id={props.id}
           placeholder="select multiple locations"

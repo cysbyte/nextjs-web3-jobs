@@ -91,8 +91,6 @@ const PositionForm = () => {
     "Others",
   ];
 
-  const redColorClass = "text-[rgba(255,50,50,1)]";
-
   const currencyOptions = useMemo(
     () =>
       Object.keys(currencyDictionary).map(
@@ -110,16 +108,11 @@ const PositionForm = () => {
     >
       <form className="w-full mx-auto mb-10" onSubmit={handleSubmit(onSubmit, (error)=>{console.log(error)})}>
         <h2 className="text-2xl font-semibold">Job Details</h2>
-        <div className="mt-8">
-          <label
-            className="block text-black text-lg font-[500]"
-            htmlFor="jobTitle"
-          >
-            Postion or Job Title <span className={redColorClass}>*</span>
-          </label>
+        <div className="mt-8">     
           <JobDetailInput
             hasDropdown={false}
             name="jobTitle"
+            labelText="Postion or Job Title"
             placeholder="e.g. Android Engineer, Customer Support"
             register={register}
             errors={errors}
@@ -129,37 +122,46 @@ const PositionForm = () => {
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]" htmlFor="type">
-            Job Type <span className={redColorClass}>*</span>
-          </label>
           <JobDetailInput
             hasDropdown={true}
             name="jobType"
+            labelText="Job Type"
             placeholder="select a job type"
             options={jobTypeOptions}
             register={register}
             errors={errors}
             setValue={setValue}
+            validate={(value) => {
+              if (!jobTypeOptions.includes(value as string)) {
+                return 'Invalid Job Type, please select a valid Job Type'
+              }
+              return true
+            }}
           />
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]" htmlFor="role">
-            Job Role <span className={redColorClass}>*</span>
-          </label>
           <JobDetailInput
             hasDropdown={true}
             name="jobRole"
+            labelText="Job Role"
             placeholder="select a job role"
             options={jobRoleOptions}
+            register={register}
             errors={errors}
             setValue={setValue}
+            validate={(value) => {
+              if (!jobRoleOptions.includes(value as string)) {
+                return 'Invalid Job Role, please select a valid Job'
+              }
+              return true
+            }}
           />
         </div>
 
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]">
-            Job Location <span className={redColorClass}>*</span>
+            Job Location <span className='text-red-alert'>*</span>
           </label>
           <LocationRadio />
         </div>
@@ -169,7 +171,7 @@ const PositionForm = () => {
             className="block text-black text-lg font-[500]"
             htmlFor="description"
           >
-            Job Description <span className={redColorClass}>*</span>
+            Job Description <span className='text-red-alert'>*</span>
           </label>
           <EditorConvertToHTML />
         </div>
@@ -177,21 +179,16 @@ const PositionForm = () => {
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]" htmlFor="type">
             Preferred Applicant Locations{" "}
-            <span className={redColorClass}>*</span>
+            <span className='text-red-alert'>*</span>
           </label>
           <PreferredLocationsDropdown id="jobLocation"/>
         </div>
 
         <div className="mt-8">
-          <label
-            className="block text-black text-lg font-[500]"
-            htmlFor="keywords"
-          >
-            Keywords{" "}
-          </label>
           <JobDetailInput
             hasDropdown={false}
             name="keywords"
+            labelText="Keywords"
             placeholder="e.g. ReactNative, Flutter, Android, iOS"
             errors={errors}
             setValue={setValue}
@@ -202,8 +199,9 @@ const PositionForm = () => {
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]" htmlFor="type">
-            Annual Salary
+        <label className="block text-black text-lg font-[500]" htmlFor="type">
+            Preferred Applicant Locations{" "}
+            <span className='text-red-alert'>*</span>
           </label>
           <div className="flex justify-between items-center gap-4 w-full">
             <JobDetailInput
@@ -220,21 +218,21 @@ const PositionForm = () => {
               type="number"
               placeholder="Min Salary"
               errors={errors}
-            setValue={setValue}
+              setValue={setValue}
             />
             <JobDetailInput
               hasDropdown={false}
               name="maxSalary"
               placeholder="Max Salary"
               errors={errors}
-            setValue={setValue}
+              setValue={setValue}
             />
           </div>
         </div>
 
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]">
-            How to apply <span className={redColorClass}>*</span>
+            How to apply <span className='text-red-alert'>*</span>
           </label>
           <ApplyTypeRadio register={register}/>
         </div>
@@ -242,15 +240,10 @@ const PositionForm = () => {
         <h2 className="mt-10 text-2xl font-semibold">Company Details</h2>
 
         <div className="mt-8">
-          <label
-            className="block text-black text-lg font-[500]"
-            htmlFor="companyName"
-          >
-            Company Name <span className={redColorClass}>*</span>
-          </label>
           <JobDetailInput
             hasDropdown={false}
             name="companyName"
+            labelText="Company Name"
             placeholder="Your Company Name"
             errors={errors}
             setValue={setValue}
