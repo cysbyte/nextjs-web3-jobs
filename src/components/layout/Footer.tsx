@@ -50,13 +50,13 @@ const Footer = () => {
       <section className="flex py-16 h-[580px]">
         <div className="w-auto h-full pr-10 flex flex-col justify-between">
           <div className="h-auto">
-            <div className="text-lg font-bold text-[#14202E]">
+            <div className="text-lg font-bold text-deep-blue">
               Mobile Dev Jobs
             </div>
-            <h1 className="text-lg font-semibold text-[#14202E] mt-4">
+            <h1 className="text-lg font-semibold text-deep-blue mt-4">
               Join us now
             </h1>
-            <button className="mt-6 px-8 py-2 rounded-md text-white bg-[#14202E] font-normal text-lg">
+            <button className="mt-6 px-8 py-2 rounded-md text-white bg-deep-blue font-normal text-lg">
               Sign Up
             </button>
           </div>
@@ -84,7 +84,7 @@ const Footer = () => {
             </svg>
           </div>
         </div>
-        <div className=" flex-grow h-full text-[#14202E] flex justify-between items-start">
+        <div className=" flex-grow h-full text-deep-blue flex justify-between items-start">
           <div className="basis-1/4 h-full">
             <h3 className=" font-semibold text-lg">Hire Mobile Engineers</h3>
             <div className="mt-2 flex flex-col justify-between">
@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
       </section>
       <section className="flex items-center justify-center border-y w-full h-[100px]">
-        <p className="text-[#14202E] text-base">
+        <p className="text-deep-blue text-base">
           Mobile Dev Jobs © {new Date().getFullYear()}
         </p>
       </section>

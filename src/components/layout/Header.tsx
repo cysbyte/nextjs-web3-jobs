@@ -17,12 +17,12 @@ const Header = () => {
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
               <Image className="w-[69]" src={logo} alt="Mobile Dev Jobs" />
-              <p className="text-lg text-[#14202E]">Mobile Dev Jobs</p>
+              <p className="text-lg text-deep-blue">Mobile Dev Jobs</p>
             </div>
           </Link>            
           </div>
           
-          <div className="basis-1/3 m-auto bg-[#efefef] text-[#14202E] rounded-md px-6 py-2 hidden lg:block">
+          <div className="basis-1/3 m-auto bg-[#efefef] text-deep-blue rounded-md px-6 py-2 hidden lg:block">
             <ul className="flex h-full items-center duration-300 gap-x-4 sm:gap-x-10 text-16">
               <li className="group cursor-pointer hover:text-purple-500">
                 <div className="group relative flex gap-x-2 items-center justify-center">
@@ -74,7 +74,7 @@ const Header = () => {
 
           <div className="basis-1/3 flex justify-end">
             <Link
-              className=" px-5 py-2 hover:shadow-lg hover:scale-105 border border-[#14202E] bg-white text-[#14202E] hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
+              className=" px-5 py-2 hover:shadow-lg hover:scale-105 border border-dashed bg-white text-deep-blue hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
               href='/hire-mobile-developers'
             >
               Post a Job

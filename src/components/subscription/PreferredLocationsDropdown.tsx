@@ -21,7 +21,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
 
   return (
     <div className="relative group w-auto h-auto">
-      <div className="group w-full px-1 h-auto flex bg-[#01192E] items-center border border-gray-400 px-0 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
+      <div className="group w-full pl-2 h-auto flex bg-[#01192E] items-center border border-gray-400 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
         <input
           ref={inputRef}
           className="appearance-none focus:outline-none w-full py-3 bg-[#01192E] text-white leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"

@@ -1,10 +1,15 @@
 'use client'
 
+import { register } from 'module'
 import { useContext, useState } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { ActionType, FormContext } from './FormContext'
 
+interface IProps {
+  registers?: UseFormRegisterReturn
+}
 
-const LocationRadio = () => {
+const LocationRadio = (props: IProps) => {
 
   const { state, locationTypeDispatch } = useContext(FormContext)
 
@@ -47,6 +52,7 @@ const LocationRadio = () => {
           <p>{item.type}</p>
         </div>
       ))}
+      <input hidden {...props.registers}/>
     </div>
   );
 }

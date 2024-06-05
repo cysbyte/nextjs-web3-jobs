@@ -1,4 +1,5 @@
 import Hero from "@/components/hire-mobile-developers/Hero";
+import Partners from "@/components/hire-mobile-developers/Partners";
 import PostJob from "@/components/hire-mobile-developers/PostJob";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -12,9 +13,11 @@ const page = () => {
       <Wrapper>
         <Header />
         <Hero />
-
+        <div className="flex items-start justify-center gap-2">
         <PostJob />
-        <Footer />
+        <Partners/>   
+        </div>
+        <Footer />  
       </Wrapper>
     </>
   );

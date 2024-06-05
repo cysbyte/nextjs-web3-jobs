@@ -4,8 +4,9 @@ import { createContext } from "React";
 export const initialFormState = { locationType: 'Remote' }
 
 export interface IFormContext {
-    state: typeof initialFormState
-    locationTypeDispatch: Dispatch<IAction>
+    state: typeof initialFormState;
+    locationTypeDispatch: Dispatch<IAction>;
+    
 }
 export const FormContext = createContext<IFormContext>({
     state: initialFormState,

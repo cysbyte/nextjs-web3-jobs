@@ -1,9 +1,17 @@
 "use client";
 
 import { useContext, useState } from "react";
+import { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
+import { FormContext } from "./FormContext";
 import JobDetailInput from "./JobDetailInput";
+import { FormFields } from "./JobInputForm";
 
-const ApplyTypeRadio = () => {
+interface IProps {
+  register: UseFormRegister<FormFields>
+}
+
+const ApplyTypeRadio = (props: IProps) => {
+
   const [types, setTypes] = useState([
     {
       type: "Apply by website",
@@ -52,8 +60,9 @@ const ApplyTypeRadio = () => {
         <div className="mt-6">
           <JobDetailInput
             hasDropdown={false}
-            id="applyWebsite"
-            placeHolder="https://"
+            name="applyWebsite"
+            placeholder="https://"
+            registers={props.register("applyDetail")}
           />
           <p className="mt-2 text-sm text-gray-500">
             Applicants will be sent to the website you specify to apply for this
@@ -64,15 +73,17 @@ const ApplyTypeRadio = () => {
         <div className="mt-6">
           <JobDetailInput
             hasDropdown={false}
-            id="applyEmail"
-            placeHolder="Email for receiving applicants"
+            name="applyEmail"
+            placeholder="Email for receiving applicants"
+            registers={props.register("applyDetail")}
           />
           <p className="mt-2 text-sm text-gray-500">
-          Applicants will be emailed to the email address you specify to apply for this
-            position
+            Applicants will be emailed to the email address you specify to apply
+            for this position
           </p>
         </div>
       )}
+      <input {...props.register('applyMethod')} hidden />
     </div>
   );
 };

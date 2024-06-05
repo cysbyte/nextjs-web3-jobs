@@ -8,7 +8,7 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm, useFormContext } from "react-hook-form";
 import JobDetailInput from "./JobDetailInput";
 import LocationRadio from "./LocationTypeRadio";
 import * as z from "zod";
@@ -23,33 +23,57 @@ import {
 import { string } from "zod";
 import ApplyTypeRadio from "./ApplyTypeRadio";
 
+export type FormFields = {
+  jobTitle: string;
+  jobType: string;
+  jobRole: string;
+  jobLocation: string;
+  jobDescription: string;
+  preferredApplicantLocation: string;
+  keywords: string;
+  currency: string;
+  minSalary: number;
+  maxSalary: number;
+  applyMethod: string;
+  applyDetail: string;
+  companyName: string;
+}
+
 const PositionForm = () => {
   const [state, locationTypeDispatch] = useReducer(
     LocationTypeReducer,
     initialFormState
   );
 
-  const formSchema = z.object({
-    position: z
-      .string()
-      .min(5, { message: "the position is not long enough" })
-      .max(100, { message: "it's too long" })
-      .trim(),
+  // const formSchema = z.object({
+  //   position: z
+  //     .string()
+  //     .min(5, { message: "the position is not long enough" })
+  //     .max(100, { message: "it's too long" })
+  //     .trim(),
 
-    description: z
-      .string()
-      .min(5, { message: "the description is not long enough" })
-      .max(10000, { message: "description is too long" })
-      .trim(),
-  });
+  //   description: z
+  //     .string()
+  //     .min(5, { message: "the description is not long enough" })
+  //     .max(10000, { message: "description is too long" })
+  //     .trim(),
+  // });
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    mode: "onChange",
-    defaultValues: {
-      position: "",
-      description: "",
-    },
-  });
+  // const form = useForm<z.infer<typeof formSchema>>({
+  //   mode: "onChange",
+  //   defaultValues: {
+  //     position: "",
+  //     description: "",
+  //   },
+  // });
+  
+
+  const { register, handleSubmit, setValue, formState: {errors} } = useForm<FormFields>()
+
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    console.log(data)
+  }
+
   const jobTypeOptions = [
     "FullTime",
     "Contract",
@@ -79,22 +103,29 @@ const PositionForm = () => {
 
   return (
     <FormContext.Provider
-      value={{ state: state, locationTypeDispatch: locationTypeDispatch }}
+      value={{
+        state: state,
+        locationTypeDispatch: locationTypeDispatch,
+      }}
     >
-      <form className="w-full mx-auto mb-10">
+      <form className="w-full mx-auto mb-10" onSubmit={handleSubmit(onSubmit, (error)=>{console.log(error)})}>
         <h2 className="text-2xl font-semibold">Job Details</h2>
         <div className="mt-8">
           <label
             className="block text-black text-lg font-[500]"
-            htmlFor="position"
+            htmlFor="jobTitle"
           >
             Postion or Job Title <span className={redColorClass}>*</span>
           </label>
           <JobDetailInput
             hasDropdown={false}
-            id="position"
-            placeHolder="e.g. Android Engineer, Customer Support"
+            name="jobTitle"
+            placeholder="e.g. Android Engineer, Customer Support"
+            register={register}
+            errors={errors}
+            setValue={setValue}
           />
+
         </div>
 
         <div className="mt-8">
@@ -103,9 +134,12 @@ const PositionForm = () => {
           </label>
           <JobDetailInput
             hasDropdown={true}
-            id="type"
-            placeHolder="select a job type"
+            name="jobType"
+            placeholder="select a job type"
             options={jobTypeOptions}
+            register={register}
+            errors={errors}
+            setValue={setValue}
           />
         </div>
 
@@ -115,9 +149,11 @@ const PositionForm = () => {
           </label>
           <JobDetailInput
             hasDropdown={true}
-            id="role"
-            placeHolder="select a job role"
+            name="jobRole"
+            placeholder="select a job role"
             options={jobRoleOptions}
+            errors={errors}
+            setValue={setValue}
           />
         </div>
 
@@ -143,7 +179,7 @@ const PositionForm = () => {
             Preferred Applicant Locations{" "}
             <span className={redColorClass}>*</span>
           </label>
-          <PreferredLocationsDropdown id="type" />
+          <PreferredLocationsDropdown id="jobLocation"/>
         </div>
 
         <div className="mt-8">
@@ -155,8 +191,10 @@ const PositionForm = () => {
           </label>
           <JobDetailInput
             hasDropdown={false}
-            id="keywords"
-            placeHolder="e.g. ReactNative, Flutter, Android, iOS"
+            name="keywords"
+            placeholder="e.g. ReactNative, Flutter, Android, iOS"
+            errors={errors}
+            setValue={setValue}
           />
           <p className="text-sm mt-2 text-gray-500">
             Please use a comma to seperate multiple keywords or leave black.
@@ -170,20 +208,26 @@ const PositionForm = () => {
           <div className="flex justify-between items-center gap-4 w-full">
             <JobDetailInput
               hasDropdown={true}
-              id="currency"
-              placeHolder="Currency"
+              name="currency"
+              placeholder="Currency"
               options={currencyOptions}
+              errors={errors}
+            setValue={setValue}
             />
             <JobDetailInput
               hasDropdown={false}
-              id="minSalary"
+              name="minSalary"
               type="number"
-              placeHolder="Min Salary"
+              placeholder="Min Salary"
+              errors={errors}
+            setValue={setValue}
             />
             <JobDetailInput
               hasDropdown={false}
-              id="maxSalary"
-              placeHolder="Max Salary"
+              name="maxSalary"
+              placeholder="Max Salary"
+              errors={errors}
+            setValue={setValue}
             />
           </div>
         </div>
@@ -192,7 +236,7 @@ const PositionForm = () => {
           <label className="block text-black text-lg font-[500]">
             How to apply <span className={redColorClass}>*</span>
           </label>
-          <ApplyTypeRadio />
+          <ApplyTypeRadio register={register}/>
         </div>
 
         <h2 className="mt-10 text-2xl font-semibold">Company Details</h2>
@@ -200,16 +244,19 @@ const PositionForm = () => {
         <div className="mt-8">
           <label
             className="block text-black text-lg font-[500]"
-            htmlFor="position"
+            htmlFor="companyName"
           >
             Company Name <span className={redColorClass}>*</span>
           </label>
           <JobDetailInput
             hasDropdown={false}
-            id="companyName"
-            placeHolder="Your Company Name"
+            name="companyName"
+            placeholder="Your Company Name"
+            errors={errors}
+            setValue={setValue}
           />
         </div>
+        <button type="submit" className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800">Submit</button>
       </form>
     </FormContext.Provider>
   );

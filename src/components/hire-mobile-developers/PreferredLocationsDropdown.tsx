@@ -1,11 +1,14 @@
 "use client";
 
 import { continents, countriesAndRegions } from "@/utils/countryData";
+import { register } from "module";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import { FormContext } from "./FormContext";
 
 interface IProps {
   id: string;
+  registers?: UseFormRegisterReturn;
 }
 
 const PreferredLocationsDropdown = (props: IProps) => {
@@ -68,6 +71,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
           ))}
         </div>
         <input
+          {...props.registers}
           ref={inputRef}
           className="appearance-none focus:outline-none w-full py-4 text-[gray-700] leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           type="text"
