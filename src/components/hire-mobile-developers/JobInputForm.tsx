@@ -3,6 +3,7 @@
 import React, {
   createContext,
   Dispatch,
+  useCallback,
   useContext,
   useMemo,
   useReducer,
@@ -14,28 +15,33 @@ import LocationTypeRadioGroup from "./LocationTypeRadioGroup";
 import * as z from "zod";
 import { EditorConvertToHTML } from "./RichTextEditor";
 import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
-import { currencyDictionary } from "@/utils/countryData";
+import {
+  continents,
+  countriesAndRegions,
+  currencyDictionary,
+} from "@/utils/countryData";
 import {
   FormContext,
   initialFormState,
   LocationTypeReducer,
 } from "./FormContext";
 import { string } from "zod";
-import ApplyTypeRadio from "./ApplyTypeRadio";
+import ApplyTypeRadioGroup from "./ApplyTypeRadioGroup";
 
 export type FormFields = {
   jobTitle: string;
   jobType: string;
   jobRole: string;
-  jobLocation: string;
+  locationType: string;
   jobDescription: string;
   preferredApplicantLocation: string;
   keywords: string;
   currency: string;
   minSalary: number;
   maxSalary: number;
-  applyMethod: string;
-  applyDetail: string;
+  applyType: string;
+  applyUrl: string;
+  applyEmail: string;
   companyName: string;
 };
 
@@ -74,30 +80,28 @@ const PositionForm = () => {
     formState: { errors },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = useCallback((data) => {
     console.log(data);
-  };
+  }, []);
+
+  const preferredLocationOptions = useMemo(() => {
+    return [...continents, ...countriesAndRegions];
+  }, [continents, countriesAndRegions]);
 
   const jobTypeOptions = useMemo(() => {
-    return [
-      "FullTime",
-      "Contract",
-      "Freelance",
-      "PartTime",
-      "Internship",
-    ]
+    return ["FullTime", "Contract", "Freelance", "PartTime", "Internship"];
   }, []);
 
   const jobRoleOptions = useMemo(() => {
     return [
-    "Engineering",
-    "Design",
-    "Marketing",
-    "Operations",
-    "Customer Support",
-    "Sales",
-    "Others",
-  ]
+      "Engineering",
+      "Design",
+      "Marketing",
+      "Operations",
+      "Customer Support",
+      "Sales",
+      "Others",
+    ];
   }, []);
 
   const currencyOptions = useMemo(
@@ -165,7 +169,7 @@ const PositionForm = () => {
             setValue={setValue}
             validate={(value) => {
               if (!jobRoleOptions.includes(value as string)) {
-                return "Invalid Job Role, please select a valid Job";
+                return "Invalid Job Role, please select a valid Job Role";
               }
               return true;
             }}
@@ -173,10 +177,12 @@ const PositionForm = () => {
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]">
-            Job Location <span className="text-red-alert">*</span>
-          </label>
-          <LocationTypeRadioGroup />
+          <LocationTypeRadioGroup
+            name="locationType"
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
         </div>
 
         <div className="mt-8">
@@ -186,15 +192,32 @@ const PositionForm = () => {
           >
             Job Description <span className="text-red-alert">*</span>
           </label>
-          <EditorConvertToHTML />
+          <EditorConvertToHTML
+            name="jobDescription"
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]" htmlFor="type">
-            Preferred Applicant Locations{" "}
-            <span className="text-red-alert">*</span>
-          </label>
-          <PreferredLocationsDropdown id="jobLocation" />
+          <PreferredLocationsDropdown
+            name="preferredApplicantLocation"
+            register={register}
+            errors={errors}
+            setValue={setValue}
+            validate={(value) => {
+              const lastOption = value
+                .toString()
+                .split(",")
+                .slice(-1)[0]
+                .trim();
+              if (!preferredLocationOptions.includes(lastOption)) {
+                return "Invalid Location, please select a valid Location";
+              }
+              return true;
+            }}
+          />
         </div>
 
         <div className="mt-8">
@@ -260,10 +283,12 @@ const PositionForm = () => {
         </div>
 
         <div className="mt-8">
-          <label className="block text-black text-lg font-[500]">
-            How to apply <span className="text-red-alert">*</span>
-          </label>
-          <ApplyTypeRadio register={register} />
+          <ApplyTypeRadioGroup
+            name="applyType"
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
         </div>
 
         <h2 className="mt-10 text-2xl font-semibold">Company Details</h2>

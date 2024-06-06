@@ -53,7 +53,10 @@ const JobDetailInput = (props: IProps) => {
     ...otherProps
   } = props;
 
-  const currencyDetail = labelText ? labelText : props.placeholder
+  let text = labelText ? labelText : props.placeholder
+  if (text.includes('https://')) {
+    text = 'Url for receiving applicants'
+  }
 
   return (
     <div className="relative group w-full h-auto">
@@ -66,7 +69,7 @@ const JobDetailInput = (props: IProps) => {
         <input
           className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           {...register?.(name, {
-            required: `${currencyDetail}  can not be empty`,
+            required: `${text}  can not be empty`,
             minLength: {
               value: 2,
               message: `${labelText} must be at least 2 characters long`,
