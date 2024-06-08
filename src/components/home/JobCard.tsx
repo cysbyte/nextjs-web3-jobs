@@ -4,7 +4,7 @@ import companyLogo from "/public/company-logo.jpg";
 
 const JobCard:FC = () => {
   return (
-    <div className="flex h-auto border-b justify-start items-center bg-slate-50/50">
+    <section className="flex h-auto border-b justify-start items-center bg-slate-50/50">
       <div className="flex gap-5 py-6 w-full">
         <div className="w-auto h-auto">
           <Image
@@ -36,7 +36,7 @@ const JobCard:FC = () => {
           <p className="mt-2 mr-2 text-gray-500">Today</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

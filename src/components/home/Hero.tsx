@@ -7,9 +7,9 @@ const Hero:FC = () => {
   return (
     // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
     // style={{backdropFilter: 'blur(2px)'}}>
-    <div className="relative flex w-full h-[560px] mt-0 py-0 justify-center items-center font-comic overflow-hidden">
+    <section className="relative flex w-full h-[560px] mt-0 py-0 justify-center items-center font-comic overflow-hidden">
       <div className="basis-1/2 w-full h-auto">
-        <h1 className=" text-left font-[900] text-[3.3rem] w-full leading-tight tracking-wider text-deep-blue ">
+        <h1 className=" text-left font-[900] md:text-[2rem] text-[3.3rem] w-full leading-tight tracking-wider text-deep-blue ">
           Find Your Next
           <br />
           Mobile Development Job
@@ -141,7 +141,7 @@ const Hero:FC = () => {
         </div>
         <Image src={hero0} width={500} height={500} alt="" />
       </div>
-    </div>
+    </section>
   );
 };
 

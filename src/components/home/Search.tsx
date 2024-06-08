@@ -2,7 +2,7 @@ import React, { FC, useMemo } from "react";
 import Toggle from "../shared/Toggle";
 
 const Search: FC = () => {
-  
+
   const skills = useMemo(() => {
     return [
       "All Jobs",

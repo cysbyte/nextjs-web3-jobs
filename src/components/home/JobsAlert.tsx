@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import CustomInput from "../shared/CustomInput";
 
-const JobsAlert:FC = () => {
+const JobsAlert: FC = () => {
   return (
     <form className="mt-20 w-full py-32 bg-slate-100 rounded-3xl">
       <h1 className=" text-[2rem] font-semibold text-center">
