@@ -29,4 +29,4 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default React.memo(Feedback);

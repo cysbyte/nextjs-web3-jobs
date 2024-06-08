@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, ReactNode } from "react"
+import React, { useEffect, useState, ReactNode } from "react"
 import { createPortal } from "react-dom"
 
 interface IPortal{
@@ -8,7 +8,7 @@ interface IPortal{
    elementId: string
 }
 
-const Portal= ({ children, elementId }:IPortal) => {
+const Portal = ({ children, elementId }:IPortal) => {
    const [mounted, setMounted] = useState(false)
 
    useEffect(() => {
@@ -20,4 +20,4 @@ const Portal= ({ children, elementId }:IPortal) => {
    return mounted ? createPortal(children, document.querySelector(elementId) as Element): null
 }
 
-export default Portal
+export default React.memo(Portal)

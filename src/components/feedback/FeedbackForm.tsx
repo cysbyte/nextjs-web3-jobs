@@ -74,4 +74,4 @@ const FeedbackForm = ({
   );
 };
 
-export default FeedbackForm;
+export default React.memo(FeedbackForm);

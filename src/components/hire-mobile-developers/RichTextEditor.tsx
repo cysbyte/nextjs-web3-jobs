@@ -35,9 +35,11 @@ export class EditorConvertToHTML extends Component<IProps> {
   };
 
   render() {
+    
     const { editorState } = this.state;
     const { name, labelText, setValue, register, errors, ...otherProps } =
       this.props;
+    
     return (
       <>
         <div

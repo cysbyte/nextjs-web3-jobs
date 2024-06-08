@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import PositionForm from './JobInputForm'
 
-const PostJob = () => {
+const PostJob:FC = () => {
     const [step, setStep] = useState('create')
     
   return (
@@ -25,4 +25,4 @@ const PostJob = () => {
   )
 }
 
-export default PostJob
+export default React.memo(PostJob)

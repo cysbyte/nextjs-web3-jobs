@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 import partner0 from "/public/partners/0.jpg";
 import partner1 from "/public/partners/1.jpg";
 import partner2 from "/public/partners/2.jpg";
@@ -8,7 +8,7 @@ import partner4 from "/public/partners/4.jpg";
 import partner5 from "/public/partners/5.jpg";
 import partner6 from "/public/partners/6.jpg";
 
-const Partners = () => {
+const Partners:FC = () => {
   return (
     <section className="basis-1/3 py-24 w-full h-full">
       <div className="w-auto h-full">
@@ -32,4 +32,4 @@ const Partners = () => {
   );
 };
 
-export default Partners;
+export default React.memo(Partners);

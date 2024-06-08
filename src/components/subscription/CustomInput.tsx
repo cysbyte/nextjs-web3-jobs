@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 
 interface IProps {
     placeHolder: string;
@@ -8,7 +8,7 @@ interface IProps {
     type?: string;
 }
 
-const CustomInput = (props: IProps) => {
+const CustomInput:FC<IProps> = (props) => {
     const inputRef = useRef<HTMLInputElement>(null!);
     return (
         <div className="group w-full h-auto flex items-center border-t border-b border-l bg-[#01192E] border-gray-400 rounded-tl-full rounded-bl-full pl-3 focus-within:border-blue-800 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">

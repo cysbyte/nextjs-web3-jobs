@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import Portal from "../layout/portal";
 import CustomInput from "./CustomInput";
 import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
 
-const Subscription = () => {
+const Subscription:FC = () => {
   
   const [isShowing, setIsShowing] = useState(true)
 
@@ -59,4 +59,4 @@ const Subscription = () => {
   );
 };
 
-export default Subscription;
+export default React.memo(Subscription);

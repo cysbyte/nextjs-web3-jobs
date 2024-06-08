@@ -2,6 +2,8 @@
 
 import { continents, countriesAndRegions } from "@/utils/countryData";
 import React, {
+  FC,
+  memo,
   useCallback,
   useContext,
   useEffect,
@@ -31,7 +33,8 @@ interface IProps {
   | undefined;
 }
 
-const PreferredLocationsDropdown = (props: IProps) => {
+const PreferredLocationsDropdown:FC<IProps> = (props) => {
+
   const { state } = useContext(FormContext);
 
   const getOptions = useCallback(
@@ -48,18 +51,56 @@ const PreferredLocationsDropdown = (props: IProps) => {
   const [options, setOptions] = useState(
     useMemo(() => getOptions(state), [state])
   );
+
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
   const [isCancelShowing, setIsCancelShowing] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const handleCancelClick = () => {
+  const handleCancelClick = useCallback( () => {
     setIsCancelShowing(false);
     setSelectedLocations([]);
     setValue?.('preferredApplicantLocation', '')
-  };
+  }, []);
 
+  const cancelShowing = useCallback(
+    (item: string) => {
+      const newSelectedLocations = selectedLocations.filter(
+        (location) => location !== item
+      );
+      setSelectedLocations(newSelectedLocations);
+      setValue?.('preferredApplicantLocation', selectedLocations.join(','))
+      if (newSelectedLocations.length === 0) {
+        setIsCancelShowing(false);
+      }
+    },
+    [selectedLocations]
+  )
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value.trim() === "") {
+      setOptions(getOptions(state));
+      return;
+    }
+    setOptions(
+      options.filter((option) =>
+        option.toLowerCase().startsWith(e.currentTarget.value.trim())
+      )
+    );
+  }, [options]);
+
+  const handleSelect = useCallback((e: React.MouseEvent, item: string) => {
+    e.preventDefault();
+    setIsOptionsShowing(false);
+    setIsCancelShowing(true);
+    const newSelectedLocations = [...selectedLocations, item]
+    setSelectedLocations(newSelectedLocations);
+    inputRef.current.placeholder = "";
+    setOptions(options.filter((option) => option !== item));
+    setValue?.('preferredApplicantLocation', newSelectedLocations.join(','))
+  }, [inputRef, options]);
+  
   const {
     name,
     labelText,
@@ -95,16 +136,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
                   aria-hidden="true"
                   focusable="false"
                   className="fill-gray-800 cursor-pointer"
-                  onClick={() => {
-                    const newSelectedLocations = selectedLocations.filter(
-                      (location) => location !== item
-                    );
-                    setSelectedLocations(newSelectedLocations);
-                    setValue?.('preferredApplicantLocation', selectedLocations.join(','))
-                    if (newSelectedLocations.length === 0) {
-                      setIsCancelShowing(false);
-                    }
-                  }}
+                  onClick={() => cancelShowing(item)}
                 >
                   <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
                 </svg>
@@ -131,17 +163,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
             placeholder="select multiple locations"
             onClick={() => setIsOptionsShowing(!isOptionsShowing)}
             onBlur={() => setIsOptionsShowing(false)}
-            onChange={(e) => {
-              if (e.currentTarget.value.trim() === "") {
-                setOptions(getOptions(state));
-                return;
-              }
-              setOptions(
-                options.filter((option) =>
-                  option.toLowerCase().startsWith(e.currentTarget.value.trim())
-                )
-              );
-            }}
+            onChange={(e) => handleChange(e)}
           />
           {isCancelShowing && (
             <div className="w-auto h-auto" onClick={handleCancelClick}>
@@ -180,16 +202,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
               <p
                 key={item}
                 className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
-                onMouseDown={(e: React.MouseEvent) => {
-                  e.preventDefault();
-                  setIsOptionsShowing(false);
-                  setIsCancelShowing(true);
-                  const newSelectedLocations=[...selectedLocations, item]
-                  setSelectedLocations(newSelectedLocations);
-                  inputRef.current.placeholder = "";
-                  setOptions(options.filter((option) => option !== item));
-                  setValue?.('preferredApplicantLocation', newSelectedLocations.join(','))
-                }}
+                onMouseDown={(e: React.MouseEvent) => handleSelect(e, item)}
               >
                 {item}
               </p>
@@ -206,4 +219,4 @@ const PreferredLocationsDropdown = (props: IProps) => {
   );
 };
 
-export default PreferredLocationsDropdown;
+export default memo(PreferredLocationsDropdown);

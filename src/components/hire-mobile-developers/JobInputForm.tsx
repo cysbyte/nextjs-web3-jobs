@@ -1,32 +1,26 @@
 "use client";
 
-import React, {
-  createContext,
-  Dispatch,
-  useCallback,
-  useContext,
-  useMemo,
-  useReducer,
-  useState,
-} from "react";
-import { SubmitHandler, useForm, useFormContext } from "react-hook-form";
-import JobDetailInput from "./JobDetailInput";
-import LocationTypeRadioGroup from "./LocationTypeRadioGroup";
-import * as z from "zod";
-import { EditorConvertToHTML } from "./RichTextEditor";
-import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
 import {
   continents,
   countriesAndRegions,
-  currencyDictionary,
+  currencyDictionary
 } from "@/utils/countryData";
+import React, {
+  FC,
+  useCallback, useMemo,
+  useReducer
+} from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import ApplyTypeRadioGroup from "./ApplyTypeRadioGroup";
 import {
   FormContext,
   initialFormState,
-  LocationTypeReducer,
+  LocationTypeReducer
 } from "./FormContext";
-import { string } from "zod";
-import ApplyTypeRadioGroup from "./ApplyTypeRadioGroup";
+import JobDetailInput from "./JobDetailInput";
+import LocationTypeRadioGroup from "./LocationTypeRadioGroup";
+import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
+import { EditorConvertToHTML } from "./RichTextEditor";
 
 export type FormFields = {
   jobTitle: string;
@@ -45,7 +39,7 @@ export type FormFields = {
   companyName: string;
 };
 
-const PositionForm = () => {
+const PositionForm:FC = () => {
   const [state, locationTypeDispatch] = useReducer(
     LocationTypeReducer,
     initialFormState
@@ -315,4 +309,4 @@ const PositionForm = () => {
   );
 };
 
-export default PositionForm;
+export default React.memo(PositionForm);

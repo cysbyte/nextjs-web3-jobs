@@ -3,7 +3,7 @@ import Link from "next/link";
 import hero0 from "/public/hero0.png";
 import Image from "next/image";
 
-const Hero = () => {
+const Hero:FC = () => {
   return (
     // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
     // style={{backdropFilter: 'blur(2px)'}}>
@@ -145,4 +145,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

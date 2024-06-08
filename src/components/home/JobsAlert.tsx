@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import CustomInput from "../shared/CustomInput";
 
-const JobsAlert = () => {
+const JobsAlert:FC = () => {
   return (
     <form className="mt-20 w-full py-32 bg-slate-100 rounded-3xl">
       <h1 className=" text-[2rem] font-semibold text-center">
@@ -29,4 +29,4 @@ const JobsAlert = () => {
   );
 };
 
-export default JobsAlert;
+export default React.memo(JobsAlert);

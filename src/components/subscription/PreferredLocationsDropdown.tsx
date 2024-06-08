@@ -1,23 +1,52 @@
 "use client";
 
 import { continents, countriesAndRegions } from "@/utils/countryData";
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 interface IProps {
   id: string;
 }
 
-const PreferredLocationsDropdown = (props: IProps) => {
-
+const PreferredLocationsDropdown: FC<IProps> = (props) => {
   const [options, setOptions] = useState(countriesAndRegions);
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
   const [isCancelShowing, setIsCancelShowing] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const handleCancelClick = () => {
+  const handleCancelClick = useCallback(() => {
     setIsCancelShowing(false);
-  };
+  }, []);
+
+  const filterOptions = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.currentTarget.value.trim() === "") {
+        setOptions(countriesAndRegions);
+        return;
+      }
+      setOptions(
+        options.filter((option) =>
+          option.toLowerCase().startsWith(e.currentTarget.value.trim())
+        )
+      );
+    },
+    [countriesAndRegions, options]
+  );
+
+  const handleSelect = useCallback((e: React.MouseEvent, item: string) => {
+    e.preventDefault();
+    setIsOptionsShowing(false);
+    setIsCancelShowing(false);
+    inputRef.current.value = item;
+  }, [inputRef]);
 
   return (
     <div className="relative group w-auto h-auto">
@@ -30,17 +59,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
           placeholder="Your Location"
           onClick={() => setIsOptionsShowing(!isOptionsShowing)}
           onBlur={() => setIsOptionsShowing(false)}
-          onChange={(e) => {
-            if (e.currentTarget.value.trim() === "") {
-              setOptions(countriesAndRegions);
-              return;
-            }
-            setOptions(
-              options.filter((option) =>
-                option.toLowerCase().startsWith(e.currentTarget.value.trim())
-              )
-            );
-          }}
+          onChange={(e) => filterOptions(e)}
         />
         {isCancelShowing && (
           <div className="w-auto h-auto" onClick={handleCancelClick}>
@@ -79,12 +98,7 @@ const PreferredLocationsDropdown = (props: IProps) => {
             <p
               key={item}
               className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
-              onMouseDown={(e: React.MouseEvent) => {
-                e.preventDefault();
-                setIsOptionsShowing(false);
-                setIsCancelShowing(false);
-                inputRef.current.value = item;
-              }}
+              onMouseDown={(e: React.MouseEvent) => {handleSelect(e, item)}}
             >
               {item}
             </p>
@@ -95,4 +109,4 @@ const PreferredLocationsDropdown = (props: IProps) => {
   );
 };
 
-export default PreferredLocationsDropdown;
+export default React.memo(PreferredLocationsDropdown);

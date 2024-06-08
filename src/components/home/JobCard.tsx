@@ -1,8 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 import companyLogo from "/public/company-logo.jpg";
 
-const JobCard = () => {
+const JobCard:FC = () => {
   return (
     <div className="flex h-auto border-b justify-start items-center bg-slate-50/50">
       <div className="flex gap-5 py-6 w-full">
@@ -40,4 +40,4 @@ const JobCard = () => {
   );
 };
 
-export default JobCard;
+export default React.memo(JobCard);

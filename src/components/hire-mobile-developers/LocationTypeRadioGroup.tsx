@@ -1,11 +1,9 @@
 "use client";
 
-import { useCallback, useContext, useMemo, useState } from "react";
+import React, { FC, useCallback, useContext, useMemo, useState } from "react";
 import {
   FieldErrors,
-  UseFormRegister,
-  UseFormRegisterReturn,
-  UseFormSetValue,
+  UseFormRegister, UseFormSetValue
 } from "react-hook-form";
 import { ActionType, FormContext } from "./FormContext";
 import { FormFields } from "./JobInputForm";
@@ -18,7 +16,8 @@ interface IProps {
   errors?: FieldErrors<FormFields>;
 }
 
-const LocationTypeRadioGroup = (props: IProps) => {
+const LocationTypeRadioGroup:FC<IProps> = (props) => {
+
   const { state, locationTypeDispatch } = useContext(FormContext);
 
   const initState = useMemo(() => {
@@ -100,4 +99,4 @@ const LocationTypeRadioGroup = (props: IProps) => {
   );
 };
 
-export default LocationTypeRadioGroup;
+export default React.memo(LocationTypeRadioGroup);

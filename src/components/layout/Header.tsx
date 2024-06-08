@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 import logo from "/public/logo.svg";
 import Wrapper from "./Wrapper";
 import Feedback from "../feedback/feedback";
 import Subscription from "../subscription/subscription";
 
-const Header = () => {
+const Header:FC = () => {
 
   return (
     <header className="h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
@@ -88,5 +88,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
 

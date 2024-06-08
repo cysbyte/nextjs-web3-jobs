@@ -1,13 +1,11 @@
 "use client";
 
-import React, { forwardRef, useCallback, useRef, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import {
   FieldErrors,
-  UseFormRegister,
-  UseFormRegisterReturn,
-  UseFormSetValue,
+  UseFormRegister, UseFormSetValue,
   Validate,
-  ValidationRule,
+  ValidationRule
 } from "react-hook-form";
 import { FormFields } from "./JobInputForm";
 
@@ -28,7 +26,8 @@ interface IProps {
   pattern?: ValidationRule<RegExp> | undefined;
 }
 
-const JobDetailInput = (props: IProps) => {
+const JobDetailInput:FC<IProps> = (props) => {
+
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
   const [isCancelShowing, setIsCancelShowing] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -53,6 +52,17 @@ const JobDetailInput = (props: IProps) => {
     ...otherProps
   } = props;
 
+  const selectOption = useCallback(
+    (e: React.MouseEvent, item: string) => {
+      e.preventDefault();
+      setIsOptionsShowing(false);
+      setIsCancelShowing(true);
+      setValue?.(name, item);
+      setInputValue(item);
+    },
+    [name],
+  )
+  
   let text = labelText ? labelText : props.placeholder
   if (text.includes('https://')) {
     text = 'Url for receiving applicants'
@@ -128,13 +138,9 @@ const JobDetailInput = (props: IProps) => {
             <p
               key={item}
               className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
-              onMouseDown={(e: React.MouseEvent) => {
-                e.preventDefault();
-                setIsOptionsShowing(false);
-                setIsCancelShowing(true);
-                setValue?.(name, item);
-                setInputValue(item);
-              }}
+              onMouseDown={
+                (e)=>selectOption(e, item)
+              }
             >
               {item}
             </p>
@@ -150,4 +156,4 @@ const JobDetailInput = (props: IProps) => {
   );
 };
 
-export default JobDetailInput;
+export default React.memo(JobDetailInput);

@@ -1,6 +1,6 @@
-import React, { useMemo } from "react";
+import React, { FC, useMemo } from "react";
 
-const Footer = () => {
+const Footer:FC = () => {
 
   const hireSkills = useMemo(() => {
     return [
@@ -145,4 +145,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

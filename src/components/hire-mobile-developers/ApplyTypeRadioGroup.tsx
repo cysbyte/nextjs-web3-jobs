@@ -1,13 +1,10 @@
 "use client";
 
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import {
   FieldErrors,
-  UseFormRegister,
-  UseFormRegisterReturn,
-  UseFormSetValue,
+  UseFormRegister, UseFormSetValue
 } from "react-hook-form";
-import { FormContext } from "./FormContext";
 import JobDetailInput from "./JobDetailInput";
 import { FormFields } from "./JobInputForm";
 
@@ -18,7 +15,7 @@ interface IProps {
   setValue?: UseFormSetValue<FormFields>;
   errors?: FieldErrors<FormFields>;
 }
-const ApplyTypeRadioGroup = (props: IProps) => {
+const ApplyTypeRadioGroup:FC<IProps> = (props) => {
   const initialTypes = useMemo(() => {
     return [
       {
@@ -136,4 +133,4 @@ const ApplyTypeRadioGroup = (props: IProps) => {
   );
 };
 
-export default ApplyTypeRadioGroup;
+export default React.memo(ApplyTypeRadioGroup);
