@@ -41,7 +41,7 @@ const Hero:FC = () => {
             </svg>
           </Link>
           <Link
-            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg border border-dashed font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
+            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg border border-solid border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
             href={""}
           >
             <p>Find a Job</p>
@@ -86,22 +86,22 @@ const Hero:FC = () => {
             role="img"
           >
             <path
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               stroke="var(--icon-color, #ffffff)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
               d="M15.117 3a3.907 3.907 0 01-.87 2.918 3.607 3.607 0 01-2.778 1.409 3.657 3.657 0 01.9-2.848A4.287 4.287 0 0115.117 3z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
             <path
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               stroke="var(--icon-color, #ffffff)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
               d="M18.295 18.381c.453-.69.844-1.42 1.17-2.178a3.997 3.997 0 01-.53-7.204 4.586 4.586 0 00-3.458-1.83c-.705.01-1.401.16-2.048.44-.433.22-.905.353-1.389.39a4.726 4.726 0 01-1.559-.36c-.6-.25-1.24-.388-1.888-.41a4.676 4.676 0 00-3.777 2.26c-1.31 1.998-1.09 5.805.999 8.992.79 1.2 1.808 2.508 3.127 2.508.46-.01.91-.123 1.32-.33a3.997 3.997 0 013.587 0c.395.217.838.334 1.289.34 1.329-.01 2.398-1.459 3.157-2.618z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </div>
@@ -115,26 +115,26 @@ const Hero:FC = () => {
           >
             <path
               fill="var(--icon-color, #ffffff)"
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               stroke="var(--icon-color, #ffffff)"
-              stroke-miterlimit="10"
-              stroke-width=".4"
+              strokeMiterlimit="10"
+              strokeWidth=".4"
               d="M9.893 6.726a.44.44 0 100-.88.44.44 0 000 .88zm3.522 0a.44.44 0 100-.88.44.44 0 000 .88z"
             ></path>
             <path
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               stroke="var(--icon-color, #ffffff)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
               d="M11.656 3.83a5 5 0 00-5.23 4.82h10.46a5 5 0 00-5.23-4.82zm-2.501.58L8.375 3m5.791 1.41l.77-1.41"
             ></path>
             <path
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               stroke="var(--icon-color, #ffffff)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
               d="M16.896 8.648H6.426v9.2h10.47v-9.2zM4 8.648v6.3m15.314-6.3v6.3M9.57 17.85V21m4.174-3.15V21"
             ></path>
           </svg>

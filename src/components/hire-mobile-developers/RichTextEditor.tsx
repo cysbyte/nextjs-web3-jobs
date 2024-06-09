@@ -35,7 +35,7 @@ export class EditorConvertToHTML extends Component<IProps> {
   };
 
   render() {
-    
+
     const { editorState } = this.state;
     const { name, labelText, setValue, register, errors, ...otherProps } =
       this.props;
@@ -43,7 +43,7 @@ export class EditorConvertToHTML extends Component<IProps> {
     return (
       <>
         <div
-          className="container border border-gray-300 rounded-sm mt-4"
+          className="border border-gray-300 rounded-sm mt-4"
           {...register?.(name, {
             required: `Job Description can not be empty`,
           })}

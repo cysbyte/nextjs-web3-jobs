@@ -73,7 +73,7 @@ const Header:FC = () => {
 
           <div className="basis-1/3 flex justify-end">
             <Link
-              className=" px-5 py-2 hover:shadow-lg hover:scale-105 border border-dashed bg-white text-deep-blue hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
+              className=" px-5 py-2 hover:shadow-lg hover:scale-105 border border-solid border-deep-blue bg-white text-deep-blue hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
               href='/hire-mobile-developers'
             >
               Post a Job

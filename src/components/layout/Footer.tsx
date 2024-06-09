@@ -64,7 +64,7 @@ const Footer:FC = () => {
             <h1 className="text-lg font-semibold text-deep-blue mt-4">
               Join us now
             </h1>
-            <button className="mt-6 px-8 py-2 rounded-md text-white bg-deep-blue font-normal text-lg">
+            <button className="mt-6 px-8 py-3 rounded-md text-white bg-deep-blue font-normal text-lg">
               Sign Up
             </button>
           </div>

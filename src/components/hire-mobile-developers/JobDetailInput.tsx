@@ -77,6 +77,7 @@ const JobDetailInput:FC<IProps> = (props) => {
       )}
       <div className="group w-full h-auto flex items-center border border-gray-300 rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
         <input
+          autoComplete='off'
           className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           {...register?.(name, {
             required: `${text}  can not be empty`,
@@ -94,7 +95,6 @@ const JobDetailInput:FC<IProps> = (props) => {
           {...otherProps}
           onClick={() => setIsOptionsShowing(!isOptionsShowing)}
           onBlur={() => setIsOptionsShowing(false)}
-          value={inputValue}
           onChange={(e) => {
             setValue?.(name, e.currentTarget.value);
             setInputValue(e.currentTarget.value);

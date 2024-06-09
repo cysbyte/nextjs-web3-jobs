@@ -102,6 +102,7 @@ const ApplyTypeRadioGroup:FC<IProps> = (props) => {
             Applicants will be sent to the website you specify to apply for this
             position
           </p>
+          
         </div>
       ) : (
         <div className="mt-6">

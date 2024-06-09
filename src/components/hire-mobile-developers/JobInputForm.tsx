@@ -1,21 +1,17 @@
-"use client";
-
+import { submitJob } from "@/app/action/action";
 import {
   continents,
   countriesAndRegions,
-  currencyDictionary
+  currencyDictionary,
 } from "@/utils/countryData";
-import React, {
-  FC,
-  useCallback, useMemo,
-  useReducer
-} from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import React, { FC, useCallback, useMemo, useReducer } from "react";
+import { FieldErrors, useForm } from "react-hook-form";
 import ApplyTypeRadioGroup from "./ApplyTypeRadioGroup";
 import {
   FormContext,
   initialFormState,
-  LocationTypeReducer
+  LocationTypeReducer,
 } from "./FormContext";
 import JobDetailInput from "./JobDetailInput";
 import LocationTypeRadioGroup from "./LocationTypeRadioGroup";
@@ -39,43 +35,50 @@ export type FormFields = {
   companyName: string;
 };
 
-const PositionForm:FC = () => {
+const PositionForm: FC = () => {
   const [state, locationTypeDispatch] = useReducer(
     LocationTypeReducer,
     initialFormState
   );
 
-  // const formSchema = z.object({
-  //   position: z
-  //     .string()
-  //     .min(5, { message: "the position is not long enough" })
-  //     .max(100, { message: "it's too long" })
-  //     .trim(),
-
-  //   description: z
-  //     .string()
-  //     .min(5, { message: "the description is not long enough" })
-  //     .max(10000, { message: "description is too long" })
-  //     .trim(),
-  // });
-
-  // const form = useForm<z.infer<typeof formSchema>>({
-  //   mode: "onChange",
-  //   defaultValues: {
-  //     position: "",
-  //     description: "",
-  //   },
-  // });
-
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
-  } = useForm<FormFields>();
+    getValues,
+    formState: { isSubmitted, errors, isSubmitting, isSubmitSuccessful},
+    control,
+  } = useForm<FormFields>({
+    defaultValues: {
+      jobTitle: "Android",
+      jobType: "FullTime",
+      jobRole: "Engineering",
+      locationType: "Remote",
+      jobDescription: "aaaaaaaaaa",
+      preferredApplicantLocation: "WorldWide",
+      keywords: "Android",
+      currency: "ALL - Albania",
+      minSalary: 100000,
+      maxSalary: 150000,
+      applyType: "website",
+      applyUrl: "https://google.com",
+      applyEmail: "",
+      companyName: "IBM",
+    },
+  });
 
-  const onSubmit: SubmitHandler<FormFields> = useCallback((data) => {
+  const onSubmit = useCallback(async (data: FormFields) => {
+    if (isSubmitting) return
     console.log(data);
+    const formData = new FormData();
+    Object.keys(data).forEach((key, index) =>
+      formData.set(key, Object.values(data)[index] as string)
+    );
+    const job = await submitJob(formData);
+  }, []);
+
+  const onError = useCallback((error: FieldErrors<FormFields>) => {
+    console.log(error);
   }, []);
 
   const preferredLocationOptions = useMemo(() => {
@@ -106,6 +109,12 @@ const PositionForm:FC = () => {
     [currencyDictionary]
   );
 
+  const hasError = useCallback(() => {
+    return Object.keys(errors).some((key, index) => {
+      return Object.values(errors)[index] !== null;
+    });
+  }, [errors]);
+
   return (
     <FormContext.Provider
       value={{
@@ -115,9 +124,7 @@ const PositionForm:FC = () => {
     >
       <form
         className="w-full mx-auto mb-10"
-        onSubmit={handleSubmit(onSubmit, (error) => {
-          console.log(error);
-        })}
+        onSubmit={handleSubmit(onSubmit, onError)}
       >
         <h2 className="text-2xl font-semibold">Job Details</h2>
         <div className="mt-8">
@@ -231,21 +238,24 @@ const PositionForm:FC = () => {
 
         <div className="mt-8">
           <label className="block text-black text-lg font-[500]" htmlFor="type">
-            Preferred Applicant Locations{" "}
+            Salary
             <span className="text-red-alert">*</span>
           </label>
-          <div className="flex justify-between items-center gap-4 w-full">
+          <div className="flex flex-col justify-between items-center gap-4 w-full">
             <JobDetailInput
               hasDropdown={true}
               name="currency"
+              type="text"
               placeholder="Currency"
               options={currencyOptions}
               register={register}
               errors={errors}
               setValue={setValue}
-              pattern={{
-                value: /^[0-9]+$/i,
-                message: "Please enter a valid number.",
+              validate={(value) => {
+                if (!currencyOptions.includes(value as string)) {
+                  return "Invalid Currency, please select a valid Currency";
+                }
+                return true;
               }}
             />
             <JobDetailInput
@@ -268,6 +278,14 @@ const PositionForm:FC = () => {
               register={register}
               errors={errors}
               setValue={setValue}
+              validate={
+                (value) => {
+                  if (Number(value) < Number(getValues('minSalary'))) {
+                    return "Max Salary must great than Min Salary";
+                  }
+                  return true;
+                }
+              }
               pattern={{
                 value: /^[0-9]+$/i,
                 message: "Please enter a valid number.",
@@ -304,7 +322,13 @@ const PositionForm:FC = () => {
         >
           Submit
         </button>
+        {isSubmitted && hasError() && (
+          <p className=" text-sm text-red-alert mt-2">
+            Please scroll up to fix the error fields before proceeding!
+          </p>
+        )}
       </form>
+      <DevTool control={control} />
     </FormContext.Provider>
   );
 };
