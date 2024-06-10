@@ -13,28 +13,29 @@ import React, {
 } from "react";
 import {
   FieldErrors,
+  UseFormGetFieldState,
   UseFormRegister,
-  UseFormRegisterReturn,
   UseFormSetValue,
   Validate,
 } from "react-hook-form";
-import { FormContext } from "./FormContext";
-import { FormFields } from "./JobInputForm";
+import { FormContext } from "./form-context";
+import { FormFields } from "./job-post-form";
+import LocationDropdownList from "./location-dropdown-list";
 
 interface IProps {
   name: keyof FormFields;
   labelText?: string;
   register: UseFormRegister<FormFields>;
+  getValues: UseFormGetFieldState<FormFields>;
   setValue?: UseFormSetValue<FormFields>;
   errors?: FieldErrors<FormFields>;
   validate?:
     | Validate<string | number, FormFields>
     | Record<string, Validate<string | number, FormFields>>
-  | undefined;
+    | undefined;
 }
 
-const PreferredLocationsDropdown:FC<IProps> = (props) => {
-
+const PreferredLocationsDropdown: FC<IProps> = (props) => {
   const { state } = useContext(FormContext);
 
   const getOptions = useCallback(
@@ -54,14 +55,18 @@ const PreferredLocationsDropdown:FC<IProps> = (props) => {
 
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
   const [isCancelShowing, setIsCancelShowing] = useState(false);
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [selectedLocations, setSelectedLocations] = useState<string[]>(
+    (props.getValues("preferredApplicantLocation") as unknown as string).split(
+      ","
+    )
+  );
 
   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const handleCancelClick = useCallback( () => {
+  const handleCancelClick = useCallback(() => {
     setIsCancelShowing(false);
     setSelectedLocations([]);
-    setValue?.('preferredApplicantLocation', '')
+    setValue?.("preferredApplicantLocation", "");
   }, []);
 
   const cancelShowing = useCallback(
@@ -70,40 +75,50 @@ const PreferredLocationsDropdown:FC<IProps> = (props) => {
         (location) => location !== item
       );
       setSelectedLocations(newSelectedLocations);
-      setValue?.('preferredApplicantLocation', selectedLocations.join(','))
+      setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
       if (newSelectedLocations.length === 0) {
         setIsCancelShowing(false);
       }
     },
     [selectedLocations]
-  )
+  );
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.value.trim() === "") {
-      setOptions(getOptions(state));
-      return;
-    }
-    setOptions(
-      options.filter((option) =>
-        option.toLowerCase().startsWith(e.currentTarget.value.trim())
-      )
-    );
-  }, [options]);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.currentTarget.value.trim() === "") {
+        setOptions(getOptions(state));
+        return;
+      }
+      setOptions(
+        options.filter((option) =>
+          option.toLowerCase().startsWith(e.currentTarget.value.trim())
+        )
+      );
+    },
+    [options]
+  );
 
-  const handleSelect = useCallback((e: React.MouseEvent, item: string) => {
-    e.preventDefault();
-    setIsOptionsShowing(false);
-    setIsCancelShowing(true);
-    const newSelectedLocations = [...selectedLocations, item]
-    setSelectedLocations(newSelectedLocations);
-    inputRef.current.placeholder = "";
-    setOptions(options.filter((option) => option !== item));
-    setValue?.('preferredApplicantLocation', newSelectedLocations.join(','))
-  }, [inputRef, options]);
-  
+  const handleSelect = useCallback(
+    (e: React.MouseEvent, item: string) => {
+      e.preventDefault();
+      setIsOptionsShowing(false);
+      setIsCancelShowing(true);
+      
+      const newSelectedLocations = Array.from(new Set(selectedLocations.concat([item])))
+      setSelectedLocations(newSelectedLocations);
+      console.log(newSelectedLocations, 'kdkls')
+      console.log(selectedLocations, '[[[[[')
+      inputRef.current.placeholder = "";
+      setOptions(options.filter((option) => option !== item));
+      setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
+    },
+    [options]
+  );
+
   const {
     name,
     labelText,
+    getValues,
     setValue,
     register,
     validate,
@@ -123,25 +138,26 @@ const PreferredLocationsDropdown:FC<IProps> = (props) => {
       <div className="relative group w-auto h-auto">
         <div className="group w-full h-auto flex items-center border rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
           <div className="flex gap-2 mr-2">
-            {selectedLocations.map((item, index) => (
-              <div
-                key={item}
-                className="flex items-center justify-center gap-2 px-2 py-1 bg-gray-200 rounded-md"
-              >
-                <p className="text-center ml-1">{item}</p>
-                <svg
-                  height="20"
-                  width="20"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                  focusable="false"
-                  className="fill-gray-800 cursor-pointer"
-                  onClick={() => cancelShowing(item)}
+            {selectedLocations.length > 0 &&
+              selectedLocations.map((item, index) => (
+                <div
+                  key={item}
+                  className="flex items-center justify-center gap-2 px-2 py-1 bg-gray-200 rounded-md"
                 >
-                  <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
-                </svg>
-              </div>
-            ))}
+                  <p className="text-center ml-1">{item}</p>
+                  <svg
+                    height="20"
+                    width="20"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    focusable="false"
+                    className="fill-gray-800 cursor-pointer"
+                    onClick={() => cancelShowing(item)}
+                  >
+                    <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
+                  </svg>
+                </div>
+              ))}
           </div>
           <input
             {...register?.(name, {
@@ -154,7 +170,7 @@ const PreferredLocationsDropdown:FC<IProps> = (props) => {
                 value: 100,
                 message: `${labelText} must be at most 100 characters long`,
               },
-              validate: validate
+              validate: validate,
             })}
             {...otherProps}
             ref={inputRef}
@@ -197,17 +213,7 @@ const PreferredLocationsDropdown:FC<IProps> = (props) => {
           </div>
         </div>
         {isOptionsShowing && (
-          <div className="absolute max-h-96 overflow-auto z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
-            {options.map((item, index) => (
-              <p
-                key={item}
-                className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
-                onMouseDown={(e: React.MouseEvent) => handleSelect(e, item)}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
+          <LocationDropdownList options={options} handleSelect={handleSelect} />
         )}
         {errors?.[name] && (
           <p className=" text-sm text-red-alert mt-2">

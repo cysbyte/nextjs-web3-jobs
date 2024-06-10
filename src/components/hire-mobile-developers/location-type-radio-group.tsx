@@ -3,15 +3,17 @@
 import React, { FC, useCallback, useContext, useMemo, useState } from "react";
 import {
   FieldErrors,
+  UseFormGetFieldState,
   UseFormRegister, UseFormSetValue
 } from "react-hook-form";
-import { ActionType, FormContext } from "./FormContext";
-import { FormFields } from "./JobInputForm";
+import { ActionType, FormContext } from "./form-context";
+import { FormFields } from "./job-post-form";
 
 interface IProps {
   name: keyof FormFields;
   labelText?: string;
   register: UseFormRegister<FormFields>;
+  getValues?: UseFormGetFieldState<FormFields>;
   setValue?: UseFormSetValue<FormFields>;
   errors?: FieldErrors<FormFields>;
 }
@@ -37,7 +39,12 @@ const LocationTypeRadioGroup:FC<IProps> = (props) => {
     ];
   }, []);
 
-  const [locationTypes, setLocationTypes] = useState(initState);
+  const [locationTypes, setLocationTypes] = useState(initState.map(item => {
+    if (item.type === props.getValues?.('locationType') as unknown as string) {
+      return {type: item.type, checked: true}
+    }
+    return item
+  }));
 
   const checkRadio = useCallback(
     (item: { type: string; checked: boolean }) => {

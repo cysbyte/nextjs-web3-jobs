@@ -2,8 +2,8 @@
 
 import React, { FC, useState } from "react";
 import Portal from "../layout/portal";
-import CustomInput from "./CustomInput";
-import PreferredLocationsDropdown from "./PreferredLocationsDropdown";
+import CustomInput from "./custom-input";
+import PreferredLocationsDropdown from "./preferred-locations-dropdown";
 
 const Subscription:FC = () => {
   

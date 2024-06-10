@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import JobCard from "./JobCard";
+import JobCard from "./job-card";
 
 const Jobs: FC = () => {
   return (

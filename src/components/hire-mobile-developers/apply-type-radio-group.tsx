@@ -5,8 +5,8 @@ import {
   FieldErrors,
   UseFormRegister, UseFormSetValue
 } from "react-hook-form";
-import JobDetailInput from "./JobDetailInput";
-import { FormFields } from "./JobInputForm";
+import JobDetailInput from "./job-detail-input";
+import { FormFields } from "./job-post-form";
 
 interface IProps {
   name: keyof FormFields;

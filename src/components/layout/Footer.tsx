@@ -94,11 +94,11 @@ const Footer:FC = () => {
         </div>
         <div className=" flex-grow h-full text-deep-blue flex justify-between items-start">
           <div className="basis-1/4 h-full">
-            <h3 className=" font-semibold text-lg">Hire Mobile Engineers</h3>
+            <h3 className=" font-semibold text-lg">Hire Mobile Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
               {hireSkills.map((item, index) => (
                 <p className="mt-3 text-sm" key={item}>
-                  Hire {item} Engineers
+                  Hire {item} Developers
                 </p>
               ))}
               <p className="mt-3 text-sm">Hire Mobile Designers</p>
@@ -119,7 +119,7 @@ const Footer:FC = () => {
             <div className="mt-2 flex flex-col justify-between">
               {jobSkills.map((item, index) => (
                 <p className="mt-3 text-sm" key={item}>
-                  Remote {item} Engineers
+                  Remote {item} Developers
                 </p>
               ))}
             </div>

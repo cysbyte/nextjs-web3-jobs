@@ -7,7 +7,7 @@ import {
   Validate,
   ValidationRule
 } from "react-hook-form";
-import { FormFields } from "./JobInputForm";
+import { FormFields } from "./job-post-form";
 
 interface IProps {
   hasDropdown: boolean;

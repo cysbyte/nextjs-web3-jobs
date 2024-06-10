@@ -16,7 +16,7 @@ const JobCard:FC = () => {
           />
         </div>
         <div className="h-auto">
-          <h2 className=" font-semibold text-[1.5rem] hover:text-purple-500 cursor-pointer">Senior Android Engineer</h2>
+          <h2 className=" font-semibold text-[1.5rem] hover:text-purple-500 cursor-pointer">Senior Android Developer</h2>
           <p className=" text-xl hover:text-purple-500 cursor-pointer">Chorus One</p>
           <div className="flex gap-3 text-base text-gray-500 mt-5">
             <p>Remote</p>

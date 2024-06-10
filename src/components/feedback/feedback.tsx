@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Portal from "../layout/portal";
-import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "./feedback-form";
 
 const Feedback = () => {
 

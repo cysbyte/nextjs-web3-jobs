@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import CustomInput from "../shared/CustomInput";
+import CustomInput from "../shared/custom-input";
 
 const JobsAlert: FC = () => {
   return (

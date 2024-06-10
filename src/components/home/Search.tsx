@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from "react";
-import Toggle from "../shared/Toggle";
+import Toggle from "../shared/toggle";
 
 const Search: FC = () => {
 
