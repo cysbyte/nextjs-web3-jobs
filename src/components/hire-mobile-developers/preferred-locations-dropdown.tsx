@@ -67,7 +67,14 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
     setIsCancelShowing(false);
     setSelectedLocations([]);
     setValue?.("preferredApplicantLocation", "");
+    resetOptions();
   }, []);
+
+  const resetOptions = () => {
+    const options = getOptions(state);
+    const newOptions = options.filter(option => !(getValues('preferredApplicantLocation') as unknown as string).split(',').includes(option))
+    setOptions(newOptions)
+  }
 
   const cancelShowing = useCallback(
     (item: string) => {
@@ -79,6 +86,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       if (newSelectedLocations.length === 0) {
         setIsCancelShowing(false);
       }
+      resetOptions();
     },
     [selectedLocations]
   );
@@ -104,13 +112,17 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       setIsOptionsShowing(false);
       setIsCancelShowing(true);
       
-      const newSelectedLocations = Array.from(new Set(selectedLocations.concat([item])))
+      const selectedLocations = (getValues('preferredApplicantLocation') as unknown as string)
+        .split(',')
+        .filter((item) => item.length > 0)
+      let newSelectedLocations = Array.from(new Set(selectedLocations.concat([item])))
+      if (newSelectedLocations.includes('WorldWide')) {
+        newSelectedLocations = ['WorldWide', ...newSelectedLocations.filter(item=>item!=='WorldWide')]
+      }
       setSelectedLocations(newSelectedLocations);
-      console.log(newSelectedLocations, 'kdkls')
-      console.log(selectedLocations, '[[[[[')
       inputRef.current.placeholder = "";
-      setOptions(options.filter((option) => option !== item));
       setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
+      resetOptions()
     },
     [options]
   );
