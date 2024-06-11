@@ -10,6 +10,7 @@ import { DevTool } from "@hookform/devtools";
 import React, { FC, useCallback, useMemo, useReducer, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 import ApplyTypeRadioGroup from "./apply-type-radio-group";
+import CompanyLogoInput from "./company-logo-input";
 import {
   FormContext,
   initialFormState,
@@ -37,6 +38,8 @@ export type FormFields = {
   applyUrl: string;
   applyEmail: string;
   companyName: string;
+  companyWebsite: string;
+  companyLogo: string;
 };
 
 const JobPostForm: FC = () => {
@@ -72,6 +75,10 @@ const JobPostForm: FC = () => {
       companyName: "IBM",
     },
   });
+
+  const onPreview = useCallback(() => {
+    setStep('preview');
+  }, [])
 
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
@@ -136,7 +143,7 @@ const JobPostForm: FC = () => {
         <div className="flex justify-center items-center my-10">
           <div className="flex justify-evenly w-full text-xl">
             <div
-              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center cursor-pointer"
+              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center"
               onClick={() => setStep("create")}
             >
               {step == "create" && (
@@ -145,8 +152,7 @@ const JobPostForm: FC = () => {
               Create
             </div>
             <div
-              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center cursor-pointer"
-              onClick={() => setStep("preview")}
+              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center"
             >
               {step == "preview" && (
                 <div className="absolute w-full h-[6px] rounded-full bg-blue-800 -bottom-[3px]"></div>
@@ -154,8 +160,7 @@ const JobPostForm: FC = () => {
               Preview
             </div>
             <div
-              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center cursor-pointer"
-              onClick={() => setStep("pricing")}
+              className="relative w-full border-b border-b-gray-300 py-3 flex items-center justify-center"
             >
               {step == "pricing" && (
                 <div className="absolute w-full h-[6px] rounded-full bg-blue-800 -bottom-[3px]"></div>
@@ -169,6 +174,7 @@ const JobPostForm: FC = () => {
           <h2 className="text-2xl font-semibold">Job Details</h2>
           <div className="mt-8">
             <JobDetailInput
+              required={true}
               hasDropdown={false}
               name="jobTitle"
               labelText="Postion or Job Title"
@@ -181,6 +187,7 @@ const JobPostForm: FC = () => {
 
           <div className="mt-8">
             <JobDetailInput
+              required={true}
               hasDropdown={true}
               name="jobType"
               labelText="Job Type"
@@ -200,6 +207,7 @@ const JobPostForm: FC = () => {
 
           <div className="mt-8">
             <JobDetailInput
+              required={true}
               hasDropdown={true}
               name="jobRole"
               labelText="Job Role"
@@ -266,6 +274,7 @@ const JobPostForm: FC = () => {
 
           <div className="mt-8">
             <JobDetailInput
+              required={true}
               hasDropdown={false}
               name="keywords"
               labelText="Keywords"
@@ -289,6 +298,7 @@ const JobPostForm: FC = () => {
             </label>
             <div className="flex flex-col justify-between items-center gap-4 w-full">
               <JobDetailInput
+                required={true}
                 hasDropdown={true}
                 name="currency"
                 type="text"
@@ -305,6 +315,7 @@ const JobPostForm: FC = () => {
                 }}
               />
               <JobDetailInput
+                required={true}
                 hasDropdown={false}
                 name="minSalary"
                 type="number"
@@ -317,7 +328,9 @@ const JobPostForm: FC = () => {
                   message: "Please enter a valid number.",
                 }}
               />
+
               <JobDetailInput
+                required={true}
                 hasDropdown={false}
                 name="maxSalary"
                 placeholder="Max Salary"
@@ -351,6 +364,7 @@ const JobPostForm: FC = () => {
 
           <div className="mt-8">
             <JobDetailInput
+              required={true}
               hasDropdown={false}
               name="companyName"
               labelText="Company Name"
@@ -360,9 +374,28 @@ const JobPostForm: FC = () => {
               setValue={setValue}
             />
           </div>
+
+          <div className="mt-8">
+            <JobDetailInput
+              required={false}
+              hasDropdown={false}
+              name="companyWebsite"
+              labelText="Company Website"
+              placeholder="https://"
+              register={register}
+              errors={errors}
+              setValue={setValue}
+            />
+          </div>
+
+          <div className="mt-8">
+            <CompanyLogoInput/>
+          </div>
+
           <button
             type="submit"
             className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800"
+            onClick={onPreview}
           >
             Preview
           </button>

@@ -72,9 +72,14 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
 
   const resetOptions = () => {
     const options = getOptions(state);
-    const newOptions = options.filter(option => !(getValues('preferredApplicantLocation') as unknown as string).split(',').includes(option))
-    setOptions(newOptions)
-  }
+    const newOptions = options.filter(
+      (option) =>
+        !(getValues("preferredApplicantLocation") as unknown as string)
+          .split(",")
+          .includes(option)
+    );
+    setOptions(newOptions);
+  };
 
   const cancelShowing = useCallback(
     (item: string) => {
@@ -111,18 +116,25 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       e.preventDefault();
       setIsOptionsShowing(false);
       setIsCancelShowing(true);
-      
-      const selectedLocations = (getValues('preferredApplicantLocation') as unknown as string)
-        .split(',')
-        .filter((item) => item.length > 0)
-      let newSelectedLocations = Array.from(new Set(selectedLocations.concat([item])))
-      if (newSelectedLocations.includes('WorldWide')) {
-        newSelectedLocations = ['WorldWide', ...newSelectedLocations.filter(item=>item!=='WorldWide')]
+
+      const selectedLocations = (
+        getValues("preferredApplicantLocation") as unknown as string
+      )
+        .split(",")
+        .filter((item) => item.length > 0);
+      let newSelectedLocations = Array.from(
+        new Set(selectedLocations.concat([item]))
+      );
+      if (newSelectedLocations.includes("WorldWide")) {
+        newSelectedLocations = [
+          "WorldWide",
+          ...newSelectedLocations.filter((item) => item !== "WorldWide"),
+        ];
       }
       setSelectedLocations(newSelectedLocations);
       inputRef.current.placeholder = "";
       setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
-      resetOptions()
+      resetOptions();
     },
     [options]
   );
@@ -143,7 +155,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
   }, [state.locationType]);
 
   return (
-    <>
+    <article>
       <label className="block text-black text-lg font-[500]" htmlFor="type">
         Preferred Applicant Locations <span className="text-red-alert">*</span>
       </label>
@@ -151,25 +163,28 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
         <div className="group w-full h-auto flex items-center border rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
           <div className="flex gap-2 mr-2">
             {selectedLocations.length > 0 &&
-              selectedLocations.map((item, index) => (
-                <div
-                  key={item}
-                  className="flex items-center justify-center gap-2 px-2 py-1 bg-gray-200 rounded-md"
-                >
-                  <p className="text-center ml-1">{item}</p>
-                  <svg
-                    height="20"
-                    width="20"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    focusable="false"
-                    className="fill-gray-800 cursor-pointer"
-                    onClick={() => cancelShowing(item)}
-                  >
-                    <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
-                  </svg>
-                </div>
-              ))}
+              selectedLocations.map(
+                (item, index) =>
+                  item.length > 0 && (
+                    <div
+                      key={item}
+                      className="flex items-center justify-center gap-2 px-2 py-1 bg-gray-200 rounded-md"
+                    >
+                      <p className="text-center ml-1">{item}</p>
+                      <svg
+                        height="20"
+                        width="20"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                        focusable="false"
+                        className="fill-gray-800 cursor-pointer"
+                        onClick={() => cancelShowing(item)}
+                      >
+                        <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
+                      </svg>
+                    </div>
+                  )
+              )}
           </div>
           <input
             {...register?.(name, {
@@ -233,7 +248,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
           </p>
         )}
       </div>
-    </>
+    </article>
   );
 };
 

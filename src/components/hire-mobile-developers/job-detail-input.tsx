@@ -3,13 +3,15 @@
 import React, { FC, useCallback, useState } from "react";
 import {
   FieldErrors,
-  UseFormRegister, UseFormSetValue,
+  UseFormRegister,
+  UseFormSetValue,
   Validate,
-  ValidationRule
+  ValidationRule,
 } from "react-hook-form";
 import { FormFields } from "./job-post-form";
 
 interface IProps {
+  required: boolean;
   hasDropdown: boolean;
   placeholder: string;
   name: keyof FormFields;
@@ -22,12 +24,11 @@ interface IProps {
   validate?:
     | Validate<string | number, FormFields>
     | Record<string, Validate<string | number, FormFields>>
-  | undefined;
+    | undefined;
   pattern?: ValidationRule<RegExp> | undefined;
 }
 
-const JobDetailInput:FC<IProps> = (props) => {
-
+const JobDetailInput: FC<IProps> = (props) => {
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
   const [isCancelShowing, setIsCancelShowing] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -60,24 +61,25 @@ const JobDetailInput:FC<IProps> = (props) => {
       setValue?.(name, item);
       setInputValue(item);
     },
-    [name],
-  )
-  
-  let text = labelText ? labelText : props.placeholder
-  if (text.includes('https://')) {
-    text = 'Url for receiving applicants'
+    [name]
+  );
+
+  let text = labelText ? labelText : props.placeholder;
+  if (text.includes("https://")) {
+    text = "Url for receiving applicants";
   }
 
   return (
-    <div className="relative group w-full h-auto">
+    <article className="relative group w-full h-auto">
       {labelText && (
         <label className="block text-black text-lg font-[500]" htmlFor={name}>
-          {labelText} <span className="text-red-alert">*</span>
+          {labelText}{" "}
+          {props.required && <span className="text-red-alert">*</span>}
         </label>
       )}
       <div className="group w-full h-auto flex items-center border border-gray-300 rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
         <input
-          autoComplete='off'
+          autoComplete="off"
           className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           {...register?.(name, {
             required: `${text}  can not be empty`,
@@ -138,9 +140,7 @@ const JobDetailInput:FC<IProps> = (props) => {
             <p
               key={item}
               className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"
-              onMouseDown={
-                (e)=>selectOption(e, item)
-              }
+              onMouseDown={(e) => selectOption(e, item)}
             >
               {item}
             </p>
@@ -152,7 +152,7 @@ const JobDetailInput:FC<IProps> = (props) => {
           {errors?.[name]?.message}
         </p>
       )}
-    </div>
+    </article>
   );
 };
 

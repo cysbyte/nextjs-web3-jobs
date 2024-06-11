@@ -1,10 +1,7 @@
 "use client";
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
-import {
-  FieldErrors,
-  UseFormRegister, UseFormSetValue
-} from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import JobDetailInput from "./job-detail-input";
 import { FormFields } from "./job-post-form";
 
@@ -15,7 +12,7 @@ interface IProps {
   setValue?: UseFormSetValue<FormFields>;
   errors?: FieldErrors<FormFields>;
 }
-const ApplyTypeRadioGroup:FC<IProps> = (props) => {
+const ApplyTypeRadioGroup: FC<IProps> = (props) => {
   const initialTypes = useMemo(() => {
     return [
       {
@@ -86,6 +83,7 @@ const ApplyTypeRadioGroup:FC<IProps> = (props) => {
       {selectedType.indexOf("website") > -1 ? (
         <div className="mt-6">
           <JobDetailInput
+            required={true}
             hasDropdown={false}
             name="applyUrl"
             placeholder="https://"
@@ -102,11 +100,11 @@ const ApplyTypeRadioGroup:FC<IProps> = (props) => {
             Applicants will be sent to the website you specify to apply for this
             position
           </p>
-          
         </div>
       ) : (
         <div className="mt-6">
           <JobDetailInput
+            required={true}
             hasDropdown={false}
             name="applyEmail"
             placeholder="Email for receiving applicants"
@@ -114,8 +112,7 @@ const ApplyTypeRadioGroup:FC<IProps> = (props) => {
             errors={errors}
             setValue={setValue}
             pattern={{
-              value:
-              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
               message: "Please enter a valid email.",
             }}
           />
