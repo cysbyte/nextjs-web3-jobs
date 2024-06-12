@@ -59,20 +59,20 @@ const JobPostForm: FC = () => {
     control,
   } = useForm<FormFields>({
     defaultValues: {
-      jobTitle: "Android",
-      jobType: "FullTime",
-      jobRole: "Engineering",
-      locationType: "Remote",
-      jobDescription: "aaaaaaaaaa",
-      preferredApplicantLocation: "WorldWide",
-      keywords: "Android",
-      currency: "ALL - Albania",
-      minSalary: 100000,
-      maxSalary: 150000,
+      // jobTitle: "Android",
+      // jobType: "FullTime",
+      // jobRole: "Engineering",
+      // locationType: "Remote",
+      jobDescription: "",
+      preferredApplicantLocation: "",
+      // keywords: "Android",
+      // currency: "ALL - Albania",
+      // minSalary: 100000,
+      // maxSalary: 150000,
       applyType: "website",
-      applyUrl: "https://google.com",
-      applyEmail: "",
-      companyName: "IBM",
+      // applyUrl: "https://google.com",
+      // applyEmail: "",
+      // companyName: "IBM",
     },
   });
 
@@ -136,10 +136,10 @@ const JobPostForm: FC = () => {
       }}
     >
       <form
-        className="w-full mx-auto mb-10"
+        className="w-full mx-auto mb-10 basis-2/3 overflow-scroll no-scrollbar"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <h1 className=" text-4xl text-center font-semibold"> Post A Job</h1>
+        
         <div className="flex justify-center items-center my-10">
           <div className="flex justify-evenly w-full text-xl">
             <div

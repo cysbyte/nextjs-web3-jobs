@@ -35,7 +35,7 @@ const CompanyLogoInput = () => {
               SVG, PNG, JPG or GIF
             </p>
           </div>
-          <input id="dropzone-file" type="file" className="hidden" />
+          <input autoComplete='off' id="dropzone-file" type="file" className="hidden" />
         </label>
       </div>
     </article>

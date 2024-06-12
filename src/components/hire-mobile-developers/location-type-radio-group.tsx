@@ -62,7 +62,7 @@ const LocationTypeRadioGroup:FC<IProps> = (props) => {
       });
       setValue?.(name, item.type);
     },
-    [locationTypes, setLocationTypes, locationTypeDispatch]
+    [locationTypes]
   );
 
   const { name, labelText, setValue, register, errors, ...otherProps } = props;

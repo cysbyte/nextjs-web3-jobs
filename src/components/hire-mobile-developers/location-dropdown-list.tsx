@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const LocationDropdownList: FC<IProps> = (props) => {
-  console.log("dropdownlist");
   return (
     <div className="absolute max-h-96 overflow-auto z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
       {props.options.map((item, index) => (

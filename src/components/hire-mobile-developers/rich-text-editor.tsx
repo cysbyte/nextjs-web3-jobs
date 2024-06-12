@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Component, useState } from "react";
 import {
   EditorState,
@@ -55,7 +57,7 @@ export const EditorConvertToHTML = (props: IProps) => {
   const { name, labelText, setValue, register, errors, ...otherProps } = props;
 
   return (
-    <>
+    <section>
       <div
         className="border border-gray-300 rounded-sm mt-4"
         {...register?.(name, {
@@ -85,6 +87,6 @@ export const EditorConvertToHTML = (props: IProps) => {
           {errors?.[name]?.message}
         </p>
       )}
-    </>
+    </section>
   );
 };
