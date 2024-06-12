@@ -105,7 +105,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       setIsOptionsShowing(true)
       setOptions(
         options.filter((option) =>
-          option.toLowerCase().startsWith(e.currentTarget.value.trim())
+          option.toLowerCase().startsWith(e.currentTarget.value.trim().toLowerCase())
         )
       );
     },
@@ -208,7 +208,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
               })}
               {...otherProps}
               ref={inputRef}
-              className="appearance-none focus:outline-none w-auto py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
+              className={`appearance-none focus:outline-none ${selectedLocations.length>0?'w-1':'w-auto'} py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900`}
               type="text"
               placeholder="select multiple locations"
               onClick={() => setIsOptionsShowing(!isOptionsShowing)}

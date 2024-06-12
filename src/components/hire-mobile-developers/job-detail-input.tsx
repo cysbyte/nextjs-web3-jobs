@@ -41,6 +41,7 @@ const JobDetailInput: FC<IProps> = (props) => {
   }, []);
 
   const {
+    required,
     hasDropdown,
     name,
     labelText,
@@ -64,17 +65,31 @@ const JobDetailInput: FC<IProps> = (props) => {
     [name]
   );
 
+  const [dropdownOptions, setDropdownOptions] = useState(options)
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue?.(name, e.currentTarget.value);
+            setInputValue(e.currentTarget.value);
+    setDropdownOptions(
+      options?.filter((option) =>
+        option.toLowerCase().startsWith(e.currentTarget.value.trim().toLowerCase())
+      )
+    );
+  },[options])
+
   let text = labelText ? labelText : props.placeholder;
   if (text.includes("https://")) {
     text = "Url for receiving applicants";
   }
+
+  const requiredTemp = required ? text+'can not be empty': false
 
   return (
     <article className="relative group w-full h-auto">
       {labelText && (
         <label className="block text-black text-lg font-[500]" htmlFor={name}>
           {labelText}{" "}
-          {props.required && <span className="text-red-alert">*</span>}
+          {required && <span className="text-red-alert">*</span>}
         </label>
       )}
       <div className="group w-full h-auto flex items-center border border-gray-300 rounded-md px-2 mt-4 focus-within:border-purple-500 focus-within:shadow-lg hover:border-purple-500 hover:shadow-lg overflow-hidden">
@@ -82,7 +97,7 @@ const JobDetailInput: FC<IProps> = (props) => {
           autoComplete="off"
           className="appearance-none focus:outline-none w-full py-4 text-gray-700 leading-tight placeholder-gray-400 placeholder:text-base placeholder:pl-0 px-0 shadow-slate-900"
           {...register?.(name, {
-            required: `${text}  can not be empty`,
+            required: requiredTemp,
             minLength: {
               value: 2,
               message: `${labelText} must be at least 2 characters long`,
@@ -97,10 +112,7 @@ const JobDetailInput: FC<IProps> = (props) => {
           {...otherProps}
           onClick={() => setIsOptionsShowing(!isOptionsShowing)}
           onBlur={() => setIsOptionsShowing(false)}
-          onChange={(e) => {
-            setValue?.(name, e.currentTarget.value);
-            setInputValue(e.currentTarget.value);
-          }}
+          onChange={(e) => handleChange(e)}
         />
         {hasDropdown && isCancelShowing && (
           <div className="w-auto h-auto" onClick={handleCancelClick}>
@@ -136,7 +148,7 @@ const JobDetailInput: FC<IProps> = (props) => {
       </div>
       {hasDropdown && isOptionsShowing && (
         <div className="absolute max-h-96 overflow-auto z-50 mt-1 pt-0 flex w-[100%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl">
-          {options?.map((item, index) => (
+          {dropdownOptions?.map((item, index) => (
             <p
               key={item}
               className="my-1 block border-b border-gray-100 py-2 font-normal text-slate-700 hover:text-purple-500 hover:rounded-md md:mx-2 cursor-pointer transition-all"

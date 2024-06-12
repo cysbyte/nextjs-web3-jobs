@@ -59,20 +59,20 @@ const JobPostForm: FC = () => {
     control,
   } = useForm<FormFields>({
     defaultValues: {
-      // jobTitle: "Android",
-      // jobType: "FullTime",
-      // jobRole: "Engineering",
-      // locationType: "Remote",
+      jobTitle: "",
+      jobType: "",
+      jobRole: "",
+      locationType: "",
       jobDescription: "",
       preferredApplicantLocation: "",
-      // keywords: "Android",
-      // currency: "ALL - Albania",
-      // minSalary: 100000,
-      // maxSalary: 150000,
+      keywords: "",
+      currency: "",
+      // minSalary: 0,
+      // maxSalary: 0,
       applyType: "website",
-      // applyUrl: "https://google.com",
-      // applyEmail: "",
-      // companyName: "IBM",
+      applyUrl: "",
+      applyEmail: "",
+      companyName: "",
     },
   });
 
@@ -80,9 +80,21 @@ const JobPostForm: FC = () => {
     setStep('preview');
   }, [])
 
+  const onPreviewSubmit = useCallback(async (data: FormFields) => {
+    if (isSubmitting) return;
+    console.log(data);
+    setStep('preview');
+    // const formData = new FormData();
+    // Object.keys(data).forEach((key, index) =>
+    //   formData.set(key, Object.values(data)[index] as string)
+    // );
+    // const job = await submitJob(formData);
+  }, []);
+
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
     console.log(data);
+    // setStep('preview');
     const formData = new FormData();
     Object.keys(data).forEach((key, index) =>
       formData.set(key, Object.values(data)[index] as string)
@@ -136,8 +148,9 @@ const JobPostForm: FC = () => {
       }}
     >
       <form
+        noValidate={true}
         className="w-full mx-auto mb-10 basis-2/3 overflow-scroll no-scrollbar"
-        onSubmit={handleSubmit(onSubmit, onError)}
+        onSubmit={handleSubmit(onPreviewSubmit, onError)}
       >
         
         <div className="flex justify-center items-center my-10">
@@ -182,6 +195,9 @@ const JobPostForm: FC = () => {
               register={register}
               errors={errors}
               setValue={setValue}
+              validate={(value) => {
+                return true
+              }}
             />
           </div>
 
@@ -282,6 +298,9 @@ const JobPostForm: FC = () => {
               register={register}
               errors={errors}
               setValue={setValue}
+              validate={(value) => {
+                return true
+              }}
             />
             <p className="text-sm mt-2 text-gray-500">
               Please use a comma to seperate multiple keywords or leave black.
@@ -372,6 +391,9 @@ const JobPostForm: FC = () => {
               register={register}
               errors={errors}
               setValue={setValue}
+              validate={(value) => {
+                return true
+              }}
             />
           </div>
 
@@ -395,7 +417,6 @@ const JobPostForm: FC = () => {
           <button
             type="submit"
             className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800"
-            onClick={onPreview}
           >
             Preview
           </button>
@@ -406,7 +427,11 @@ const JobPostForm: FC = () => {
           )}
         </div>
         }
-        {step==='preview'&&<JobPreview getValues={getValues}/>}
+        {step === 'preview' && <JobPreview
+          getValues={getValues}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+        />}
       </form>
       <DevTool control={control} />
     </FormContext.Provider>

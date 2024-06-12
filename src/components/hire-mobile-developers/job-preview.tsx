@@ -1,12 +1,23 @@
 import { useJobDetailStore } from "@/app/store/job-detail-store";
 import React, { FC } from "react";
-import { UseFormGetValues } from "react-hook-form";
+import {
+  SubmitErrorHandler,
+  SubmitHandler,
+  UseFormGetValues,
+} from "react-hook-form";
 import { FormFields } from "./job-post-form";
 import DOMPurify, { sanitize } from "dompurify";
 import Image from "next/image";
 
 interface IProps {
   getValues?: UseFormGetValues<FormFields>;
+  onSubmit: (data: FormFields) => Promise<void>;
+  handleSubmit: (
+    onValid: SubmitHandler<FormFields>,
+    onInvalid?: SubmitErrorHandler<FormFields> | undefined
+  ) => (
+    e?: React.BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>;
 }
 
 const JobPreview: FC<IProps> = (props) => {
@@ -76,36 +87,40 @@ const JobPreview: FC<IProps> = (props) => {
               : props.getValues?.("applyEmail")}
           </p>
         </div>
-        <div>
-          <h3 className=" font-semibold text-lg mt-6">Max Salary</h3>
-          <p className="mt-4 text-gray-800">{props.getValues?.("maxSalary")}</p>
-        </div>
       </div>
       <div className="w-full border-t mt-6">
-      <h2 className="text-2xl font-semibold mt-6">Company Details</h2>
-      <div>
-        <h3 className=" font-semibold text-lg mt-6">Company Name</h3>
-        <p className="mt-4 text-gray-800">{props.getValues?.("companyName")}</p>
-      </div>
-      {props.getValues?.("companyWebsite") && (
+        <h2 className="text-2xl font-semibold mt-6">Company Details</h2>
         <div>
-          <h3 className=" font-semibold text-lg mt-6">Company Website</h3>
+          <h3 className=" font-semibold text-lg mt-6">Company Name</h3>
           <p className="mt-4 text-gray-800">
-            {props.getValues?.("companyWebsite")}
+            {props.getValues?.("companyName")}
           </p>
         </div>
-      )}
-      {props.getValues?.("companyLogo") && (
-        <div>
-          <h3 className=" font-semibold text-lg mt-6">Company Logo</h3>
-          <Image
-            width={200}
-            height={200}
-            src={props.getValues?.("companyLogo") || ""}
-            alt=""
-          />
-        </div>
+        {props.getValues?.("companyWebsite") && (
+          <div>
+            <h3 className=" font-semibold text-lg mt-6">Company Website</h3>
+            <p className="mt-4 text-gray-800">
+              {props.getValues?.("companyWebsite")}
+            </p>
+          </div>
         )}
+        {props.getValues?.("companyLogo") && (
+          <div>
+            <h3 className=" font-semibold text-lg mt-6">Company Logo</h3>
+            <Image
+              width={200}
+              height={200}
+              src={props.getValues?.("companyLogo") || ""}
+              alt=""
+            />
+          </div>
+        )}
+      </div>
+      <div
+        className="text-center mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800 cursor-pointer"
+        onClick={props.handleSubmit(props.onSubmit)}
+      >
+        Submit
       </div>
     </section>
   );

@@ -47,6 +47,8 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
 
   useEffect(() => {
     setValue?.("applyType", "website");
+    setValue?.('applyUrl', '')
+    setValue?.('applyEmail', '')
   }, []);
 
   return (
@@ -80,7 +82,7 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
           </div>
         ))}
       </div>
-      {selectedType.indexOf("website") > -1 ? (
+      {selectedType.includes("website") ? (
         <div className="mt-6">
           <JobDetailInput
             required={true}
@@ -90,6 +92,9 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
             register={register}
             errors={errors}
             setValue={setValue}
+            validate={(value) => {
+              return true;
+            }}
             pattern={{
               value:
                 /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/,
@@ -111,6 +116,9 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
             register={register}
             errors={errors}
             setValue={setValue}
+            validate={(value) => {
+              return true;
+            }}
             pattern={{
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
               message: "Please enter a valid email.",
