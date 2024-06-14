@@ -26,7 +26,8 @@ model User {
 }
 
 model Job {
-  id                         String @id @default(auto()) @map("_id") @db.ObjectId
+  id                         String   @id @default(auto()) @map("_id") @db.ObjectId
+  jobId                      String
   jobTitle                   String
   jobType                    String
   jobRole                    String
@@ -35,10 +36,12 @@ model Job {
   preferredApplicantLocation String
   keywords                   String
   currency                   String
-  minSalary                  Int    @default(0)
-  maxSalary                  Int    @default(0)
+  minSalary                  Int      @default(0)
+  maxSalary                  Int      @default(0)
   applyType                  String
   applyUrl                   String
   applyEmail                 String?
   companyName                String?
+  createdAt                  DateTime @default(now())
+  updatedAt                  DateTime @updatedAt
 }

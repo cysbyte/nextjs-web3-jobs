@@ -1,6 +1,6 @@
 "use client";
 
-import { submitJob } from "@/app/action/action";
+import { submitJob } from "@/action/action";
 import {
   continents,
   countriesAndRegions,
@@ -43,7 +43,7 @@ export type FormFields = {
 };
 
 const JobPostForm: FC = () => {
-  const [step, setStep] = useState("create");
+  const [step, setStep] = useState("preview");
 
   const [state, locationTypeDispatch] = useReducer(
     LocationTypeReducer,
@@ -58,26 +58,42 @@ const JobPostForm: FC = () => {
     formState: { isSubmitted, errors, isSubmitting, isSubmitSuccessful },
     control,
   } = useForm<FormFields>({
+    // defaultValues: {
+    //   jobTitle: "",
+    //   jobType: "",
+    //   jobRole: "",
+    //   locationType: "",
+    //   jobDescription: "",
+    //   preferredApplicantLocation: "",
+    //   keywords: "",
+    //   currency: "",
+    //   // minSalary: 0,
+    //   // maxSalary: 0,
+    //   applyType: "website",
+    //   applyUrl: "",
+    //   applyEmail: "",
+    //   companyName: "",
+    // },
     defaultValues: {
-      jobTitle: "",
-      jobType: "",
-      jobRole: "",
-      locationType: "",
+      jobTitle: "Android Senior Developer",
+      jobType: "FullTime",
+      jobRole: "Engineering",
+      locationType: "Remote",
       jobDescription: "",
-      preferredApplicantLocation: "",
-      keywords: "",
-      currency: "",
-      // minSalary: 0,
-      // maxSalary: 0,
+      preferredApplicantLocation: "United States",
+      keywords: "Android,Kotlin,Jetpack,Retrofit",
+      currency: "USD - United States",
+      minSalary: 110000,
+      maxSalary: 130000,
       applyType: "website",
-      applyUrl: "",
+      applyUrl: "https://digitalcareers.infosys.com/infosys/global-careers/apply-android-senior-developer/345272?Codes=LinkedIn",
       applyEmail: "",
-      companyName: "",
+      companyName: "Infosys",
     },
   });
 
-  const onPreview = useCallback(() => {
-    setStep('preview');
+  const returnEdit = useCallback(() => {
+    setStep('create');
   }, [])
 
   const onPreviewSubmit = useCallback(async (data: FormFields) => {
@@ -431,6 +447,7 @@ const JobPostForm: FC = () => {
           getValues={getValues}
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
+          returnEdit={returnEdit}
         />}
       </form>
       <DevTool control={control} />

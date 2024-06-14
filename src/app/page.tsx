@@ -14,6 +14,7 @@ export default function Home() {
         <Hero />
         <JobsAlert />
         <Search />
+        {/* @ts-expect-error Server Component */}
         <Jobs />
         <Footer />
       </div>

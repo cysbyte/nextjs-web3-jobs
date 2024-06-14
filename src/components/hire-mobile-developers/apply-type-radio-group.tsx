@@ -47,8 +47,6 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
 
   useEffect(() => {
     setValue?.("applyType", "website");
-    setValue?.('applyUrl', '')
-    setValue?.('applyEmail', '')
   }, []);
 
   return (

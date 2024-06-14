@@ -9,16 +9,16 @@ import React from "react";
 
 const page = () => {
   return (
-      <div className="container">
-        <Header />
+    <main className="container">
+      <Header />
       <Hero />
       <h1 className=" text-4xl text-center font-semibold"> Post A Job</h1>
-        <div className="flex items-start justify-center gap-2">
-        <JobPostForm/>
-        <Partners/>   
-        </div>
-        <Footer />  
+      <div className="flex items-start justify-center gap-2">
+        <JobPostForm />
+        <Partners />
       </div>
+      <Footer />
+    </main>
   );
 };
 

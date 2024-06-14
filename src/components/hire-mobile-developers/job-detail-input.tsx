@@ -103,7 +103,7 @@ const JobDetailInput: FC<IProps> = (props) => {
               message: `${labelText} must be at least 2 characters long`,
             },
             maxLength: {
-              value: 100,
+              value: 2000,
               message: `${labelText} must be at most 100 characters long`,
             },
             validate: validate,

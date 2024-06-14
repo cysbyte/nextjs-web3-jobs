@@ -16,7 +16,7 @@ const Header:FC = () => {
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
               <Image className="w-[69]" src={logo} alt="Mobile Dev Jobs" />
-              <p className="text-lg text-deep-blue">Mobile Dev Jobs</p>
+              <p className="text-lg text-deep-blue">Mobile Developer Jobs</p>
             </div>
           </Link>            
           </div>
