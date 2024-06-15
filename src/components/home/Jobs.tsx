@@ -1,10 +1,21 @@
-import { getJobsFromDB } from "@/action/action";
+import { getJobsBySkill, getJobsFromDB } from "@/action/action";
 import React, { FC, useState } from "react";
 import JobCard from "./job-card";
 
-const Jobs = async () => {
+interface IProps{
+  skill?: string
+}
 
-  const jobs = await getJobsFromDB()
+const Jobs = async (props: IProps) => {
+
+  let jobs
+
+  if (props.skill===undefined||props.skill === '') {
+    jobs = await getJobsFromDB()
+  } else {
+    jobs=await getJobsBySkill(props.skill)
+  }
+
   console.log(jobs)
 
   return (

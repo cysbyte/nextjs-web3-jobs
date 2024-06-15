@@ -1,7 +1,7 @@
 'use server'
 
 import prisma from "@/utils/prismadb";
-import { kebabCase } from "lodash";
+import { kebabCase, startCase } from "lodash";
 
 export const submitJob = async (formData: FormData) => {
     const job = await prisma.job.create({
@@ -46,7 +46,7 @@ export const getJobsBySkill = async (skill: string) => {
             OR: [
                 {
                     jobTitle: {
-                        contains: skill
+                        contains: skill 
                     },
                     keywords: {
                         contains: skill
@@ -54,8 +54,20 @@ export const getJobsBySkill = async (skill: string) => {
                     jobDescription: {
                         contains: skill
                     }
-                }
+                },
+                {
+                    jobTitle: {
+                        contains: startCase(skill) 
+                    },
+                    keywords: {
+                        contains: startCase(skill)
+                    },
+                    jobDescription: {
+                        contains: startCase(skill)
+                    }
+                },
             ]
+            
         }
     })
     return jobs

@@ -5,14 +5,15 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import React from "react";
 
-const page = () => {
+const page = ({ params }: { params: { skill: string } }) => {
+  console.log('----', params.skill)
   return (
     <main className="container">
       <Header />
       <JobsAlert />
       <Search />
       {/* @ts-expect-error Server Component */}
-      <Jobs />
+      <Jobs skill={params.skill} />
       <Footer />
     </main>
   );
