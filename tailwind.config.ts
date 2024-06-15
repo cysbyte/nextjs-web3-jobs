@@ -24,7 +24,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        'deep-blue': '#14202E',
+        'deep-blue': '	rgba(20, 32, 46, 0.9)',
         'red-alert': 'rgba(255,50,50,1)'
       },
     },

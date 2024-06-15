@@ -45,7 +45,7 @@ const Header:FC = () => {
                   </div>
                 </div>
                 <div className="invisible absolute z-50 pt-4 flex w-[15%] flex-col bg-white py-1 px-4 rounded-md text-gray-800 shadow-xl group-hover:visible">
-                  <Link href='/product/text-to-speech' className="my-2 block border-b border-gray-100 py-2 font-normal text-black hover:bg-gray-100 rounded-md md:mx-2">
+                  <Link href='/jobs' className="my-2 block border-b border-gray-100 py-2 font-normal text-black hover:bg-gray-100 rounded-md md:mx-2">
                     All Jobs
                   </Link>
 
@@ -74,7 +74,7 @@ const Header:FC = () => {
           <div className="basis-1/3 flex justify-end">
             <Link
               className=" px-5 py-2 hover:shadow-lg hover:scale-105 border border-solid border-deep-blue bg-white text-deep-blue hover:bg-white hover:text-blue-950 active:scale-100 duration-300 rounded-md"
-              href='/hire-mobile-developers'
+              href='/hire/hire-mobile-developers'
             >
               Post a Job
             </Link>

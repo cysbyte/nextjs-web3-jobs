@@ -1,39 +1,9 @@
+import { hireSkills, jobSkills } from "@/utils/skillsData";
+import { kebabCase } from "lodash";
+import Link from "next/link";
 import React, { FC, useMemo } from "react";
 
 const Footer:FC = () => {
-
-  const hireSkills = useMemo(() => {
-    return [
-      "React Native",
-      "Flutter",
-      "Android",
-      "Java",
-      "Kotlin",
-      "iOS",
-      "Swift",
-      "Objective-C",
-      "Unity",
-      "Unreal",
-      "Cocos2d",
-      "Xamarin",
-    ]
-  }, []);
-
-  const jobSkills = useMemo(() => {
-    return [
-      "React Native",
-      "Flutter",
-      "Android",
-      "Java",
-      "Kotlin",
-      "iOS",
-      "Swift",
-      "Objective-C",
-      "Unity",
-      "Unreal",
-      "Cocos2d",
-    ]
-  }, []);
 
   const regions = useMemo(() => {
     return [
@@ -59,7 +29,7 @@ const Footer:FC = () => {
         <div className="w-auto h-full pr-10 flex flex-col justify-between">
           <div className="h-auto">
             <div className="text-lg font-bold text-deep-blue">
-              Mobile Dev Jobs
+              Mobile Developer Jobs
             </div>
             <h1 className="text-lg font-semibold text-deep-blue mt-4">
               Join us now
@@ -96,10 +66,10 @@ const Footer:FC = () => {
           <div className="basis-1/4 h-full">
             <h3 className=" font-semibold text-lg">Hire Mobile Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
-              {hireSkills.map((item, index) => (
-                <p className="mt-3 text-sm" key={item}>
+              {useMemo(()=>hireSkills, []).map((item, index) => (
+                <Link href={`/hire/hire-${kebabCase(item)}-developers`} className="mt-3 text-sm" key={item}>
                   Hire {item} Developers
-                </p>
+                </Link>
               ))}
               <p className="mt-3 text-sm">Hire Mobile Designers</p>
             </div>
@@ -107,10 +77,10 @@ const Footer:FC = () => {
           <div className="basis-1/4 h-full">
             <h3 className=" font-semibold text-lg">Find Mobile Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
-              {jobSkills.map((item, index) => (
-                <p className="mt-3 text-sm" key={item}>
+              {useMemo(()=>jobSkills,[]).map((item, index) => (
+                <Link href={`jobs/${item}`} className="mt-3 text-sm" key={item}>
                   Find {item} Jobs
-                </p>
+                </Link>
               ))}
             </div>
           </div>

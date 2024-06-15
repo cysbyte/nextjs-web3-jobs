@@ -21,7 +21,7 @@ const Hero:FC = () => {
         <div className="flex gap-5 justify-start items-center mt-10 ml-2">
           <Link
             className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
-            href={"/hire-mobile-developers"}
+            href={"/hire/hire-mobile-developers"}
           >
             <p> Post a Job</p>
             <svg

@@ -39,3 +39,24 @@ export const getJobsByJobId = async (jobId: string) => {
     })
     return job
 }
+
+export const getJobsBySkill = async (skill: string) => {
+    const jobs = await prisma.job.findMany({
+        where: {
+            OR: [
+                {
+                    jobTitle: {
+                        contains: skill
+                    },
+                    keywords: {
+                        contains: skill
+                    },
+                    jobDescription: {
+                        contains: skill
+                    }
+                }
+            ]
+        }
+    })
+    return jobs
+}
