@@ -20,7 +20,7 @@ const page = () => {
           </div>
         </div>
         <div className="flex-1 basis-auto pt-10 px-5">
-          <h1 className="text-3xl text-center font-semibold">Sign Up</h1>
+          <h1 className="text-3xl text-center font-semibold">Sign In</h1>
           <div className="flex gap-20 items-center justify-center py-10">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOdSURBVHgBxZdNbBtFFMffm1knTXDAhzQqB2CDkODAwQqJQFyyVnpEigPlUDjE4cohOYJKFUdFcMS5U9k5oBQEkrmTeBGXqqGwHDl1K7VNpTaN08Zt0+zM69ttk9rurrOJbfUnWeudN/v+b77ezCDE5IqVTiXBSIOBk0CQRgCT+LdfAcHh8qom+hM1lofsNSeOX4wlLHpmEfUcAaYgJuzY1QQLQ6trpQPqRbMxMTZLQPnDCIcFsqt2M6/ajhthf551K20aMlHkvxZ0CsL88dVLC83FIkw8IROVjooH+pANKxdh4g2TqxPigE5N9WfCbEb9SyxxnuncmiUg5YCWjgJZNQzPBM0rA2GcxZpaSnZNvTQ1bNvVMHf7c2Dj5Oi85nFqJQyCFre9ZCHKmc+69YEppcqz42luzNLQyloOWhAEsPnVCdNbe+1KpDahq7TgmXzRhZjcnngvO7hyuXxQvSAAbyVRfHjpeO7hXyeAdmTb4ocBqQIpTyX81qf0Vg9s//QW+M89PCWHuyXuI5SSli8evLzyCAa++B96x249iQ6g1E3xQBNQTNYX4DEFfSevB79dJRegyxhEZIYlRO4FJ/n1DfcgB5lv75YQxTQcAV7ONiciTIcZOaRYu1k7IKHpZ8LQjUYRXYWuQ6aAF4zg9OmGGSTiG9B9qoInYXhaxc7uhmFwqnbx0R9GAQFnm40/3n8bztfeyfx9+lcb2mTiu+0K0fMN4jJbIEFDvr6nE/Dl1odwngMgpCMtr3qs7zfNMHEf5POj4K3UX27BMPyzOwjTW+PBM6gAkBtdPmVBGwidmI+yafB7IBOcZBd/fvBm0PJ11d8YJVIxvZw14QhMnKv5Z4NcmM0ff/vsgB0sw/evfVQo1N6tRlQ0Eygrhw3COnfPIkHFKDv7DdL8fg4euXBqTgD9AK1AyntaLzmny25UlXQxmzL6xXzvxtRc7+ZUlLhbOZMcbgjAZ/TCJ/EOowhlrfgCIrWLmocQhMleU0LgZP33Rm0E+m5/DugNNnzOYz9jn0mWnrhqil72iX95WZrQIQSL992cBbnz+lN1Wlg9O5B/1pYm/LGWKCqdDMKn904Weu5MLlW+eTlXXx56MQl64pgscJpuOw/sQRoWL3/221xzecur2cjyxzkOYr6d3gjSLeFMVEY98HLaRiC21vS73tElZ6YceYyPFcAeY798mlaesoTEcX/W88XVfOYIq/4hRmn6rwd1+WKLpVrPY109bxSLAZaZAAAAAElFTkSuQmCC"
@@ -38,19 +38,11 @@ const page = () => {
           <div className="flex gap-5 justify-between items-center">
             <div className="bg-gray-300 w-full h-[2px]"></div>
             <h3 className=" text-nowrap text-lg text-gray-700">
-              Or sign up with your email
+              Or sign in with your email
             </h3>
             <div className="bg-gray-300 w-full h-[2px]"></div>
           </div>
           <form className="flex flex-col gap-3 items-start pt-5">
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">First Name</h2>
-              <input type="text" className="input-border" />
-            </div>
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">Last Name</h2>
-              <input type="text" className="input-border" />
-            </div>
             <div className="w-[90%]">
               <h2 className="text-lg text-gray-700 py-2">Email</h2>
               <input type="text" className="input-border" />
@@ -60,12 +52,12 @@ const page = () => {
               <input type="text" className="input-border" />
             </div>
             <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue font-normal text-lg">
-              Sign Up
+              Sign In
             </button>
             <h2 className="mt-10 w-[90%] text-lg text-center">
               Already have an account?{" "}
               <span className=" underline text-blue-600 hover:text-blue-700">
-                <Link href="/signin">Sign In</Link>
+                <Link href="/signup">Sign Up</Link>
               </span>
             </h2>
           </form>
