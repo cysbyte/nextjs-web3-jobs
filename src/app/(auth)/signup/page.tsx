@@ -3,6 +3,7 @@ import Header from "@/components/layout/header";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import SignUpForm from "./sign-up-form";
 import signup from "/public/signup.png";
 
 const page = () => {
@@ -42,33 +43,7 @@ const page = () => {
             </h3>
             <div className="bg-gray-300 w-full h-[2px]"></div>
           </div>
-          <form className="flex flex-col gap-3 items-start pt-5">
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">First Name</h2>
-              <input type="text" className="input-border" />
-            </div>
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">Last Name</h2>
-              <input type="text" className="input-border" />
-            </div>
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">Email</h2>
-              <input type="text" className="input-border" />
-            </div>
-            <div className="w-[90%]">
-              <h2 className="text-lg text-gray-700 py-2">Password</h2>
-              <input type="text" className="input-border" />
-            </div>
-            <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue font-normal text-lg">
-              Sign Up
-            </button>
-            <h2 className="mt-10 w-[90%] text-lg text-center">
-              Already have an account?{" "}
-              <span className=" underline text-blue-600 hover:text-blue-700">
-                <Link href="/signin">Sign In</Link>
-              </span>
-            </h2>
-          </form>
+          <SignUpForm/>
         </div>
       </div>
       <Footer />
