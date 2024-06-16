@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main>
       {/* <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-cover bg-center"> */}
-      <div className="container">
+      <div>
         <Header />
         <Hero />
         <JobsAlert />

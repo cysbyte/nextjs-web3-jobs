@@ -3,7 +3,7 @@ import CustomInput from "../shared/custom-input";
 
 const JobsAlert: FC = () => {
   return (
-    <form className="mt-20 w-full py-32 bg-slate-100 rounded-3xl">
+    <form className="container mt-20 w-full py-32 bg-slate-100 rounded-3xl">
       <h1 className=" text-[2rem] font-semibold text-center">
         Looking for your next mobile development job?
       </h1>

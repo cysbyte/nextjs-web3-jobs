@@ -7,7 +7,7 @@ const Hero:FC = () => {
   return (
     // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center "
     // style={{backdropFilter: 'blur(2px)'}}>
-    <section className="w-full h-[560px] mt-0 py-0 flex justify-center items-center font-comic">
+    <section className="container w-full h-[560px] mt-0 py-0 flex justify-center items-center font-comic">
       <div className="basis-3/5 w-full h-auto">
         <h1 className=" text-left font-[900] text-[3.3rem] w-full leading-tight tracking-wider text-deep-blue ">
           Hire develpers to grow your team

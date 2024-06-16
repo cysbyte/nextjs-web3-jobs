@@ -6,9 +6,8 @@ import Header from "@/components/layout/header";
 import React from "react";
 
 const page = ({ params }: { params: { skill: string } }) => {
-  console.log('----', params.skill)
   return (
-    <main className="container">
+    <main>
       <Header />
       <JobsAlert />
       <Search />

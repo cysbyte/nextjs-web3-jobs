@@ -25,22 +25,22 @@ const Footer:FC = () => {
   
   return (
     <>
-      <section className="flex py-16 h-[580px]">
+      <section className="container flex py-16 h-[580px] mb-20">
         <div className="w-auto h-full pr-10 flex flex-col justify-between">
-          <div className="h-auto">
+          <div className="h-auto flex flex-col gap-5">
             <div className="text-lg font-bold text-deep-blue">
               Mobile Developer Jobs
             </div>
-            <h1 className="text-lg font-semibold text-deep-blue mt-4">
+            <Link href={''} className="text-lg font-semibold text-deep-blue">
               Join us now
-            </h1>
-            <button className="mt-6 px-8 py-3 rounded-md text-white bg-deep-blue font-normal text-lg">
+            </Link>
+            <Link href='/signup' className="w-[80%] text-center px-8 py-2 rounded-md text-white bg-deep-blue font-normal text-lg">
               Sign Up
-            </button>
+            </Link>
           </div>
           <div className="flex gap-4 items-center">
             <svg
-              className="fill-[#0867C2]"
+              className="fill-[#0867C2] cursor-pointer"
               width="25"
               height="25"
               viewBox="0 0 24 24"
@@ -49,6 +49,7 @@ const Footer:FC = () => {
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
             </svg>
             <svg
+              className="cursor-pointer"
               width="22"
               height="20"
               viewBox="0 0 22 20"
@@ -78,7 +79,7 @@ const Footer:FC = () => {
             <h3 className=" font-semibold text-lg">Find Mobile Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
-                <Link href={`jobs/${item}`} className="mt-3 text-sm" key={item}>
+                <Link href={`/jobs/${kebabCase(item)}`} className="mt-3 text-sm" key={item}>
                   Find {item} Jobs
                 </Link>
               ))}
@@ -87,7 +88,7 @@ const Footer:FC = () => {
           <div className="basis-1/4">
             <h3 className=" font-semibold text-lg">Find Remote Mobile Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
-              {jobSkills.map((item, index) => (
+              {useMemo(()=>jobSkills,[]).map((item, index) => (
                 <p className="mt-3 text-sm" key={item}>
                   Remote {item} Developers
                 </p>

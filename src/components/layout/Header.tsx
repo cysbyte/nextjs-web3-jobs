@@ -8,7 +8,7 @@ import Subscription from "../subscription/subscription";
 const Header:FC = () => {
 
   return (
-    <header className="h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
+    <header className="container h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
     style={{backdropFilter: 'blur(2px)'}}>
         <div className="flex justify-between py-5 items-center font-comic">
 

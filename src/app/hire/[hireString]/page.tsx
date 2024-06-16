@@ -23,13 +23,15 @@ const page = ({
   skill = useMemo(() => jobSkills.map(skill=>skill.toLowerCase()), []).includes(skill.toLowerCase()) ? skill : ''
   
   return (
-    <main className="container">
+    <main>
       <Header />
       <Hero />
+      <div className="container">
       <h1 className=" text-4xl text-center font-semibold"> Post A Job</h1>
       <div className="flex items-start justify-center gap-2">
         <JobPostForm skill={skill} />
         <Partners />
+        </div>
       </div>
       <Footer />
     </main>

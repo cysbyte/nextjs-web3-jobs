@@ -13,8 +13,9 @@ const page = async ({
 }) => {
   const job = await getJobsByJobId(params.jobId);
   return (
-    <main className="container">
+    <main>
       <Header />
+      <div className="container">
       <JobTitle
         jobTitle={job?.jobTitle || ""}
         companyName={job?.companyName || ""}
@@ -27,6 +28,7 @@ const page = async ({
           createdAt={job?.createdAt || new Date()}
           keywords={job?.keywords || ""}
         />
+        </div>
       </div>
       <Footer />
     </main>

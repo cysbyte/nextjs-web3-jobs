@@ -19,7 +19,7 @@ const Jobs = async (props: IProps) => {
   console.log(jobs)
 
   return (
-    <section className="">
+    <section className="container">
       <h4 className="w-full my-10">643 mobile development jobs</h4>
 
       <div className="w-full h-auto bg-white mt-0">

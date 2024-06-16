@@ -1,8 +1,10 @@
+import { kebabCase } from "lodash";
+import Link from "next/link";
 import React, { FC, useMemo } from "react";
 import Toggle from "../shared/toggle";
-import SearchOption from "./search-option";
 
 const Search: FC = () => {
+
 
   const skills = useMemo(() => {
     return [
@@ -37,8 +39,19 @@ const Search: FC = () => {
     ]
   }, []);
 
+  const getUrl = (skill: string) => {
+    let url
+    skill= kebabCase(skill)
+    if (skill === 'all-jobs') {
+      url='/jobs'
+    } else {
+      url='/jobs/'+skill
+    }
+    return url
+  }
+
   return (
-    <section className="bg-white pt-32 w-full h-auto">
+    <section className="container bg-white pt-32 w-full h-auto">
       <div className="flex gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
           <div className="w-full h-auto flex items-center border border-gray-300 rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
@@ -54,7 +67,7 @@ const Search: FC = () => {
             <input
               className="appearance-none focus:outline-none w-full py-4 bg-white text-gray-700 leading-tight placeholder-gray-500 placeholder:text-lg placeholder:pl-0 px-0 shadow-slate-900"
               type="text"
-              placeholder="Job Roles, Tags"
+              placeholder="Tags or Location"
             />
           </div>
 
@@ -78,7 +91,12 @@ const Search: FC = () => {
       </div>
       <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-5 py-10">
         {skills.map((skill) => (
-          <SearchOption skill={skill} />
+          <Link href={getUrl(skill)}
+            className="border px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
+            key={skill}
+          >
+            {skill}
+          </Link>
         ))}
       </div>
     </section>
