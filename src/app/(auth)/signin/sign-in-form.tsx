@@ -110,7 +110,7 @@ const SignInForm = () => {
           </p>
         )}
       </div>
-      <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue font-normal text-lg">
+      <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg">
         Sign In
       </button>
       <h2 className="mt-10 w-[90%] text-lg text-center">

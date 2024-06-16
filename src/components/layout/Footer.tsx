@@ -34,7 +34,7 @@ const Footer:FC = () => {
             <Link href={''} className="text-lg font-semibold text-deep-blue">
               Join us now
             </Link>
-            <Link href='/signup' className="w-[80%] text-center px-8 py-2 rounded-md text-white bg-deep-blue font-normal text-lg">
+            <Link href='/signup' className="w-[80%] text-center px-8 py-2 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg">
               Sign Up
             </Link>
           </div>
