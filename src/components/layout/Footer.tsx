@@ -38,7 +38,7 @@ const Footer:FC = () => {
               Sign Up
             </Link>
           </div>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center justify-center">
             <svg
               className="fill-[#0867C2] cursor-pointer"
               width="25"
@@ -63,12 +63,12 @@ const Footer:FC = () => {
             </svg>
           </div>
         </div>
-        <div className=" flex-grow h-full text-deep-blue flex justify-between items-start">
+        <div className=" flex-grow h-full text-deep-blue flex justify-between items-start gap-2">
           <div className="basis-1/4 h-full">
             <h3 className=" font-semibold text-lg">Hire Mobile Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>hireSkills, []).map((item, index) => (
-                <Link href={`/hire/hire-${kebabCase(item)}-developers`} className="mt-3 text-sm" key={item}>
+                <Link href={`/hire-${kebabCase(item)}-developers`} className="mt-3 text-sm" key={item}>
                   Hire {item} Developers
                 </Link>
               ))}

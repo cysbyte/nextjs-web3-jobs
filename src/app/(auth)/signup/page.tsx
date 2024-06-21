@@ -3,7 +3,7 @@ import Header from "@/components/layout/header";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import ThirdPartyAuth from "../third-party-auth";
+import ThirdPartyAuth from "../../../components/auth/third-party-auth";
 import SignUpForm from "./sign-up-form";
 import signup from "/public/signup.png";
 

@@ -13,7 +13,7 @@ const Subscription:FC = () => {
   
   return (
     <Portal elementId="#subscriptionPortal">
-      <div className="container block 2xl:hidden left-[50%] -translate-x-[50%] fixed bottom-0 w-full h-[60px] bg-[#01192E] z-10">
+      <div className="max-w-screen-2xl block 2xl:hidden left-[50%] -translate-x-[50%] fixed bottom-0 w-full h-[60px] bg-[#01192E] z-10">
         <div className="relative w-auto h-full flex items-center justify-center gap-2">
           <h3 className=" text-base text-white">
             Subscribe to get new Mobile Dev Jobs Alert

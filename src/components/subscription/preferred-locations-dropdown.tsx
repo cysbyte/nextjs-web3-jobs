@@ -1,6 +1,6 @@
 "use client";
 
-import { continents, countriesAndRegions } from "@/utils/countryData";
+import { continents, countriesAndRegions } from "@/utils/country-data";
 import React, {
   FC,
   useCallback,

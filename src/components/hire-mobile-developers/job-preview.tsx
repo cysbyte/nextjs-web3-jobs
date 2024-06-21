@@ -12,6 +12,7 @@ import Image from "next/image";
 interface IProps {
   getValues?: UseFormGetValues<FormFields>;
   onSubmit: (data: FormFields) => Promise<void>;
+  isSubmitting: boolean;
   handleSubmit: (
     onValid: SubmitHandler<FormFields>,
     onInvalid?: SubmitErrorHandler<FormFields> | undefined
@@ -118,12 +119,14 @@ const JobPreview: FC<IProps> = (props) => {
         )}
       </div>
       <div>
-        <div
+        <button
+          type="submit"
+          disabled={props.isSubmitting}
         className="text-center mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800 cursor-pointer"
         onClick={props.handleSubmit(props.onSubmit)}
       >
         Submit
-        </div>
+        </button>
         <div className="flex justify-end items-center">
           <p className="mt-5 cursor-pointer text-gray-600 hover:text-gray-950 w-fit"
           onClick={props.returnEdit}>

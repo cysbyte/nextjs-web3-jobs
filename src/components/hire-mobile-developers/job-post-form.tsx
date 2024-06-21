@@ -5,7 +5,7 @@ import {
   continents,
   countriesAndRegions,
   currencyDictionary,
-} from "@/utils/countryData";
+} from "@/utils/country-data";
 import { DevTool } from "@hookform/devtools";
 import { startCase } from "lodash";
 import React, { FC, useCallback, useMemo, useReducer, useState } from "react";
@@ -63,42 +63,42 @@ const JobPostForm: FC<IProps> = (props) => {
     formState: { isSubmitted, errors, isSubmitting, isSubmitSuccessful },
     control,
   } = useForm<FormFields>({
-    defaultValues: {
-      jobTitle: `${
-        props.skill === "" ? "" : startCase(props.skill) + " Developer"
-      }`,
-      jobType: "",
-      jobRole: "",
-      locationType: "",
-      jobDescription: "",
-      preferredApplicantLocation: "",
-      keywords: `${
-        props.skill === "" ? "" : startCase(props.skill)+', '
-      }`,
-      currency: "",
-      // minSalary: 0,
-      // maxSalary: 0,
-      applyType: "website",
-      applyUrl: "",
-      applyEmail: "",
-      companyName: "",
-    },
     // defaultValues: {
-    //   jobTitle: "Android Senior Developer",
-    //   jobType: "FullTime",
-    //   jobRole: "Engineering",
-    //   locationType: "Remote",
+    //   jobTitle: `${
+    //     props.skill === "" ? "" : startCase(props.skill) + " Developer"
+    //   }`,
+    //   jobType: "",
+    //   jobRole: "",
+    //   locationType: "",
     //   jobDescription: "",
-    //   preferredApplicantLocation: "United States",
-    //   keywords: "Android,Kotlin,Jetpack,Retrofit",
-    //   currency: "USD - United States",
-    //   minSalary: 110000,
-    //   maxSalary: 130000,
+    //   preferredApplicantLocation: "",
+    //   keywords: `${
+    //     props.skill === "" ? "" : startCase(props.skill)+', '
+    //   }`,
+    //   currency: "",
+    //   // minSalary: 0,
+    //   // maxSalary: 0,
     //   applyType: "website",
-    //   applyUrl: "https://digitalcareers.infosys.com/infosys/global-careers/apply-android-senior-developer/345272?Codes=LinkedIn",
+    //   applyUrl: "",
     //   applyEmail: "",
-    //   companyName: "Infosys",
+    //   companyName: "",
     // },
+    defaultValues: {
+      jobTitle: "Android Senior Developer",
+      jobType: "FullTime",
+      jobRole: "Engineering",
+      locationType: "Remote",
+      jobDescription: "",
+      preferredApplicantLocation: "United States",
+      keywords: "Android,Kotlin,Jetpack,Retrofit",
+      currency: "USD - United States",
+      minSalary: 110000,
+      maxSalary: 130000,
+      applyType: "website",
+      applyUrl: "https://digitalcareers.infosys.com/infosys/global-careers/apply-android-senior-developer/345272?Codes=LinkedIn",
+      applyEmail: "",
+      companyName: "Infosys",
+    },
   });
 
   const returnEdit = useCallback(() => {
@@ -437,6 +437,7 @@ const JobPostForm: FC<IProps> = (props) => {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="mt-16 bg-deep-blue w-full py-4 font-semibold rounded-md text-white hover:bg-gray-800"
             >
               Preview
@@ -452,6 +453,7 @@ const JobPostForm: FC<IProps> = (props) => {
           <JobPreview
             getValues={getValues}
             handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
             onSubmit={onSubmit}
             returnEdit={returnEdit}
           />

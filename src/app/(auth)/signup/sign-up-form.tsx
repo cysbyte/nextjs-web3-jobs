@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 
 const SignUpForm = () => {
@@ -23,15 +23,28 @@ const SignUpForm = () => {
     defaultValues: {},
   });
 
+  const [error, setError] = useState('');
+
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
-    console.log(data);
-    // setStep('preview');
     const formData = new FormData();
-    Object.keys(data).forEach((key, index) =>
-      formData.set(key, Object.values(data)[index] as string)
-    );
-    // const job = await submitSignin(formData);
+    Object.keys(data).forEach((key, index) => {
+      formData.set(key, Object.values(data)[index] as string);
+    })
+    try {
+      console.log("keys", Object.keys(data));
+      const response = await fetch("/api/auth/signup/developer", {
+        method: "POST",
+        body: formData,
+      });
+    
+      const result = await response.json();
+      console.log(response.status)
+      if (response.status !== 200)
+        throw Error(result.message);
+    } catch (error: any) {
+      setError(error.message)
+    }
   }, []);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
@@ -137,8 +150,17 @@ const SignUpForm = () => {
             {errors?.["email"]?.message}
           </p>
         )}
+        {
+          error && <p className=" text-sm text-red-alert mt-2">
+          {error}
+        </p>
+        }
       </div>
-      <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg">
+      <button
+        type="submit"
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg"
+      >
         Sign Up
       </button>
       {isSubmitted && hasError() && (
