@@ -1,3 +1,4 @@
+import EmailMessage from "@/components/home/email-message";
 import Hero from "@/components/home/hero";
 import Jobs from "@/components/home/jobs";
 import JobsAlert from "@/components/home/jobs-alert";
@@ -10,6 +11,7 @@ export default function Home() {
     <main>
       {/* <div className="bg-[url('/bg-hero.jpg')] bg-no-repeat bg-cover bg-center"> */}
       <div>
+        <EmailMessage/>
         <Header />
         <Hero />
         <JobsAlert />

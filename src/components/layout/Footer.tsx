@@ -1,4 +1,4 @@
-import { hireSkills, jobSkills } from "@/utils/skillsData";
+import { hireSkills, jobSkills } from "@/utils/skills-data";
 import { kebabCase } from "lodash";
 import Link from "next/link";
 import React, { FC, useMemo } from "react";

@@ -4,7 +4,7 @@ import JobPostForm from "@/components/hire-mobile-developers/job-post-form";
 import Partners from "@/components/hire-mobile-developers/partner";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
-import { jobSkills } from "@/utils/skillsData";
+import { jobSkills } from "@/utils/skills-data";
 import { startCase } from "lodash";
 
 import React, { useMemo } from "react";

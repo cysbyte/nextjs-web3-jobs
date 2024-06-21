@@ -1,6 +1,8 @@
 "use client";
 
+import { useEmailMessage } from "@/app/store/email-message-store";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 
@@ -25,6 +27,10 @@ const SignUpForm = () => {
 
   const [error, setError] = useState('');
 
+  const router = useRouter();
+
+  const setEmailMessage = useEmailMessage((state) => state.setMessage);
+
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
     const formData = new FormData();
@@ -40,11 +46,16 @@ const SignUpForm = () => {
     
       const result = await response.json();
       console.log(response.status)
-      if (response.status !== 200)
+      if (response.status !== 200 && response.status !== 201)
         throw Error(result.message);
+      const message = 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
+      setEmailMessage(message)   
+      router.push('/')
+
     } catch (error: any) {
       setError(error.message)
     }
+
   }, []);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {

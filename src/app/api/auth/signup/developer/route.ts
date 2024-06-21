@@ -11,7 +11,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-
   if (!firstname)
     return NextResponse.json(
       { message: "Fist Name is required." },
@@ -67,7 +66,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     console.log(result);
 
-    return new Response(`Your account has been created!`, {
+      return new Response(JSON.stringify({ message: `Your account has been created!` }), {
       headers: {
         "Content-Type": "application/json",
       },
