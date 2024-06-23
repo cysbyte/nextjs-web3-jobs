@@ -52,7 +52,7 @@ const JobCard: FC<IProps> = ({ job }) => {
   },[job?.jobTitle])
 
   return (
-    <section className="flex h-auto border-b justify-start items-center bg-slate-50/50">
+    <article className="flex h-auto border-b justify-start items-center bg-slate-50/50">
       <div className="flex gap-5 py-6 w-full">
         <div className="w-auto h-auto">
           <Image
@@ -82,12 +82,12 @@ const JobCard: FC<IProps> = ({ job }) => {
           </div>
           <div className="flex gap-3 text-base text-gray-500 mt-2">
             {job?.keywords.split(",").map((item, index) => (
-              <p
+              <div
                 key={item}
                 className="border px-3 py-1 rounded-md border-gray-400 hover:text-purple-700 hover:border-purple-700 cursor-pointer"
               >
                 {item.trim()}
-              </p>
+              </div>
             ))}
           </div>
         </div>
@@ -95,7 +95,7 @@ const JobCard: FC<IProps> = ({ job }) => {
           <p className="mt-2 mr-2 text-gray-500">Today</p>
         </div>
       </div>
-    </section>
+    </article>
   );
 };
 

@@ -4,14 +4,20 @@ import React, { FC } from "react";
 import logo from "/public/logo.svg";
 import Feedback from "../feedback/feedback";
 import Subscription from "../subscription/subscription";
+import User from "./user";
+import { Providers } from "@/store/providers";
 
-const Header:FC = () => {
+const Header: FC = () => {
+  
 
   return (
     <header className="container h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
-    style={{backdropFilter: 'blur(2px)'}}>
+      style={{ backdropFilter: 'blur(2px)' }}>
         <div className="flex justify-between py-5 items-center font-comic">
 
+        <Providers>
+          <User/>
+        </Providers>
           <div className="basis-1/3 flex justify-start">
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
@@ -74,8 +80,8 @@ const Header:FC = () => {
         <div className="basis-1/3 flex justify-end items-center gap-4">
           <Link
             className="px-3 py-2 border border-gray-800 rounded-md"
-            href='/signin'>
-            Sign In
+            href='/signup'>
+            Sign Up
           </Link>
             <Link
               className=" px-3 py-2 hover:shadow-lg border border-purple-500 bg-purple-500 text-white hover:scale-105 active:scale-100 duration-300 rounded-md"

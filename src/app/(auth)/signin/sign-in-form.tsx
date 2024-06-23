@@ -1,9 +1,13 @@
 "use client";
 
+import Spinner from "@/components/shared/spinner";
+import { authTokenActions } from "@/store/auth-slice";
 import { DevTool } from "@hookform/devtools";
 import Link from "next/link";
-import React, { useCallback } from "react";
+import { useRouter } from "next/navigation";
+import React, { useCallback, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const SignInForm = () => {
   type FormFields = {
@@ -22,20 +26,39 @@ const SignInForm = () => {
     defaultValues: {},
   });
 
+  const dispatch = useDispatch();
+
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
-    console.log(data);
-    // setStep('preview');
     const formData = new FormData();
     Object.keys(data).forEach((key, index) =>
       formData.set(key, Object.values(data)[index] as string)
     );
-    // const job = await submitSignin(formData);
+
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      console.log(result);
+      if (response.status !== 200 && response.status !== 201)
+        throw Error(result.message);
+      dispatch(authTokenActions.addToken(result.accessToken));
+      router.push("/");
+    } catch (error: any) {
+      setError(error.message);
+    }
   }, []);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
     console.log(error);
   }, []);
+
+  const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const hasError = useCallback(() => {
     return Object.keys(errors).some((key, index) => {
@@ -66,8 +89,9 @@ const SignInForm = () => {
             pattern: {
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
               message: "Please enter a valid email.",
-            }
+            },
           })}
+          onChange={() => setError("")}
         />
         {errors?.["email"] && (
           <p className=" text-sm text-red-alert mt-2">
@@ -103,15 +127,21 @@ const SignInForm = () => {
               }
             },
           })}
+          onChange={() => setError("")}
         />
         {errors?.["password"] && (
           <p className=" text-sm text-red-alert mt-2">
             {errors?.["password"]?.message}
           </p>
         )}
+        {error && <p className=" text-sm text-red-alert mt-2">{error}</p>}
       </div>
-      <button className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg">
-        Sign In
+      <button
+        disabled={isSubmitting}
+        className="flex items-center justify-center gap-4 w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg"
+      >
+        <p>Sign Up</p>
+        {isSubmitting && <Spinner />}
       </button>
       <h2 className="mt-10 w-[90%] text-lg text-center">
         Already have an account?{" "}

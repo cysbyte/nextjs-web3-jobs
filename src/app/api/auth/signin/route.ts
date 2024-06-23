@@ -1,91 +1,134 @@
-'use server';
+"use server";
 
 import { NextApiRequest, NextApiResponse } from "next";
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { serialize } from "cookie";
-import cookie from 'cookie'
-import DeveloperModel from "../../../../../model/Developer";
+import cookie from "cookie";
+import DeveloperModel from "../../../../../model/developer";
+import { NextRequest, NextResponse } from "next/server";
+import connectDB from "../../../../../config/database";
+import { cookies } from "next/headers";
 
+export async function POST(req: NextRequest, res: NextResponse) {
+  const formData = await req.formData();
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-    const { signin } = req.body
-    console.log(signin)
-    const cookies = req.cookies;
-    console.log(`cookie available at login: ${JSON.stringify(cookies)}`);
-    const { user, pwd } = req.body;
-    if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
+  console.log(`cookie available at login: ${JSON.stringify(req.cookies)}`);
 
-    const foundUser = await DeveloperModel.findOne({ username: user }).exec();
-    if (!foundUser) return res.status(401); //Unauthorized 
-    // evaluate password 
-    const match = await bcrypt.compare(pwd, foundUser.password);
-    if (match && foundUser.roles) {
-        const roles = Object.values(foundUser.roles).filter(Boolean);
-        // create JWTs
-        const accessToken = jwt.sign(
-            {
-                "UserInfo": {
-                    "username": foundUser.username,
-                    "roles": roles
-                }
-            },
-            process.env.ACCESS_TOKEN_SECRET as string,
-            { expiresIn: '10s' }
-        );
-        const newRefreshToken = jwt.sign(
-            { "username": foundUser.username },
-            process.env.REFRESH_TOKEN_SECRET as string,
-            { expiresIn: '1d' }
-        );
+  // refreshToken is put in cookies by default
+  let refreshToken = cookies().get("jwt")?.value;
 
-        // Changed to let keyword
-        let newRefreshTokenArray =
-            !cookies?.jwt
-                ? foundUser.refreshToken
-                : foundUser.refreshToken.filter((rt: string | undefined) => rt !== cookies.jwt);
+  console.log(refreshToken);
 
-        if (cookies?.jwt) {
+  if (!email || !password)
+    return NextResponse.json(
+      { message: "Email and password are required." },
+      {
+        status: 400,
+      }
+    );
 
-            /* 
-            Scenario added here: 
-                1) User logs in but never uses RT and does not logout 
-                2) RT is stolen
-                3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
-            */
-            const refreshToken = cookies.jwt;
-            const foundToken = await DeveloperModel.findOne({ refreshToken }).exec();
+  try {
+    await connectDB();
 
-            // Detected refresh token reuse!
-            if (!foundToken) {
-                console.log('attempted refresh token reuse at login!')
-                // clear out ALL previous refresh tokens
-                newRefreshTokenArray = [];
-            }
-            
-            res.setHeader('Set-Cookie', cookie.serialize('token', '', {
-                maxAge: -1,
-                path: '/'
-            }))
+    const foundDeveloper = await DeveloperModel.findOne({
+      email: email,
+    }).exec();
+    if (!foundDeveloper)
+      return NextResponse.json(
+        {
+          message: "Account does not exists, please login or create an account",
+        },
+        {
+          status: 401,
         }
-
-        // Saving refreshToken with current user
-        foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
-        const result = await foundUser.save();
-        console.log(result);
-        console.log(roles);
-
-        // Creates Secure Cookie with refresh token
-        res.setHeader('Set-Cookie', serialize('jwt', newRefreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            maxAge: 24 * 60 * 60 * 1000
-        }))
-        // Send authorization roles and access token to user
-        res.json({ roles, accessToken });
-
-    } else {
-        res.send(401);
+      );
+    // evaluate password
+    const match = await bcrypt.compare(password, foundDeveloper.password);
+    if (!match) {
+      return NextResponse.json(
+        { message: "Incorrect email or password" },
+        {
+          status: 401,
+        }
+      );
     }
+
+    // create JWTs
+    const accessToken = jwt.sign(
+      {
+        _id: foundDeveloper._id,
+        firstname: foundDeveloper.firstname,
+        lastname: foundDeveloper.lastname,
+      },
+      process.env.ACCESS_TOKEN_SECRET as string,
+      { expiresIn: "10s" }
+    );
+    const newRefreshToken = jwt.sign(
+      { email: foundDeveloper._id },
+      process.env.REFRESH_TOKEN_SECRET as string,
+      { expiresIn: "1d" }
+    );
+
+    let newRefreshTokenArray = !refreshToken
+      ? foundDeveloper.refreshToken
+      : foundDeveloper.refreshToken.filter(
+          (rt: string | undefined) => rt !== refreshToken
+        );
+
+    if (!refreshToken) {
+      refreshToken = foundDeveloper.refreshToken;
+    } else {
+      /* 
+              Scenario added here: 
+                  1) User logs in but never uses RT and does not logout 
+                  2) RT is stolen
+                  3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
+              */
+      const foundToken = await DeveloperModel.findOne({ refreshToken }).exec();
+
+      // Detected refresh token reuse!
+      if (!foundToken) {
+        console.log("attempted refresh token reuse at login!");
+        // clear out ALL previous refresh tokens
+        newRefreshTokenArray = [];
+      }
+
+      cookies().delete("jwt");
+    }
+
+    // Saving refreshToken with current user
+    foundDeveloper.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+
+    const result = await foundDeveloper.save();
+    console.log(result);
+
+    // Creates Secure Cookie with refresh token
+    cookies().set("jwt", newRefreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    // Send authorization roles and access token to user
+    return new Response(JSON.stringify({ accessToken }), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      status: 201,
+    });
+  } catch (err: any) {
+    console.log(err.message);
+    return new Response(
+      JSON.stringify({ message: "Database opration error" }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        status: 500,
+      }
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import Feedback from "@/components/feedback/feedback";
+import { Providers } from "@/store/providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { relative } from "path";
@@ -17,12 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <Providers>
     <html lang="en">
       <body className={inter.className}>
         {children}
         <div id='feedbackPortal' />
         <div id='subscriptionPortal'/>
       </body>
-    </html>
+      </html>
+    </Providers>
   );
 }

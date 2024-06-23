@@ -1,6 +1,8 @@
 "use client";
 
 import { useEmailMessage } from "@/app/store/email-message-store";
+import Spinner from "@/components/shared/spinner";
+import { DevTool } from "@hookform/devtools";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";
@@ -8,8 +10,8 @@ import { FieldErrors, useForm } from "react-hook-form";
 
 const SignUpForm = () => {
   type FormFields = {
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     email: string;
     password: string;
   };
@@ -78,7 +80,7 @@ const SignUpForm = () => {
         <input
           type="text"
           className="input-border"
-          {...register?.("firstName", {
+          {...register?.("firstname", {
             required: "First Name can not be empty",
             minLength: {
               value: 2,
@@ -89,8 +91,9 @@ const SignUpForm = () => {
               message: `First Name must be at most 100 characters long`,
             },
           })}
+          onChange={()=>setError('')}
         />
-        {errors?.["firstName"] && (
+        {errors?.["firstname"] && (
           <p className=" text-sm text-red-alert mt-2">
             {errors?.["email"]?.message}
           </p>
@@ -101,7 +104,7 @@ const SignUpForm = () => {
         <input
           type="text"
           className="input-border"
-          {...register?.("lastName", {
+          {...register?.("lastname", {
             required: "Last Name can not be empty",
             minLength: {
               value: 2,
@@ -112,8 +115,9 @@ const SignUpForm = () => {
               message: `Last Name must be at most 100 characters long`,
             },
           })}
+          onChange={()=>setError('')}
         />
-        {errors?.["lastName"] && (
+        {errors?.["lastname"] && (
           <p className=" text-sm text-red-alert mt-2">
             {errors?.["email"]?.message}
           </p>
@@ -139,6 +143,7 @@ const SignUpForm = () => {
               message: "Please enter a valid email.",
             },
           })}
+          onChange={()=>setError('')}
         />
         {errors?.["email"] && (
           <p className=" text-sm text-red-alert mt-2">
@@ -155,6 +160,7 @@ const SignUpForm = () => {
           {...register?.("password", {
             required: "Password can not be empty",
           })}
+          onChange={()=>setError('')}
         />
         {errors?.["password"] && (
           <p className=" text-sm text-red-alert mt-2">
@@ -169,10 +175,11 @@ const SignUpForm = () => {
       </div>
       <button
         type="submit"
+        disabled={isSubmitting}
         onSubmit={handleSubmit(onSubmit)}
-        className="w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg"
+        className="flex items-center justify-center gap-4 w-[90%] h mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg"
       >
-        Sign Up
+        <p>Sign Up</p>{isSubmitting && <Spinner />}
       </button>
       {isSubmitted && hasError() && (
         <p className=" text-sm text-red-alert mt-2">
@@ -185,6 +192,7 @@ const SignUpForm = () => {
           <Link href="/signin">Sign In</Link>
         </span>
       </h2>
+      <DevTool control={control} />
     </form>
   );
 };

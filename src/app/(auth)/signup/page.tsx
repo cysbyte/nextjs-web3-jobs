@@ -23,14 +23,8 @@ const page = () => {
         </div>
         <div className="flex-1 basis-auto pt-10 px-5">
           <h1 className="text-3xl text-center font-semibold">Sign Up</h1>
-          <ThirdPartyAuth/>
-          <div className="flex gap-5 justify-between items-center">
-            <div className="bg-gray-300 w-full h-[2px]"></div>
-            <h3 className=" text-nowrap text-lg text-gray-700">
-              Or sign up with your email
-            </h3>
-            <div className="bg-gray-300 w-full h-[2px]"></div>
-          </div>
+          {/* <ThirdPartyAuth/> */}
+          <h2 className="text-center underline text-blue-500 mt-6 text-lg">Sign up as an employer</h2>
           <SignUpForm/>
         </div>
       </div>

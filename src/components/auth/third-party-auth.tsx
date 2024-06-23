@@ -2,7 +2,8 @@ import React from "react";
 
 const ThirdPartyAuth = () => {
   return (
-    <article className="flex gap-20 items-center justify-center py-10">
+    <article>
+      <div className="flex gap-20 items-center justify-center py-10">
       <img
         className=" cursor-pointer"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOdSURBVHgBxZdNbBtFFMffm1knTXDAhzQqB2CDkODAwQqJQFyyVnpEigPlUDjE4cohOYJKFUdFcMS5U9k5oBQEkrmTeBGXqqGwHDl1K7VNpTaN08Zt0+zM69ttk9rurrOJbfUnWeudN/v+b77ezCDE5IqVTiXBSIOBk0CQRgCT+LdfAcHh8qom+hM1lofsNSeOX4wlLHpmEfUcAaYgJuzY1QQLQ6trpQPqRbMxMTZLQPnDCIcFsqt2M6/ajhthf551K20aMlHkvxZ0CsL88dVLC83FIkw8IROVjooH+pANKxdh4g2TqxPigE5N9WfCbEb9SyxxnuncmiUg5YCWjgJZNQzPBM0rA2GcxZpaSnZNvTQ1bNvVMHf7c2Dj5Oi85nFqJQyCFre9ZCHKmc+69YEppcqz42luzNLQyloOWhAEsPnVCdNbe+1KpDahq7TgmXzRhZjcnngvO7hyuXxQvSAAbyVRfHjpeO7hXyeAdmTb4ocBqQIpTyX81qf0Vg9s//QW+M89PCWHuyXuI5SSli8evLzyCAa++B96x249iQ6g1E3xQBNQTNYX4DEFfSevB79dJRegyxhEZIYlRO4FJ/n1DfcgB5lv75YQxTQcAV7ONiciTIcZOaRYu1k7IKHpZ8LQjUYRXYWuQ6aAF4zg9OmGGSTiG9B9qoInYXhaxc7uhmFwqnbx0R9GAQFnm40/3n8bztfeyfx9+lcb2mTiu+0K0fMN4jJbIEFDvr6nE/Dl1odwngMgpCMtr3qs7zfNMHEf5POj4K3UX27BMPyzOwjTW+PBM6gAkBtdPmVBGwidmI+yafB7IBOcZBd/fvBm0PJ11d8YJVIxvZw14QhMnKv5Z4NcmM0ff/vsgB0sw/evfVQo1N6tRlQ0Eygrhw3COnfPIkHFKDv7DdL8fg4euXBqTgD9AK1AyntaLzmny25UlXQxmzL6xXzvxtRc7+ZUlLhbOZMcbgjAZ/TCJ/EOowhlrfgCIrWLmocQhMleU0LgZP33Rm0E+m5/DugNNnzOYz9jn0mWnrhqil72iX95WZrQIQSL992cBbnz+lN1Wlg9O5B/1pYm/LGWKCqdDMKn904Weu5MLlW+eTlXXx56MQl64pgscJpuOw/sQRoWL3/221xzecur2cjyxzkOYr6d3gjSLeFMVEY98HLaRiC21vS73tElZ6YceYyPFcAeY798mlaesoTEcX/W88XVfOYIq/4hRmn6rwd1+WKLpVrPY109bxSLAZaZAAAAAElFTkSuQmCC"
@@ -17,7 +18,15 @@ const ThirdPartyAuth = () => {
         className=" cursor-pointer"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHzSURBVHgB7ZdfbtNAEMa/mS2QhoeGG/gG5ARJfIKmN0gkCLwVTtD2BG3eSgrCnIDkBHbDBcINcoS8NFQC7zA2KU3stHIl/3nJT7JWO7Or/TQez3gJSn0w7QJyAlATpSAzEhreXLU8qr2d9pjwFZUQHjETHaMiRMwx69B8wLuInwIhQofTZplbG7rLq/ar6BHgIwokJcBa27/97AZ381+j1oWKOkNJAhbrh/8XxdZDSQK2YkI0UBBJAY39wfRDcpGwKexL2UsaCDivD34c/BaeGLENw3Iogh4KgrQKCiokUw4UyV7aJDOtELMNi0iHQM5qNld/sOG3cKKiEhcuwtCKnUd2Ju5oeNv3ezMJwGT5qXW6bqgPrj0dnHiih6u/v+6P+4nIz2cv7eniwl2vnl7tve/AmnPNrS4yCng6JgxuLl1vm+v20p3rcLT/buqTaJQS5JIDq0MeRSjsb7PnEwGl1vMdfmFO9JNtEMJvy5E7RkKkRiFIRiGXCESH03PjQ+vFv3dtvtfe+J3kOhK5TtpyEcDGNOkuSVcY4m6mvcgBy+leIUwHGbZWX4h2AnYCdgJSPyRaSgOiVMU6vL+2SdSqJxt7QK/T3W7LOqF23LYfE1A2LIQAVSEyY/oTDlEVRGe8/OKOraC/emelEOVZfP0btcZ/AWMIvAqMVS1WAAAAAElFTkSuQmCC"
         alt="linkedin"
-      ></img>
+        ></img>
+      </div>
+      <div className="flex gap-5 justify-between items-center">
+            <div className="bg-gray-300 w-full h-[2px]"></div>
+            <h3 className=" text-nowrap text-lg text-gray-700">
+              Or sign up with your email
+            </h3>
+            <div className="bg-gray-300 w-full h-[2px]"></div>
+          </div>
     </article>
   );
 };

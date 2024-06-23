@@ -8,7 +8,7 @@ const EmailMessage = () => {
   const message = useEmailMessage((state) => state.message);
   if (!isShowing || message.length === 0) return null;
   return (
-    <div className="relative max-w-screen-2xl bg-green-500 text-white text-lg text-center px-10 py-6">
+    <div className="relative max-w-screen-2xl bg-green-600 text-white text-lg text-center px-10 py-6">
       {message}
       <svg
         width="20"
