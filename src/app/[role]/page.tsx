@@ -9,10 +9,7 @@ import { startCase } from "lodash";
 
 import React, { useMemo } from "react";
 
-const page = ({ params }: { params: { role: string } }) => {
-  console.log(',,,,,', params)
-  if (!params.role.startsWith('hire-')) return null
-  
+const JobsPage = ({ params }: { params: { role: string } }) => {
   let skill = params.role
     .split("-")
     .filter((item) => item !== "hire" && item !== "developers")
@@ -27,7 +24,7 @@ const page = ({ params }: { params: { role: string } }) => {
     ? skill
     : "";
 
-  return (
+  return params.role.startsWith("hire-") ? (
     <main>
       <Header />
       <Hero />
@@ -40,7 +37,7 @@ const page = ({ params }: { params: { role: string } }) => {
       </div>
       <Footer />
     </main>
-  );
+  ) : null;
 };
 
-export default page;
+export default JobsPage;

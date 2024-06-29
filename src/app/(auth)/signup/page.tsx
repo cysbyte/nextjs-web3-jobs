@@ -18,7 +18,7 @@ const page = () => {
             <p className=" text-base text-gray-700 my-3">
               Join us today and find your dream job
             </p>
-            <Image width={300} height={200} src={signup} alt="" />
+            <Image width='0' height='0' className="w-[300px] h-auto" src={signup} alt="" />
           </div>
         </div>
         <div className="flex-1 basis-auto pt-10 px-5">

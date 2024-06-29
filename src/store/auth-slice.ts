@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
+import { JwtPayload } from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
 
 const initialState = {
@@ -8,12 +8,6 @@ const initialState = {
   firstname: "",
   lastname: "",
 };
-
-interface JwtPayload {
-  _id: string;
-  firstname: string;
-  lastname: string;
-}
 
 const authTokenSlice = createSlice({
   name: "authToken",

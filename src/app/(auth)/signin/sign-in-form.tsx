@@ -28,6 +28,8 @@ const SignInForm = () => {
 
   const dispatch = useDispatch();
 
+  const router = useRouter();
+
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
     const formData = new FormData();
@@ -50,7 +52,7 @@ const SignInForm = () => {
     } catch (error: any) {
       setError(error.message);
     }
-  }, []);
+  }, [dispatch, isSubmitting, router]);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
     console.log(error);
@@ -58,13 +60,13 @@ const SignInForm = () => {
 
   const [error, setError] = useState("");
 
-  const router = useRouter();
-
   const hasError = useCallback(() => {
     return Object.keys(errors).some((key, index) => {
       return Object.values(errors)[index] !== null;
     });
   }, [errors]);
+
+  console.log('signinform')
 
   return (
     <form

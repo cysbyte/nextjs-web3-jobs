@@ -6,6 +6,8 @@ import Feedback from "../feedback/feedback";
 import Subscription from "../subscription/subscription";
 import User from "./user";
 import { Providers } from "@/store/providers";
+import SignupButton from "./signup-button";
+import AvatarButton from "./avatar-button";
 
 const Header: FC = () => {
   
@@ -15,9 +17,6 @@ const Header: FC = () => {
       style={{ backdropFilter: 'blur(2px)' }}>
         <div className="flex justify-between py-5 items-center font-comic">
 
-        <Providers>
-          <User/>
-        </Providers>
           <div className="basis-1/3 flex justify-start">
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
@@ -78,19 +77,20 @@ const Header: FC = () => {
           </div>
 
         <div className="basis-1/3 flex justify-end items-center gap-4">
-          <Link
-            className="px-3 py-2 border border-gray-800 rounded-md"
-            href='/signup'>
-            Sign Up
-          </Link>
+          <Providers>
+          <SignupButton/>
+          </Providers>
             <Link
               className=" px-3 py-2 hover:shadow-lg border border-purple-500 bg-purple-500 text-white hover:scale-105 active:scale-100 duration-300 rounded-md"
               href='/hire/hire-mobile-developers'
             >
               Post a Job
-            </Link>
+          </Link>
+          <Providers>
+          <AvatarButton/>
+           </Providers>
           </div>
-           
+
         </div>
       <Feedback />
       <Subscription/>

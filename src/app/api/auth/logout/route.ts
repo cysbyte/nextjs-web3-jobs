@@ -21,7 +21,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }).exec();
     if (!foundDeveloper) {
       cookies().delete("jwt");
-      return new Response(JSON.stringify({ message: "Already logout" }), {
+      return NextResponse.json({ message: "Already logout" }, {
         status: 204,
       });
     }
@@ -34,13 +34,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
     console.log(result);
 
     cookies().delete("jwt");
-    return new Response(JSON.stringify({ message: "Already logout" }), {
+    return NextResponse.json({ message: "Already logout" }, {
       status: 204,
     });
   } catch (err: any) {
     console.log(err.message);
-    return new Response(
-      JSON.stringify({ message: "Database opration error" }),
+    return NextResponse.json(
+      { message: "Database opration error" },
       {
         headers: {
           "Content-Type": "application/json",

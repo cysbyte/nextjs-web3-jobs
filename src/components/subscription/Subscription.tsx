@@ -20,7 +20,7 @@ const Subscription:FC = () => {
           </h3>
           <div className="flex h-full items-center justify-center w-[500px] gap-0">
             <div className="basis-1/2 h-[46px]">
-              <CustomInput placeHolder="Your Email" id="email" type="email" />
+              <CustomInput placeHolder="Your Email" id="subscribeEmail" type="email" />
             </div>
             <div className="basis-1/2 h-[46px]">
               <PreferredLocationsDropdown id="location" />

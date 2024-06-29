@@ -11,7 +11,7 @@ const page = () => {
       <Header />
       <JobsAlert />
       <Search />
-      {/* @ts-expect-error Server Component */}
+      {/* @ts-ignore */}
       <Jobs />
       <Footer />
     </main>

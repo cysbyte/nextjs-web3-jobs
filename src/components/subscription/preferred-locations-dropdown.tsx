@@ -38,7 +38,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
         )
       );
     },
-    [countriesAndRegions, options]
+    [options]
   );
 
   const handleSelect = useCallback((e: React.MouseEvent, item: string) => {

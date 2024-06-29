@@ -67,7 +67,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       { expiresIn: "10s" }
     );
     const newRefreshToken = jwt.sign(
-      { email: foundDeveloper._id },
+      { _id: foundDeveloper._id },
       process.env.REFRESH_TOKEN_SECRET as string,
       { expiresIn: "1d" }
     );
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       maxAge: 24 * 60 * 60 * 1000,
     });
     // Send authorization roles and access token to user
-    return new Response(JSON.stringify({ accessToken }), {
+    return NextResponse.json({ accessToken }, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -121,8 +121,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
   } catch (err: any) {
     console.log(err.message);
-    return new Response(
-      JSON.stringify({ message: "Database opration error" }),
+    return NextResponse.json(
+      { message: "Database opration error" },
       {
         headers: {
           "Content-Type": "application/json",

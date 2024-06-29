@@ -11,7 +11,7 @@ const page = ({ params }: { params: { skill: string } }) => {
       <Header />
       <JobsAlert />
       <Search />
-      {/* @ts-expect-error Server Component */}
+      {/* @ts-ignore */}
       <Jobs skill={params.skill} />
       <Footer />
     </main>

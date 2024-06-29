@@ -3,8 +3,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
-import connectDB from "../../../../../../config/database";
-import DeveloperModel from "../../../../../../model/developer";
+import connectDB from "../../../../../config/database";
+import DeveloperModel from "../../../../../model/developer";
 import { cookies, headers } from "next/headers";
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -82,8 +82,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
       }
     );
   } catch (err: any) {
-    return new Response(
-      JSON.stringify({ message: "Database opration error" }),
+    return NextResponse.json(
+      { message: "Database opration error" },
       {
         headers: {
           "Content-Type": "application/json",

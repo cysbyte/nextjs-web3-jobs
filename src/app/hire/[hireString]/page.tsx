@@ -9,7 +9,7 @@ import { startCase } from "lodash";
 
 import React, { useMemo } from "react";
 
-const page = ({ params }: { params: { hireString: string } }) => {
+const HirePage = ({ params }: { params: { hireString: string } }) => {
   let skill = params.hireString
     .split("-")
     .filter((item) => item !== "hire" && item !== "developers")
@@ -40,4 +40,4 @@ const page = ({ params }: { params: { hireString: string } }) => {
   );
 };
 
-export default page;
+export default HirePage;

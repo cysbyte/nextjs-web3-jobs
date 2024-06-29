@@ -41,7 +41,7 @@ const SignUpForm = () => {
     })
     try {
       console.log("keys", Object.keys(data));
-      const response = await fetch("/api/auth/signup/developer", {
+      const response = await fetch("/api/auth/signup?type=developer", {
         method: "POST",
         body: formData,
       });
@@ -58,7 +58,7 @@ const SignUpForm = () => {
       setError(error.message)
     }
 
-  }, []);
+  }, [isSubmitting, router, setEmailMessage]);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
     console.log(error);
