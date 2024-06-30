@@ -10,17 +10,12 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "../../../../../config/database";
 import { cookies } from "next/headers";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const formData = await req.formData();
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
 
   console.log(`cookie available at login: ${JSON.stringify(req.cookies)}`);
-
-  // refreshToken is put in cookies by default
-  let refreshToken = cookies().get("jwt")?.value;
-
-  console.log(refreshToken);
 
   if (!email || !password)
     return NextResponse.json(
@@ -31,11 +26,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
     );
 
   try {
+    // refreshToken is put in cookies by default
+    let refreshToken = cookies().get("jwt")?.value;
+
     await connectDB();
 
     const foundDeveloper = await DeveloperModel.findOne({
       email: email,
     }).exec();
+
     if (!foundDeveloper)
       return NextResponse.json(
         {
@@ -89,6 +88,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
               */
       const foundToken = await DeveloperModel.findOne({ refreshToken }).exec();
 
+      console.log('foundToken', foundToken)
+
       // Detected refresh token reuse!
       if (!foundToken) {
         console.log("attempted refresh token reuse at login!");
@@ -113,12 +114,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
       maxAge: 24 * 60 * 60 * 1000,
     });
     // Send authorization roles and access token to user
-    return NextResponse.json({ accessToken }, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      status: 201,
-    });
+    return NextResponse.json(
+      { accessToken },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        status: 201,
+      }
+    );
   } catch (err: any) {
     console.log(err.message);
     return NextResponse.json(

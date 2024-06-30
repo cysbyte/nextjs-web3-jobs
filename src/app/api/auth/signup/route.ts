@@ -7,12 +7,12 @@ import connectDB from "../../../../../config/database";
 import DeveloperModel from "../../../../../model/developer";
 import { cookies, headers } from "next/headers";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const formData = await req.formData();
-  const firstname = formData.get("firstname") as string;
-  const lastname = formData.get("lastname") as string;
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
+  const firstname = formData.get('firstname') as string;
+  const lastname = formData.get('lastname') as string;
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
 
   if (!firstname)
     return NextResponse.json(
@@ -72,8 +72,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     console.log(result);
 
-    return new Response(
-      JSON.stringify({ message: `Your account has been created!` }),
+    return NextResponse.json(
+      { message: `Your account has been created!` },
       {
         headers: {
           "Content-Type": "application/json",

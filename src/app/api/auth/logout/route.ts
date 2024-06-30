@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { string } from "zod";
+import connectDB from "../../../../../config/database";
 import DeveloperModel from "../../../../../model/developer";
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -10,11 +10,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   try {
     const refreshToken = cookies().get("jwt")?.value;
+    // console.log('refreshToken', cookies().getAll())
     if (!refreshToken)
       return new Response(JSON.stringify({ message: "Already logout" }), {
-        status: 204,
+        status: 200,
       });
 
+    await connectDB()
     // Is refreshToken in db?
     const foundDeveloper = await DeveloperModel.findOne({
       refreshToken,
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     if (!foundDeveloper) {
       cookies().delete("jwt");
       return NextResponse.json({ message: "Already logout" }, {
-        status: 204,
+        status: 200,
       });
     }
 
@@ -35,7 +37,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     cookies().delete("jwt");
     return NextResponse.json({ message: "Already logout" }, {
-      status: 204,
+      status: 200,
     });
   } catch (err: any) {
     console.log(err.message);

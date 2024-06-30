@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/job") {
     return NextResponse.rewrite(new URL("/jobs", request.url));
   }
@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
     );
   const token = authHeader.split("Bearer ")[1];
 
-  jwt.verify(token, process.env.ACCESS_SECRET_KEY as string, (err, decoded) => {
+  await jwt.verify(token, process.env.ACCESS_SECRET_KEY as string, (err, decoded) => {
     if (err) {
       return NextResponse.json(
         { message: "Forbidden: JWT token expired!" },
