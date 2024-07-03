@@ -14,7 +14,7 @@ const AvatarButton = () => {
   return (
     <Link
       className="w-10 h-10 bg-deep-blue rounded-full flex items-center justify-center font-semibold text-white"
-      href="/signup"
+      href="/account/talent-profile"
     >
       {firstname.slice(0,1).toUpperCase()+lastname.slice(0,1).toUpperCase()}
     </Link>

@@ -22,7 +22,7 @@ import JobPreview from "./job-preview";
 import jobPreview from "./job-preview";
 import LocationTypeRadioGroup from "./location-type-radio-group";
 import PreferredLocationsDropdown from "./preferred-locations-dropdown";
-import { EditorConvertToHTML } from "./rich-text-editor";
+import { JobDescriptionEditor } from "./job-description-editor";
 
 export type FormFields = {
   jobTitle: string;
@@ -279,7 +279,7 @@ const JobPostForm: FC<IProps> = (props) => {
               >
                 Job Description <span className="text-red-alert">*</span>
               </label>
-              <EditorConvertToHTML
+              <JobDescriptionEditor
                 name="jobDescription"
                 register={register}
                 errors={errors}

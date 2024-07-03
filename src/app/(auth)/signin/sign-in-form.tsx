@@ -29,6 +29,8 @@ const SignInForm = () => {
   const dispatch = useDispatch();
 
   const router = useRouter();
+  
+  const [error, setError] = useState("");
 
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
@@ -58,7 +60,7 @@ const SignInForm = () => {
     console.log(error);
   }, []);
 
-  const [error, setError] = useState("");
+
 
   const hasError = useCallback(() => {
     return Object.keys(errors).some((key, index) => {
@@ -142,7 +144,7 @@ const SignInForm = () => {
         disabled={isSubmitting}
         className="flex items-center justify-center gap-4 w-[90%] mt-6 text-center px-8 py-3 rounded-md text-white bg-deep-blue hover:bg-gray-900 font-normal text-lg"
       >
-        <p>Sign Up</p>
+        <p>Sign In</p>
         {isSubmitting && <Spinner />}
       </button>
       <h2 className="mt-10 w-[90%] text-lg text-center">

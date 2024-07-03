@@ -32,7 +32,7 @@ interface IProps {
   errors?: FieldErrors<FormFields>;
 }
 
-export const EditorConvertToHTML = (props: IProps) => {
+export const JobDescriptionEditor = (props: IProps) => {
 
   // Convert HTML to ContentState
   const blocksFromHTML = convertFromHTML(props.getValues?.('jobDescription') as string);
