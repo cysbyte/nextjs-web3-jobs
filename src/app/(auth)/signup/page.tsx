@@ -22,7 +22,7 @@ const page = () => {
           </div>
         </div>
         <div className="flex-1 basis-auto pt-10 px-5">
-          <h1 className="text-3xl text-center font-semibold">Sign Up</h1>
+          <h1 className="w-[90%] text-3xl text-center font-semibold">Sign Up</h1>
           {/* <ThirdPartyAuth/> */}
           <h2 className="text-center underline text-blue-500 mt-6 text-lg">Sign up as an employer</h2>
           <SignUpForm/>

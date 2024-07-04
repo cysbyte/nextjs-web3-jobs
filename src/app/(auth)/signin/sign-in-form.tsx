@@ -131,14 +131,14 @@ const SignInForm = () => {
               }
             },
           })}
-          onChange={() => setError("")}
+
         />
         {errors?.["password"] && (
           <p className=" text-sm text-red-alert mt-2">
             {errors?.["password"]?.message}
           </p>
         )}
-        {error && <p className=" text-sm text-red-alert mt-2">{error}</p>}
+        {!errors?.["password"] && error && <p className=" text-sm text-red-alert mt-2">{error}</p>}
       </div>
       <button
         disabled={isSubmitting}

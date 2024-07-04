@@ -24,7 +24,7 @@ const page = () => {
           </div>
         </div>
         <div className="flex-1 basis-auto pt-10 px-5">
-          <h1 className="text-3xl text-center font-semibold">Sign In</h1>
+          <h1 className="w-[90%] text-3xl text-center font-semibold">Sign In</h1>
           {/* <ThirdPartyAuth/> */}
           <Providers>
             <SignInForm />

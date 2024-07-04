@@ -11,7 +11,7 @@ import { startCase } from "lodash";
 import React, { FC, useCallback, useMemo, useReducer, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 import ApplyTypeRadioGroup from "./apply-type-radio-group";
-import CompanyLogoInput from "./company-logo-input";
+import CompanyLogoInput from "../shared/image-upload-input";
 import {
   FormContext,
   initialFormState,
@@ -23,6 +23,7 @@ import jobPreview from "./job-preview";
 import LocationTypeRadioGroup from "./location-type-radio-group";
 import PreferredLocationsDropdown from "./preferred-locations-dropdown";
 import { JobDescriptionEditor } from "./job-description-editor";
+import ImageUploadInput from "../shared/image-upload-input";
 
 export type FormFields = {
   jobTitle: string;
@@ -432,7 +433,7 @@ const JobPostForm: FC<IProps> = (props) => {
             </div>
 
             <div className="mt-8">
-              <CompanyLogoInput />
+              <ImageUploadInput title='Company logo' />
             </div>
 
             <button

@@ -1,10 +1,14 @@
 import React from "react";
 
-const CompanyLogoInput = () => {
+interface IProps{
+  title: string;
+}
+
+const ImageUploadInput = (props: IProps) => {
   return (
     <article>
       <label className="block text-black text-lg font-[500]">
-        Company logo
+        {props.title}
       </label>
       <div className="flex mt-4 items-center justify-center w-full">
         <label
@@ -42,4 +46,4 @@ const CompanyLogoInput = () => {
   );
 };
 
-export default CompanyLogoInput;
+export default ImageUploadInput;

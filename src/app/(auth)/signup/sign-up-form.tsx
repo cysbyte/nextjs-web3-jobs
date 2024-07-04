@@ -52,7 +52,7 @@ const SignUpForm = () => {
         throw Error(result.message);
       const message = 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
       setEmailMessage(message)   
-      router.push('/')
+      router.push('/signin')
 
     } catch (error: any) {
       setError(error.message)
@@ -168,7 +168,7 @@ const SignUpForm = () => {
           </p>
         )}
         {
-          error && <p className=" text-sm text-red-alert mt-2">
+          !errors?.["password"] && error && <p className=" text-sm text-red-alert mt-2">
           {error}
         </p>
         }

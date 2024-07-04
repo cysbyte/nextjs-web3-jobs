@@ -12,7 +12,7 @@ export const useEmailMessage = create<EmailMessageState>((set) => ({
 
   setMessage: (value: string) => {
     set((state) => {
-      if (state.message == '') {
+      if (state.message === '') {
         return { message: value };
       }
       return state;

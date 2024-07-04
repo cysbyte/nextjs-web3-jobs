@@ -1,31 +1,26 @@
+import AccountOption from "@/components/account/account-option";
 import SiderBar from "@/components/account/sider-bar";
 import Header from "@/components/layout/header";
 import Image from "next/image";
 import React, { useMemo } from "react";
-import banner from "/public/account-banner.jpg";
+import { useAccountOption } from "../store/account-option-store";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-
+  
   return (
     <main>
-    <Header />
-    <section className="w-full mx-auto">
-      <Image
-        width={0}
-        height={0}
-        src={banner}
-        alt=""
-        style={{ width: "100%", maxHeight: "250px" }}
-      />
-    </section>
-    <section className="container flex gap-8 mt-6">
-      <SiderBar />
-      <div className=" basis-4/5 p-3">
-        {children}
-      </div>
-    </section>
-  </main>
+      <Header />
+      <section className="bg-[url('/account-banner.jpg')] h-[250px] relative w-full mx-auto">
+        <div className="absolute w-full h-full flex justify-center items-center">
+          <AccountOption/>
+        </div>
+      </section>
+      <section className="container flex gap-8 mt-6">
+        <SiderBar />
+        <div className=" basis-4/5 p-3">{children}</div>
+      </section>
+    </main>
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

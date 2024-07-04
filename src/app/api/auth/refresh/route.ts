@@ -98,6 +98,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         accessToken = jwt.sign(
           {
             _id: foundDeveloper._id,
+            email: foundDeveloper.email,
             firstname: foundDeveloper.firstname,
             lastname: foundDeveloper.lastname,
           },
@@ -108,7 +109,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         const newRefreshToken = jwt.sign(
           { _id: foundDeveloper._id },
           process.env.REFRESH_TOKEN_SECRET as string,
-          { expiresIn: "1d" }
+          { expiresIn: "90d" }
         );
         // Saving refreshToken with current user
         foundDeveloper.refreshToken = [
