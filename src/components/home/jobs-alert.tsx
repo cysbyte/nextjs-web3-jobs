@@ -5,10 +5,10 @@ const JobsAlert: FC = () => {
   return (
     <form className="container mt-20 w-full py-32 bg-slate-100 rounded-3xl">
       <h1 className=" text-[2rem] font-semibold text-center">
-        Looking for your next mobile development job?
+        Looking for your next web3 development job?
       </h1>
       <p className=" font-normal text-lg text-center mt-4 text-slate-500">
-        Join us and get new mobile jobs email alerts{" "}
+        Join us and get new web3 jobs email alerts{" "}
       </p>
       <div className="flex w-2/4 mt-10 mx-auto gap-1">
         <input

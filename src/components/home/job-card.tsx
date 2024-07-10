@@ -28,7 +28,7 @@ interface IProps {
 const JobCard: FC<IProps> = ({ job }) => {
 
   const generateRole = useCallback(() => {
-    let role='mobile-jobs'
+    let role='web3-jobs'
     if (job?.jobTitle.toLowerCase().includes('android')) {
       role='android-jobs'
     }

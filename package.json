@@ -1,5 +1,5 @@
 {
-  "name": "mobile-developer-jobs",
+  "name": "web3-developer-jobs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --detectOpenHandles --runInBand --force-exit",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "husky"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.2.0",

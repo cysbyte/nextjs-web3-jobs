@@ -8,8 +8,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mobile Developer Jobs",
-  description: "Find your next mobile developer job ",
+  title: "Web3 Developer Jobs",
+  description: "Find your next web3 developer job ",
 };
 
 export default function RootLayout({

@@ -12,16 +12,16 @@ const Hero:FC = () => {
         <h1 className=" text-left font-[900] md:text-[2rem] text-[3.3rem] w-full leading-tight tracking-wider text-deep-blue ">
           Find Your Next
           <br />
-          Mobile Development Job
+          Web3 Development Job
         </h1>
         <h6 className="mt-6 w-full text-deep-blue text-left text-xl">
-          Find the best Mobile Development jobs at leading companies <br /> &
-          hire the best Mobile developers
+          Find the best Web3 Development jobs at leading companies <br /> &
+          hire the best Web3 developers
         </h6>
         <div className="flex gap-5 justify-start items-center mt-10 ml-2">
           <Link
             className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
-            href={"/hire/hire-mobile-developers"}
+            href={"/hire/hire-web3-developers"}
           >
             <p> Post a Job</p>
             <svg

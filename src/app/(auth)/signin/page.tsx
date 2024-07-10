@@ -16,7 +16,7 @@ const page = () => {
       <div className="flex h-auto w-screen border-t">
         <div className="flex-1 basis-auto bg-[#F5F9FF] border-r flex justify-center items-center">
           <div>
-            <h1 className="text-3xl">Mobile Developer Jobs</h1>
+            <h1 className="text-3xl">Web3 Developer Jobs</h1>
             <p className=" text-base text-gray-700 my-3">
               Join us today and find your dream job
             </p>

@@ -1,4 +1,4 @@
-import { FormFields } from "@/components/hire-mobile-developers/job-post-form";
+import { FormFields } from "@/components/hire-web3-developers/job-post-form";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

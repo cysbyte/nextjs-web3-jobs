@@ -29,7 +29,7 @@ const Footer:FC = () => {
         <div className="w-auto h-full pr-10 flex flex-col justify-between">
           <div className="h-auto flex flex-col gap-5">
             <div className="text-lg font-bold text-deep-blue">
-              Mobile Developer Jobs
+              Web3 Developer Jobs
             </div>
             <Link href={''} className="text-lg font-semibold text-deep-blue">
               Join us now
@@ -65,18 +65,18 @@ const Footer:FC = () => {
         </div>
         <div className=" flex-grow h-full text-deep-blue flex justify-between items-start gap-2">
           <div className="basis-1/4 h-full">
-            <h3 className=" font-semibold text-lg">Hire Mobile Developers</h3>
+            <h3 className=" font-semibold text-lg">Hire Web3 Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>hireSkills, []).map((item, index) => (
                 <Link href={`/hire-${kebabCase(item)}-developers`} className="mt-3 text-sm" key={item}>
                   Hire {item} Developers
                 </Link>
               ))}
-              <p className="mt-3 text-sm">Hire Mobile Designers</p>
+              <p className="mt-3 text-sm">Hire Web3 Designers</p>
             </div>
           </div>
           <div className="basis-1/4 h-full">
-            <h3 className=" font-semibold text-lg">Find Mobile Jobs</h3>
+            <h3 className=" font-semibold text-lg">Find Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
                 <Link href={`/jobs/${kebabCase(item)}`} className="mt-3 text-sm" key={item}>
@@ -86,7 +86,7 @@ const Footer:FC = () => {
             </div>
           </div>
           <div className="basis-1/4">
-            <h3 className=" font-semibold text-lg">Find Remote Mobile Jobs</h3>
+            <h3 className=" font-semibold text-lg">Find Remote Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
                 <p className="mt-3 text-sm" key={item}>
@@ -96,11 +96,11 @@ const Footer:FC = () => {
             </div>
           </div>
           <div className="basis-1/4">
-            <h3 className=" font-semibold text-lg">Mobile Jobs By Location</h3>
+            <h3 className=" font-semibold text-lg">Web3 Jobs By Location</h3>
             <div className="mt-2 flex flex-col justify-between">
               {regions.map((item, index) => (
                 <p className="mt-3 text-sm" key={item}>
-                  Mobile jobs in {item}
+                  Web3 jobs in {item}
                 </p>
               ))}
             </div>
@@ -109,7 +109,7 @@ const Footer:FC = () => {
       </section>
       <section className="flex items-center justify-center border-y w-full h-[100px]">
         <p className="text-deep-blue text-base">
-          Mobile Dev Jobs © {new Date().getFullYear()}
+          Web3 Dev Jobs © {new Date().getFullYear()}
         </p>
       </section>
     </>

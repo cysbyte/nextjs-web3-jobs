@@ -19,8 +19,8 @@ const Header: FC = () => {
         <div className="basis-1/3 flex justify-start">
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
-              <Image className="w-[69]" src={logo} alt="Mobile Dev Jobs" />
-              <p className="text-lg text-deep-blue">Mobile Developer Jobs</p>
+              <Image className="w-[69]" src={logo} alt="Web3 Dev Jobs" />
+              <p className="text-lg text-deep-blue">Web3 Developer Jobs</p>
             </div>
           </Link>
         </div>
@@ -90,7 +90,7 @@ const Header: FC = () => {
           </Providers>
           <Link
             className=" px-3 py-2 hover:shadow-lg border border-purple-500 bg-purple-500 text-white hover:scale-105 active:scale-100 duration-300 rounded-md"
-            href="/hire/hire-mobile-developers"
+            href="/hire/hire-web3-developers"
           >
             Post a Job
           </Link>

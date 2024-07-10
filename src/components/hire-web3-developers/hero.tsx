@@ -13,8 +13,8 @@ const Hero:FC = () => {
           Hire develpers to grow your team
         </h1>
         <h6 className="mt-6 w-full text-deep-blue text-left text-xl">
-          Find the best Mobile Development jobs at leading companies <br/> & hire the
-          best Mobile developers
+          Find the best Web3 Development jobs at leading companies <br/> & hire the
+          best Web3 developers
         </h6>
         <div className="flex gap-5 justify-start items-center mt-10">
           <Link
