@@ -1,6 +1,6 @@
 import AccountOption from "@/components/account/account-option";
 import SiderBar from "@/components/account/sider-bar";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header";
 import Image from "next/image";
 import React, { useMemo } from "react";
 import { useAccountOption } from "../store/account-option-store";

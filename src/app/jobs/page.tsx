@@ -1,8 +1,8 @@
 import Jobs from "@/components/home/jobs";
 import JobsAlert from "@/components/home/jobs-alert";
 import Search from "@/components/home/search";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import React from "react";
 
 const page = () => {

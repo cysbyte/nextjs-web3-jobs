@@ -2,8 +2,8 @@ import Hero from "@/components/hire-web3-developers/hero";
 import JobPostForm from "@/components/hire-web3-developers/job-post-form";
 
 import Partners from "@/components/hire-web3-developers/partner";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import { jobSkills } from "@/utils/skills-data";
 import { startCase } from "lodash";
 
