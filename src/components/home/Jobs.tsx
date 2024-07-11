@@ -10,9 +10,9 @@ const Jobs = async (props: IProps) => {
   let jobs : any;
 
   if (props.skill === undefined || props.skill === "") {
-    //jobs = await getJobsFromDB();
+    jobs = await getJobsFromDB();
   } else {
-    //jobs = await getJobsBySkill(props.skill);
+    jobs = await getJobsBySkill(props.skill);
   }
 
   console.log(jobs);

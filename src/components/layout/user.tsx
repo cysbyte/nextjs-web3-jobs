@@ -7,7 +7,7 @@ const User = () => {
     const userId = useSelector((state: any) => state.authToken.userId);
     const firstname = useSelector((state: any) => state.authToken.firstname);
   return (
-    <div className='text-sm md:text-md lg:text-base'>{firstname}</div>
+    <div className='text-sm md:text-base lg:text-base'>{firstname}</div>
   )
 }
 

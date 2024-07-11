@@ -12,7 +12,7 @@ const SignupButton = () => {
 
   return (
     <Link
-      className="text-sm md:text-md text-nowrap lg:text-base px-3 py-2 border border-gray-800 rounded-md"
+      className="text-sm md:text-base text-nowrap lg:text-base px-3 py-2 border border-gray-800 rounded-md"
       href="/signup"
     >
       Sign Up

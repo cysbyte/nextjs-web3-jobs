@@ -4,51 +4,76 @@ import React, { FC, useMemo } from "react";
 import Toggle from "../shared/toggle";
 
 const Search: FC = () => {
-
-
   const skills = useMemo(() => {
     return [
       "All Jobs",
-      "React Native",
-      "Flutter",
-      "Android",
-      "Java",
-      "Kotlin",
-      "Gradle",
-      "NDK",
-      "iOS",
-      "Swift",
-      "Objective-C",
-      "Swift UI",
-      "Cocoa Touch",
-      "Xamarin",
-      "Ionic",
-      "Unity",
-      "Unreal",
-      "Cocos2d",
-      "Godot",
-      "GameMaker",
-      "Non-Tech",
-      "Design",
-      "Web3",
-      "AI",
-      "Marketing",
-      "Customer Support",
-      "Product",
+      // "React Native",
+      // "Flutter",
+      // "Android",
+      // "Java",
+      // "Kotlin",
+      // "Gradle",
+      // "NDK",
+      // "iOS",
+      // "Swift",
+      // "Objective-C",
+      // "Swift UI",
+      // "Cocoa Touch",
+      // "Xamarin",
+      // "Ionic",
+      // "Unity",
+      // "Unreal",
+      // "Cocos2d",
+      // "Godot",
+      // "GameMaker",
+      // "Non-Tech",
+      // "Design",
+      // "Web3",
+      // "AI",
+      // "Marketing",
+      // "Customer Support",
+      // "Product",
+      // "Sales",
+      "Blockchain",
+      "Defi",
+      "NFT",
+      "Bitcoin",
+      "Frontend",
+      "Backend",
+      "React",
+      "Node",
+      "Full Stack",
+      "Golang",
+      "Rust",
+      "Solidity",
+      "JavaScript",
+      "TypeScript",
+      "Sonana",
+      "Ethereum",
+      "Devops",
+      "Smart Contract",
+      "EVM",
+      "Hardhat",
       "Sales",
-    ]
+      "Customer Support",
+      "Java",
+      "Web3js",
+      "Etherjs",
+      "Layer2",
+      "Intern"
+    ];
   }, []);
 
   const getUrl = (skill: string) => {
-    let url
-    skill= kebabCase(skill)
-    if (skill === 'all-jobs') {
-      url='/jobs'
+    let url;
+    skill = kebabCase(skill);
+    if (skill === "all-jobs") {
+      url = "/jobs";
     } else {
-      url='/jobs/'+skill
+      url = "/jobs/" + skill;
     }
-    return url
-  }
+    return url;
+  };
 
   return (
     <section className="container bg-white pt-32 w-full h-auto">
@@ -91,8 +116,9 @@ const Search: FC = () => {
       </div>
       <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-5 py-10">
         {skills.map((skill) => (
-          <Link href={getUrl(skill)}
-            className="border text-sm md:text-md lg:text-base px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
+          <Link
+            href={getUrl(skill)}
+            className="border text-sm md:text-base lg:text-base px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
             key={skill}
           >
             {skill}

@@ -18,13 +18,13 @@ const Hero:FC = () => {
         </h6>
         <div className="flex gap-5 justify-center md:justify-start items-center my-10">
           <Link
-            className="flex justify-center items-center  gap-2 py-[0.7rem] md:py-3 w-[200px] text-sm md:text-md lg:text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
+            className="flex justify-center items-center  gap-2 py-[0.7rem] md:py-3 w-[200px] text-sm md:text-base lg:text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
             href={""}
           >
             Get started
           </Link>
           <Link
-            className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] text-sm md:text-md lg:text-lg border border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
+            className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] text-sm md:text-base lg:text-lg border border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
             href={""}
           >
             Learn more

@@ -74,7 +74,7 @@ const JobCard: FC<IProps> = ({ job }) => {
             <p>{job?.locationType}</p>
             <p>{job?.jobRole}</p>
             <p>{job?.jobType}</p>
-            <p>
+            <p className="hidden lg:block">
               {job?.currency.split("-")[0].trim()}
               {job?.minSalary} - {job?.currency.split("-")[0].trim()}
               {job?.maxSalary}
