@@ -57,7 +57,7 @@ export const JobDescriptionEditor = (props: IProps) => {
 
   const { name, labelText, setValue, register, errors, ...otherProps } = props;
 
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || typeof document === 'undefined') {
     return null //return nothing on the server-side
   }
   

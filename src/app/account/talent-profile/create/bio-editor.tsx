@@ -58,7 +58,7 @@ export const BioEditor = (props: IProps) => {
 
   const { name, labelText, ...otherProps } = props;
 
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || typeof document === 'undefined') {
     return null; //return nothing on the server-side
   }
   return (
