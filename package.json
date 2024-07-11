@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --detectOpenHandles --runInBand --force-exit",
-    "test:watch": "jest --watch",
-    "prepare": "node_modules/.bin/husky-run install"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.2.0",
