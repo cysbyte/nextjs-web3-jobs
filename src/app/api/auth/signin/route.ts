@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { serialize } from "cookie";
 import cookie from "cookie";
-import DeveloperModel from "../../../../../model/developer";
+import DeveloperModel from "../../../model/developer";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "../../../../../config/database";
 import { cookies } from "next/headers";

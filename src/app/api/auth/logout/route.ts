@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "../../../../../config/database";
-import DeveloperModel from "../../../../../model/developer";
+import DeveloperModel from "../../../model/developer";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   // On client, also delete the accessToken

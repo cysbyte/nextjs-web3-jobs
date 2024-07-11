@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import DeveloperModel from "../../../../../model/developer";
+import DeveloperModel from "../../../model/developer";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import connectDB from "../../../../../config/database";
 
