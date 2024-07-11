@@ -44,7 +44,7 @@ const BioEditor = (props: IProps) => {
       blocksFromHTML.entityMap
     );
     setEditorState(EditorState.createWithContent(contentState));
-  });
+  }, []);
 
   // Create an initial EditorState with the ContentState
   const [editorState, setEditorState] = useState<any>();
