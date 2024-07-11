@@ -8,6 +8,7 @@ import {
   ContentState,
 } from "draft-js";
 import dynamic from "next/dynamic";
+import { EditorProps } from 'react-draft-wysiwyg'
 import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import { FormFields } from "./job-post-form";
@@ -18,7 +19,7 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 
-const Editor = dynamic(
+const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
