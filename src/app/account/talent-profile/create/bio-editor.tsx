@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { Component, ComponentType, useState } from "react";
+import React, { Component, useState } from "react";
 import {
   EditorState,
   convertToRaw,
@@ -8,7 +8,7 @@ import {
   ContentState,
 } from "draft-js";
 import dynamic from "next/dynamic";
-import { EditorProps } from 'react-draft-wysiwyg'
+import { EditorProps } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import { FormFields } from "./job-post-form";
@@ -20,29 +20,25 @@ import {
 } from "react-hook-form";
 
 const Editor = dynamic<EditorProps>(
-  async () => {
-    const mod = await import('react-draft-wysiwyg');
-    return { default: mod.Editor as unknown as ComponentType<EditorProps> };
-  },
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
 interface IProps {
   //name: keyof FormFields;
-    name: string;
+  name: string;
   labelText?: string;
-//   register: UseFormRegister<FormFields>;
-//   setValue?: UseFormSetValue<FormFields>;
-//   getValues?: UseFormGetValues<FormFields>;
-//   errors?: FieldErrors<FormFields>;
+  //   register: UseFormRegister<FormFields>;
+  //   setValue?: UseFormSetValue<FormFields>;
+  //   getValues?: UseFormGetValues<FormFields>;
+  //   errors?: FieldErrors<FormFields>;
 }
 
 export const BioEditor = (props: IProps) => {
-
   // Convert HTML to ContentState
   //const blocksFromHTML = convertFromHTML(props.getValues?.('jobDescription') as string);
-  const blocksFromHTML = convertFromHTML('');
-    const contentState = ContentState.createFromBlockArray(
+  const blocksFromHTML = convertFromHTML("");
+  const contentState = ContentState.createFromBlockArray(
     blocksFromHTML.contentBlocks,
     blocksFromHTML.entityMap
   );
@@ -62,6 +58,9 @@ export const BioEditor = (props: IProps) => {
 
   const { name, labelText, ...otherProps } = props;
 
+  if (typeof window === "undefined") {
+    return null; //return nothing on the server-side
+  }
   return (
     <section>
       <div

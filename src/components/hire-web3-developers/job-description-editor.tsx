@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Component, ComponentType, useState } from "react";
+import React, { Component, useState } from "react";
 import {
   EditorState,
   convertToRaw,
@@ -20,10 +20,7 @@ import {
 } from "react-hook-form";
 
 const Editor = dynamic<EditorProps>(
-  async () => {
-    const mod = await import('react-draft-wysiwyg');
-    return { default: mod.Editor as unknown as ComponentType<EditorProps> };
-  },
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
@@ -60,6 +57,10 @@ export const JobDescriptionEditor = (props: IProps) => {
 
   const { name, labelText, setValue, register, errors, ...otherProps } = props;
 
+  if (typeof window === "undefined") {
+    return null //return nothing on the server-side
+  }
+  
   return (
     <section>
       <div
