@@ -2,8 +2,8 @@ import CustomInput from "@/components/shared/custom-input";
 import React from "react";
 import ProfileDetailInput from "./profile-detail-input";
 import { countriesAndRegions } from "@/utils/country-data";
-import { BioEditor } from "./bio-editor";
 import ImageUploadInput from "@/components/shared/image-upload-input";
+const BioEditor = React.lazy(() => import('./bio-editor'))
 
 const page = () => {
   return (

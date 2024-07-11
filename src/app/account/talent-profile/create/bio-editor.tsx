@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   EditorState,
   convertToRaw,
@@ -34,19 +34,20 @@ interface IProps {
   //   errors?: FieldErrors<FormFields>;
 }
 
-export const BioEditor = (props: IProps) => {
+const BioEditor = (props: IProps) => {
   // Convert HTML to ContentState
   //const blocksFromHTML = convertFromHTML(props.getValues?.('jobDescription') as string);
-  const blocksFromHTML = convertFromHTML("");
-  const contentState = ContentState.createFromBlockArray(
-    blocksFromHTML.contentBlocks,
-    blocksFromHTML.entityMap
-  );
+  useEffect(() => {
+    const blocksFromHTML = convertFromHTML("");
+    const contentState = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
+    setEditorState(EditorState.createWithContent(contentState));
+  });
 
   // Create an initial EditorState with the ContentState
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(contentState)
-  );
+  const [editorState, setEditorState] = useState<any>();
 
   const onEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
@@ -58,7 +59,7 @@ export const BioEditor = (props: IProps) => {
 
   const { name, labelText, ...otherProps } = props;
 
-  if (typeof window === "undefined" || typeof document === 'undefined') {
+  if (typeof window === "undefined" || typeof document === "undefined") {
     return null; //return nothing on the server-side
   }
   return (
@@ -95,3 +96,5 @@ export const BioEditor = (props: IProps) => {
     </section>
   );
 };
+
+export default BioEditor;

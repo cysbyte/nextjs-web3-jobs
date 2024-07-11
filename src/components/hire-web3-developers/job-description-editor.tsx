@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   EditorState,
   convertToRaw,
@@ -8,7 +8,7 @@ import {
   ContentState,
 } from "draft-js";
 import dynamic from "next/dynamic";
-import { EditorProps } from 'react-draft-wysiwyg'
+import { EditorProps } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { FormFields } from "./job-post-form";
@@ -34,18 +34,20 @@ interface IProps {
 }
 
 export const JobDescriptionEditor = (props: IProps) => {
-
   // Convert HTML to ContentState
-  const blocksFromHTML = convertFromHTML(props.getValues?.('jobDescription') as string);
-  const contentState = ContentState.createFromBlockArray(
-    blocksFromHTML.contentBlocks,
-    blocksFromHTML.entityMap
-  );
+  useEffect(() => {
+    const blocksFromHTML = convertFromHTML(
+      props.getValues?.("jobDescription") as string
+    );
+    const contentState = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
+    setEditorState(EditorState.createWithContent(contentState));
+  }, []);
 
   // Create an initial EditorState with the ContentState
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(contentState)
-  );
+  const [editorState, setEditorState] = useState<any>();
 
   const onEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
@@ -57,10 +59,10 @@ export const JobDescriptionEditor = (props: IProps) => {
 
   const { name, labelText, setValue, register, errors, ...otherProps } = props;
 
-  if (typeof window === "undefined" || typeof document === 'undefined') {
-    return null //return nothing on the server-side
+  if (typeof window === "undefined" || document === undefined) {
+    return null; //return nothing on the server-side
   }
-  
+
   return (
     <section>
       <div
