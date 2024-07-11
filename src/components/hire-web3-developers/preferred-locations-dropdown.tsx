@@ -33,9 +33,20 @@ interface IProps {
     | Validate<string | number, FormFields>
     | Record<string, Validate<string | number, FormFields>>
     | undefined;
-}
+} 
 
 const PreferredLocationsDropdown: FC<IProps> = (props) => {
+  
+  const {
+    name,
+    labelText,
+    getValues,
+    setValue,
+    register,
+    validate,
+    errors,
+    ...otherProps
+  } = props;
   const { state } = useContext(FormContext);
 
   const getOptions = useCallback(
@@ -46,11 +57,11 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
           : countriesAndRegions;
       return options.filter((ele, index, arr) => arr.indexOf(ele) === index);
     },
-    [continents, countriesAndRegions]
+    []
   );
 
   const [options, setOptions] = useState(
-    useMemo(() => getOptions(state), [state])
+    useMemo(() => getOptions(state), [state, getOptions])
   );
 
   const [isOptionsShowing, setIsOptionsShowing] = useState(false);
@@ -63,14 +74,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
 
   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const handleCancelClick = useCallback(() => {
-    setIsCancelShowing(false);
-    setSelectedLocations([]);
-    setValue?.("preferredApplicantLocation", "");
-    resetOptions();
-  }, []);
-
-  const resetOptions = () => {
+  const resetOptions = useCallback(() => {
     const options = getOptions(state);
     const newOptions = options.filter(
       (option) =>
@@ -79,7 +83,14 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
           .includes(option)
     );
     setOptions(newOptions);
-  };
+  }, [setOptions, getOptions, getValues, state]);
+  
+  const handleCancelClick = useCallback(() => {
+    setIsCancelShowing(false);
+    setSelectedLocations([]);
+    setValue?.("preferredApplicantLocation", "");
+    resetOptions();
+  },[setValue, resetOptions]);
 
   const cancelShowing = useCallback(
     (item: string) => {
@@ -93,7 +104,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       }
       resetOptions();
     },
-    [selectedLocations]
+    [selectedLocations, resetOptions, setValue]
   );
 
   const handleChange = useCallback(
@@ -109,7 +120,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
         )
       );
     },
-    [options]
+    [options, getOptions, state]
   );
 
   const handleSelect = useCallback(
@@ -138,23 +149,14 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
       resetOptions();
     },
-    [options]
+    [options, getValues, resetOptions, setValue]
   );
 
-  const {
-    name,
-    labelText,
-    getValues,
-    setValue,
-    register,
-    validate,
-    errors,
-    ...otherProps
-  } = props;
+
 
   useEffect(() => {
     setOptions(getOptions(state));
-  }, [state.locationType]);
+  }, [state.locationType, getOptions, state]);
 
   return (
     <article>

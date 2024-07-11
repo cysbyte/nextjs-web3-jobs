@@ -43,11 +43,11 @@ const ApplyTypeRadioGroup: FC<IProps> = (props) => {
     setTypes(newTypes);
     setSelectType(item.type);
     setValue?.("applyType", item.type);
-  }, []);
+  }, [setValue, types]);
 
   useEffect(() => {
     setValue?.("applyType", "website");
-  }, []);
+  }, [setValue]);
 
   return (
     <div>

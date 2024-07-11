@@ -13,7 +13,7 @@ const SiderBar = () => {
   const handleClick = useCallback((option: string) => {
     setSelectedOption(option);
     setOption(option);
-  }, []);
+  }, [setOption]);
 
   return (
     <aside className=" basis-1/5 flex flex-col">

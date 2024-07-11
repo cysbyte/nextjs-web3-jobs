@@ -115,7 +115,7 @@ const JobPostForm: FC<IProps> = (props) => {
     //   formData.set(key, Object.values(data)[index] as string)
     // );
     // const job = await submitJob(formData);
-  }, []);
+  }, [isSubmitting]);
 
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
@@ -126,7 +126,7 @@ const JobPostForm: FC<IProps> = (props) => {
       formData.set(key, Object.values(data)[index] as string)
     );
     const job = await submitJob(formData);
-  }, []);
+  }, [isSubmitting]);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
     console.log(error);
@@ -134,7 +134,7 @@ const JobPostForm: FC<IProps> = (props) => {
 
   const preferredLocationOptions = useMemo(() => {
     return [...continents, ...countriesAndRegions];
-  }, [continents, countriesAndRegions]);
+  }, []);
 
   const jobTypeOptions = useMemo(() => {
     return ["FullTime", "Contract", "Freelance", "PartTime", "Internship"];
@@ -157,7 +157,7 @@ const JobPostForm: FC<IProps> = (props) => {
       Object.keys(currencyDictionary).map(
         (key, index) => key + " - " + Object.values(currencyDictionary)[index]
       ),
-    [currencyDictionary]
+    []
   );
 
   const hasError = useCallback(() => {

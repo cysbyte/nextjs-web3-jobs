@@ -18,7 +18,9 @@ interface IProps {
   errors?: FieldErrors<FormFields>;
 }
 
-const LocationTypeRadioGroup:FC<IProps> = (props) => {
+const LocationTypeRadioGroup: FC<IProps> = (props) => {
+  
+  const { name, labelText, setValue, register, errors, ...otherProps } = props;
 
   const { state, locationTypeDispatch } = useContext(FormContext);
 
@@ -62,10 +64,10 @@ const LocationTypeRadioGroup:FC<IProps> = (props) => {
       });
       setValue?.(name, item.type);
     },
-    [locationTypes]
+    [locationTypes, locationTypeDispatch, name, setValue]
   );
 
-  const { name, labelText, setValue, register, errors, ...otherProps } = props;
+
 
   return (
     <>

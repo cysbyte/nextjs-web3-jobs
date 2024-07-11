@@ -63,7 +63,7 @@ const JobDetailInput: FC<IProps> = (props) => {
     //   setValue?.(name, item);
       setInputValue(item);
     },
-    [name]
+    []
   );
 
   const [dropdownOptions, setDropdownOptions] = useState(options)

@@ -148,7 +148,7 @@ const SignInForm = () => {
         {isSubmitting && <Spinner />}
       </button>
       <h2 className="mt-10 w-[90%] text-lg text-center">
-        Don't have an account yet?{" "}
+        Don&apos;t have an account yet?{" "}
         <span className=" underline text-blue-600 hover:text-blue-700">
           <Link href="/signup">Sign Up</Link>
         </span>

@@ -62,7 +62,7 @@ const JobDetailInput: FC<IProps> = (props) => {
       setValue?.(name, item);
       setInputValue(item);
     },
-    [name]
+    [name, setValue]
   );
 
   const [dropdownOptions, setDropdownOptions] = useState(options)
@@ -75,7 +75,7 @@ const JobDetailInput: FC<IProps> = (props) => {
         option.toLowerCase().startsWith(e.currentTarget.value.trim().toLowerCase())
       )
     );
-  },[options])
+  },[options, name, setValue])
 
   let text = labelText ? labelText : props.placeholder;
   if (text.includes("https://")) {
