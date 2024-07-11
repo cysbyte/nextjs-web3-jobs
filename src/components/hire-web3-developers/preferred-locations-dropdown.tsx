@@ -149,7 +149,7 @@ const PreferredLocationsDropdown: FC<IProps> = (props) => {
       setValue?.("preferredApplicantLocation", newSelectedLocations.join(","));
       resetOptions();
     },
-    [options, getValues, resetOptions, setValue]
+    [getValues, resetOptions, setValue]
   );
 
 
