@@ -175,7 +175,7 @@ const JobPostForm: FC<IProps> = (props) => {
     >
       <form
         noValidate={true}
-        className="w-full mx-auto mb-10 basis-2/3 overflow-scroll no-scrollbar"
+        className="w-full mx-auto mb-10 lg:basis-2/3 overflow-scroll no-scrollbar"
         onSubmit={handleSubmit(onPreviewSubmit, onError)}
       >
         <div className="flex justify-center items-center my-10">

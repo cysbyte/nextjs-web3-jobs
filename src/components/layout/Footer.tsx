@@ -25,8 +25,8 @@ const Footer:FC = () => {
   
   return (
     <>
-      <section className="container flex py-16 h-[580px] mb-20">
-        <div className="w-auto h-full pr-10 flex flex-col justify-between">
+      <section className="container flex flex-col md:flex-row py-16 h-[580px] mb-20">
+        <div className="hidden lg:block w-auto h-full pr-10 md:flex flex-col justify-between">
           <div className="h-auto flex flex-col gap-5">
             <div className="text-lg font-bold text-deep-blue">
               Web3 Developer Jobs
@@ -38,7 +38,7 @@ const Footer:FC = () => {
               Sign Up
             </Link>
           </div>
-          <div className="flex gap-4 items-center justify-center">
+          {/* <div className="flex gap-4 items-center justify-center">
             <svg
               className="fill-[#0867C2] cursor-pointer"
               width="25"
@@ -61,9 +61,9 @@ const Footer:FC = () => {
                 fill="black"
               ></path>
             </svg>
-          </div>
+          </div> */}
         </div>
-        <div className=" flex-grow h-full text-deep-blue flex justify-between items-start gap-2">
+        <div className=" flex-grow h-full text-deep-blue flex flex-col lg:flex-row justify-between items-center lg:items-start gap-5 lg:gap-2 text-center lg:text-left mb-20">
           <div className="basis-1/4 h-full">
             <h3 className=" font-semibold text-lg">Hire Web3 Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
@@ -89,7 +89,7 @@ const Footer:FC = () => {
             <h3 className=" font-semibold text-lg">Find Remote Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
-                <p className="mt-3 text-sm" key={item}>
+                <p className="mt-3 text-sm " key={item}>
                   Remote {item} Developers
                 </p>
               ))}
@@ -107,11 +107,11 @@ const Footer:FC = () => {
           </div>
         </div>
       </section>
-      <section className="flex items-center justify-center border-y w-full h-[100px]">
+      {/* <section className="flex items-center justify-center border-y w-full h-[100px]">
         <p className="text-deep-blue text-base">
           Web3 Dev Jobs © {new Date().getFullYear()}
         </p>
-      </section>
+      </section> */}
     </>
   );
 };

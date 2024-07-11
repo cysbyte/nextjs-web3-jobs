@@ -12,7 +12,7 @@ const page = () => {
     <main className="">
       <Header />
       <div className="flex h-auto w-screen border-t">
-        <div className="flex-1 basis-auto bg-[#F5F9FF] border-r flex justify-center items-center">
+        <div className="hidden flex-1 basis-auto bg-[#F5F9FF] border-r lg:flex justify-center items-center">
           <div>
             <h1 className="text-3xl">Web3 Developer Jobs</h1>
             <p className=" text-base text-gray-700 my-3">

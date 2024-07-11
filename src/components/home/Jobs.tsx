@@ -7,12 +7,12 @@ interface IProps {
 }
 
 const Jobs = async (props: IProps) => {
-  let jobs;
+  let jobs : any;
 
   if (props.skill === undefined || props.skill === "") {
-    jobs = await getJobsFromDB();
+    //jobs = await getJobsFromDB();
   } else {
-    jobs = await getJobsBySkill(props.skill);
+    //jobs = await getJobsBySkill(props.skill);
   }
 
   console.log(jobs);
@@ -22,8 +22,8 @@ const Jobs = async (props: IProps) => {
       <h4 className="w-full my-10">643 web3 development jobs</h4>
 
       <div className="w-full h-auto bg-white mt-0">
-        {jobs.map((job, index) => (
-            <div key={job.id}>
+        {jobs && jobs.map((job: { id: string; jobTitle: string; jobType: string; jobRole: string; locationType: string; jobDescription: string; preferredApplicantLocation: string; keywords: string; currency: string; minSalary: number; maxSalary: number; applyType: String; applyUrl: String; applyEmail: String | null; companyName: String | null; } | undefined, index: any) => (
+            <div key={job?.id}>
               <JobCard job={job} />
             </div>
         ))}

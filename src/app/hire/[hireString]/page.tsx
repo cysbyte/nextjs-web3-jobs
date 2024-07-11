@@ -29,7 +29,7 @@ const HirePage = ({ params }: { params: { hireString: string } }) => {
       <Header />
       <Hero />
       <div className="container">
-        <h1 className=" text-4xl text-center font-semibold"> Post A Job</h1>
+        <h1 className=" text-2xl lg:text-4xl text-center font-semibold"> Post A Job</h1>
         <div className="flex items-start justify-center gap-2">
           <JobPostForm skill={skill} />
           <Partners />

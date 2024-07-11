@@ -14,7 +14,7 @@ const config: Config = {
         sm: '1rem',
         lg: '1rem',
         xl: '2rem',
-        '2xl': '3rem',
+        '2xl': '4rem',
       },
       
     },

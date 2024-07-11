@@ -7,23 +7,23 @@ const Hero:FC = () => {
   return (
     // <section className=" w-full h-[560px] mt-0 py-0 flex justify-center items-center font-hel ba"
     // style={{backdropFilter: 'blur(2px)'}}>
-    <section className="container relative flex w-full h-[560px] mt-0 py-0 justify-center items-center font-comic overflow-hidden">
-      <div className="basis-1/2 w-full h-auto">
-        <h1 className=" text-left font-[900] md:text-[2rem] text-[3.3rem] w-full leading-tight tracking-wider text-deep-blue ">
+    <section className="container relative flex flex-col md:flex-row w-full h-auto md:h-[560px] my-10 py-0 justify-center items-center font-comic overflow-hidden">
+      <div className="basis-3/5 w-full h-auto">
+        <h1 className="text-[2rem] lg:text-[2.8rem] xl:text-[3.3rem] text-center md:text-left font-[900]  w-full leading-tight tracking-wider text-deep-blue ">
           Find Your Next
           <br />
           Web3 Development Job
         </h1>
-        <h6 className="mt-6 w-full text-deep-blue text-left text-xl">
+        <h6 className="text-sm lg:text-lg xl:text-xl mt-6 w-full text-deep-blue text-center md:text-left ">
           Find the best Web3 Development jobs at leading companies <br /> &
           hire the best Web3 developers
         </h6>
-        <div className="flex gap-5 justify-start items-center mt-10 ml-2">
+        <div className="flex gap-5 justify-center md:justify-start items-center my-10 ml-2">
           <Link
-            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
+            className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
             href={"/hire/hire-web3-developers"}
           >
-            <p> Post a Job</p>
+            <p className="text-sm md:text-md lg:text-lg"> Post a Job</p>
             <svg
               className="w-4 h-6 mt-1 text-white dark:text-white"
               aria-hidden="true"
@@ -41,10 +41,10 @@ const Hero:FC = () => {
             </svg>
           </Link>
           <Link
-            className="flex justify-center items-center gap-2 py-3 w-[200px] text-lg border border-solid border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
+            className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] border border-solid border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
             href={""}
           >
-            <p>Find a Job</p>
+            <p className="text-sm md:text-md lg:text-lg">Find a Job</p>
             <svg
               className="w-4 h-6 mt-1 text-deep-blue dark:text-white"
               aria-hidden="true"
@@ -63,7 +63,7 @@ const Hero:FC = () => {
           </Link>
         </div>
       </div>
-      <div className="absolute top-[30%] left-[10%] -z-10">
+      {/* <div className="absolute top-[30%] left-[10%] -z-10">
         <svg
           className="fill-[#EFEFEF] -rotate-45"
           height="840"
@@ -72,12 +72,12 @@ const Hero:FC = () => {
         >
           <ellipse rx="300" ry="450" cx="820" cy="480" />
         </svg>
-      </div>
+      </div> */}
       {/* <div className="-mr-20 -mt-40 p-3 bg-purple-500 rounded-3xl rota -rotate-45">
         <Image src={androidIcon} width={30} height={30} alt='' />
       </div> */}
-      <div className="relative basis-1/2 w-full flex justify-end">
-        <div className="absolute p-2 left-10 top-40 w-12 h-12 bg-purple-500 -rotate-[24deg] rounded-2xl">
+      <div className="relative basis-2/5 w-full flex justify-center md:justify-end">
+        {/* <div className="absolute p-2 left-10 top-40 w-12 h-12 bg-purple-500 -rotate-[24deg] rounded-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -138,7 +138,7 @@ const Hero:FC = () => {
               d="M16.896 8.648H6.426v9.2h10.47v-9.2zM4 8.648v6.3m15.314-6.3v6.3M9.57 17.85V21m4.174-3.15V21"
             ></path>
           </svg>
-        </div>
+        </div> */}
         <Image src={hero0} width={500} height={500} alt="" />
       </div>
     </section>

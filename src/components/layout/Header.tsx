@@ -12,22 +12,21 @@ import AvatarButton from "./avatar-button";
 const Header: FC = () => {
   return (
     <header
-      className="container h-auto z-20 inset-0 py-0 bg-white bg-opacity-0"
-      style={{ backdropFilter: "blur(2px)" }}
+      className="container h-auto z-20 sticky inset-0 backdrop-blur-md py-0 bg-white bg-opacity-90"
     >
-      <div className="flex justify-between py-5 items-center font-comic">
+      <div className="flex justify-between py-3 items-center font-comic">
         <div className="basis-1/3 flex justify-start">
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
               <Image className="w-[69]" src={logo} alt="Web3 Dev Jobs" />
-              <p className="text-lg text-deep-blue">Web3 Developer Jobs</p>
+              <p className=" text-sm md:text-md lg:text-lg text-deep-blue">Web3 Developer Jobs</p>
             </div>
           </Link>
         </div>
 
-        <div className="basis-1/3 m-auto bg-[#efefef] text-deep-blue rounded-md px-6 py-2 hidden lg:block">
+        <div className="basis-1/3 m-auto text-sm md:text-md lg:text-lg bg-[#efefef] text-deep-blue rounded-md px-6 py-2 hidden lg:block">
           <ul className="flex h-full items-center duration-300 gap-x-4 sm:gap-x-10 text-16">
-            <li className="group cursor-pointer hover:text-purple-500">
+            <div className="group cursor-pointer hover:text-purple-500">
               <div className="group relative flex gap-x-2 items-center justify-center">
                 <p className="text-lg text-black">Jobs</p>
                 <div className="relative ml-1 flex h-full items-center justify-center">
@@ -66,7 +65,7 @@ const Header: FC = () => {
                   API
                 </a>
               </div>
-            </li>
+            </div>
             <Link
               className="hover:text-purple-500 duration-300"
               href={"/price"}
@@ -89,7 +88,7 @@ const Header: FC = () => {
             <SignupButton />
           </Providers>
           <Link
-            className=" px-3 py-2 hover:shadow-lg border border-purple-500 bg-purple-500 text-white hover:scale-105 active:scale-100 duration-300 rounded-md"
+            className="text-sm md:text-md text-nowrap lg:text-base px-3 py-2 hover:shadow-lg border border-purple-500 bg-purple-500 text-white hover:scale-105 active:scale-100 duration-300 rounded-md"
             href="/hire/hire-web3-developers"
           >
             Post a Job

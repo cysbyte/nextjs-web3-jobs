@@ -73,7 +73,7 @@ const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="flex flex-col gap-3 items-start pt-5"
+      className="flex flex-col gap-3 items-center lg:items-start pt-5"
     >
       <div className="w-[90%]">
         <h2 className="text-lg text-gray-700 py-2">First Name</h2>

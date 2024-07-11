@@ -52,7 +52,7 @@ const Search: FC = () => {
 
   return (
     <section className="container bg-white pt-32 w-full h-auto">
-      <div className="flex gap-10 justify-between items-center">
+      <div className="flex flex-col md:flex-row gap-10 justify-between items-center">
         <div className="flex gap-5 flex-1">
           <div className="w-full h-auto flex items-center border border-gray-300 rounded-md focus-within:border-purple-500 focus-within:shadow-lg overflow-hidden">
             <svg
@@ -92,7 +92,7 @@ const Search: FC = () => {
       <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-5 py-10">
         {skills.map((skill) => (
           <Link href={getUrl(skill)}
-            className="border px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
+            className="border text-sm md:text-md lg:text-base px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
             key={skill}
           >
             {skill}

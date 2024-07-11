@@ -10,7 +10,7 @@ import partner6 from "/public/partners/6.jpg";
 
 const Partners:FC = () => {
   return (
-    <section className="basis-1/3 w-full h-full mt-14">
+    <section className="hidden lg:block basis-1/3 w-full h-full mt-14">
       <div className="w-auto h-full">
         <h1 className="w-full text-center text-lg font-semibold">Trusted by</h1>
         <div className="flex flex-wrap mx-auto mt-16 gap-5 w-[300px] justify-center items-center">
