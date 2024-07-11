@@ -1,5 +1,5 @@
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import { Providers } from "@/store/providers";
 import Image from "next/image";
 import Link from "next/link";

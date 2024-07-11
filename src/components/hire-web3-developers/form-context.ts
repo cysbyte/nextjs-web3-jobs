@@ -1,5 +1,4 @@
-import { Dispatch } from "react";
-import { createContext } from "React";
+import { createContext, Dispatch } from "react";
 
 export const initialFormState = { locationType: "Remote" };
 
