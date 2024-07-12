@@ -91,9 +91,9 @@ const JobCard: FC<IProps> = ({ job }) => {
             ))}
           </div>
         </div>
-        <div className="w-auto h-auto flex-grow flex justify-end">
+        {/* <div className="w-auto h-auto flex-grow flex justify-end">
           <p className="mt-2 mr-2 text-gray-500">Today</p>
-        </div>
+        </div> */}
       </div>
     </article>
   );

@@ -20,7 +20,7 @@ const page = async ({
         jobTitle={job?.jobTitle || ""}
         companyName={job?.companyName || ""}
       />
-      <div className="flex w-full mt-32 gap-10">
+      <div className="flex flex-col md:flex-row w-full mt-32 gap-10">
         <JobDescription jobDescription={job?.jobDescription || ""} />
         <JobDetail
           locationType={job?.locationType || ""}

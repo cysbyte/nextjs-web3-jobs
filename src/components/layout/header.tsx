@@ -15,7 +15,7 @@ const Header: FC = () => {
       className="container h-auto z-20 sticky inset-0 backdrop-blur-md py-0 bg-white bg-opacity-90"
     >
       <div className="flex justify-between py-3 items-center font-comic">
-        <div className="basis-1/3 flex justify-start items-center">
+        <div className="basis-1/2 lg:basis-1/3 flex justify-start items-center">
           <Link className="hover:text-purple-500 duration-300" href={"/"}>
             <div className="flex items-start justify-center gap-1 font-bold">
               <Image className="w-[69]" src={logo} alt="Web3 Dev Jobs" />
@@ -31,7 +31,7 @@ const Header: FC = () => {
             </Link>
         </div>
 
-        <div className="basis-1/3 m-auto text-sm md:text-base lg:text-lg bg-[#efefef] text-deep-blue rounded-md px-6 py-2 hidden lg:block">
+        <div className="basis-1/3 m-auto text-sm md:text-base lg:text-base bg-[#efefef] text-deep-blue rounded-md px-6 py-2 hidden lg:block">
           <ul className="flex h-full items-center duration-300 gap-x-4 sm:gap-x-10 text-16">
             <div className="group cursor-pointer hover:text-purple-500">
               <div className="group relative flex gap-x-2 items-center justify-center">
@@ -90,7 +90,7 @@ const Header: FC = () => {
           </ul>
         </div>
 
-        <div className="basis-1/3 flex justify-end items-center gap-4">
+        <div className="basis-1/2 lg:basis-1/3 flex justify-end items-center gap-4">
           <Providers>
             <SignupButton />
           </Providers>

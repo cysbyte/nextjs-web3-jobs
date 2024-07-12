@@ -33,7 +33,8 @@ const config: Config = {
     fontFamily: {
       'hel': ['Helvetica'],
       'fut1': ['Futura', 'sans-serif'],
-      'comic': ["Comic Sans MS", "Comic Sans"],
+      // 'comic': ["Comic Sans MS", "Comic Sans"],
+      'comic': ['Helvetica'],
       'fut': ['Gill Sans', 'sans-serif'],
     }
   },
