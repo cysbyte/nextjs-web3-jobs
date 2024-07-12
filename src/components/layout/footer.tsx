@@ -64,7 +64,7 @@ const Footer:FC = () => {
           </div> */}
         </div>
         <div className=" flex-grow h-full text-deep-blue flex flex-col lg:flex-row justify-between items-center lg:items-start gap-5 text-center lg:text-left mb-20">
-          <div className="basis-1/4 h-full">
+          <div className="lg:basis-1/4 h-full my-5">
             <h3 className=" font-semibold text-lg">Hire Web3 Developers</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>hireSkills, []).map((item, index) => (
@@ -72,10 +72,9 @@ const Footer:FC = () => {
                   Hire {item} Developers
                 </Link>
               ))}
-              <p className="mt-3 text-sm">Hire Web3 Designers</p>
             </div>
           </div>
-          <div className="basis-1/4 h-full my-10">
+          <div className="lg:basis-1/4 h-full my-5">
             <h3 className=" font-semibold text-lg">Find Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
@@ -85,23 +84,23 @@ const Footer:FC = () => {
               ))}
             </div>
           </div>
-          <div className="basis-1/4 h-full my-10">
+          <div className="lg:basis-1/4 h-full my-5">
             <h3 className=" font-semibold text-lg">Find Remote Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
-                <p className="mt-3 text-sm " key={item}>
+                <Link href={`/jobs/${kebabCase(item)}`} className="mt-3 text-sm " key={item}>
                   Remote {item} Developers
-                </p>
+                </Link>
               ))}
             </div>
           </div>
-          <div className="basis-1/4 h-full my-10">
+          <div className="lg:basis-1/4 h-full my-5">
             <h3 className=" font-semibold text-lg">Web3 Jobs By Location</h3>
             <div className="mt-2 flex flex-col justify-between">
               {regions.map((item, index) => (
-                <p className="mt-3 text-sm" key={item}>
+                <Link href={`/jobs/${kebabCase(item)}`} className="mt-3 text-sm" key={item}>
                   Web3 jobs in {item}
-                </p>
+                </Link>
               ))}
             </div>
           </div>
