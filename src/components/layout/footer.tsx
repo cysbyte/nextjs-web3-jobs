@@ -75,7 +75,7 @@ const Footer:FC = () => {
               <p className="mt-3 text-sm">Hire Web3 Designers</p>
             </div>
           </div>
-          <div className="basis-1/4 h-full mt-10">
+          <div className="basis-1/4 h-full my-10">
             <h3 className=" font-semibold text-lg">Find Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
@@ -85,7 +85,7 @@ const Footer:FC = () => {
               ))}
             </div>
           </div>
-          <div className="basis-1/4 h-full mt-10">
+          <div className="basis-1/4 h-full my-10">
             <h3 className=" font-semibold text-lg">Find Remote Web3 Jobs</h3>
             <div className="mt-2 flex flex-col justify-between">
               {useMemo(()=>jobSkills,[]).map((item, index) => (
@@ -95,7 +95,7 @@ const Footer:FC = () => {
               ))}
             </div>
           </div>
-          <div className="basis-1/4 h-full mt-10">
+          <div className="basis-1/4 h-full my-10">
             <h3 className=" font-semibold text-lg">Web3 Jobs By Location</h3>
             <div className="mt-2 flex flex-col justify-between">
               {regions.map((item, index) => (
