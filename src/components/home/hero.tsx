@@ -23,7 +23,7 @@ const Hero:FC = () => {
             className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] font-bold text-center hover:shadow-lg hover:scale-105 bg-purple-500 text-white active:scale-100 duration-300 border border-purple-500 rounded-md"
             href={"/hire/hire-web3-developers"}
           >
-            <p className="text-sm md:text-base lg:text-lg"> Post a Job</p>
+            <p className="text-base lg:text-lg"> Post a Job</p>
             <svg
               className="w-4 h-6 mt-1 text-white dark:text-white"
               aria-hidden="true"
@@ -44,7 +44,7 @@ const Hero:FC = () => {
             className="flex justify-center items-center gap-2 py-[0.7rem] md:py-3 w-[200px] border border-solid border-deep-blue font-bold text-center hover:shadow-lg hover:scale-105 text-deep-blue  active:scale-100 duration-300 rounded-md"
             href={""}
           >
-            <p className="text-sm md:text-base lg:text-lg">Find a Job</p>
+            <p className="text-base lg:text-lg">Find a Job</p>
             <svg
               className="w-4 h-6 mt-1 text-deep-blue dark:text-white"
               aria-hidden="true"

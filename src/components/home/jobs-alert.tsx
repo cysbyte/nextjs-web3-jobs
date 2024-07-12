@@ -4,7 +4,7 @@ import CustomInput from "../shared/custom-input";
 const JobsAlert: FC = () => {
   return (
     <section className="container">
-    <form className=" mt-20 w-full py-32 bg-slate-100 rounded-3xl">
+    <form className=" mt-20 w-full py-16 lg:py-32 bg-slate-100 rounded-3xl">
       <h1 className=" text-[2rem] font-semibold text-center">
         Looking for your next web3 development job?
       </h1>

@@ -114,11 +114,11 @@ const Search: FC = () => {
         </div>
         <Toggle />
       </div>
-      <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-5 py-10">
+      <div className="border rounded-md bg-slate-50/80 mt-10 h-auto flex flex-wrap items-center justify-center gap-3 px-1 lg:px-5 py-10">
         {skills.map((skill) => (
           <Link
             href={getUrl(skill)}
-            className="border text-sm md:text-base lg:text-base px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
+            className="border text-base lg:text-base px-4 py-2 rounded-md border-gray-500 text-gray-700 bg-white hover:bg-purple-500 hover:text-white hover:border-purple-50 transition-all"
             key={skill}
           >
             {skill}
