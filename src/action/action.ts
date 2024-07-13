@@ -4,30 +4,34 @@ import prisma from "@/utils/prismadb";
 import { kebabCase, startCase } from "lodash";
 
 export const submitJob = async (formData: FormData) => {
-    const job = await prisma.job.create({
-        data: {
-            jobId: kebabCase(formData.get('companyName') as string+'-'+formData.get('jobTitle' as string)),
-            jobTitle: formData.get('jobTitle') as string,
-            jobType: formData.get('jobType') as string,
-            jobRole: formData.get('jobRole') as string,
-            locationType: formData.get('locationType') as string,
-            jobDescription: formData.get('jobDescription') as string,
-            preferredApplicantLocation: formData.get('preferredApplicantLocation') as string,
-            keywords: formData.get('keywords') as string,
-            currency: formData.get('currency') as string,
-            minSalary: Number(formData.get('minSalary')),
-            maxSalary: Number(formData.get('maxSalary')),
-            applyType: formData.get('applyType') as string,
-            applyUrl: formData.get('applyUrl') as string,
-            applyEmail: formData.get('applyEmail') as string,
-            companyName: formData.get('companyName') as string,
-        }
-    })
-    return job
+    try {
+        const job = await prisma.job.create({
+            data: {
+                jobId: kebabCase(formData.get('companyName') as string + '-' + formData.get('jobTitle' as string)),
+                jobTitle: formData.get('jobTitle') as string,
+                jobType: formData.get('jobType') as string,
+                jobRole: formData.get('jobRole') as string,
+                locationType: formData.get('locationType') as string,
+                jobDescription: formData.get('jobDescription') as string,
+                preferredApplicantLocation: formData.get('preferredApplicantLocation') as string,
+                keywords: formData.get('keywords') as string,
+                currency: formData.get('currency') as string,
+                minSalary: Number(formData.get('minSalary')),
+                maxSalary: Number(formData.get('maxSalary')),
+                applyType: formData.get('applyType') as string,
+                applyUrl: formData.get('applyUrl') as string,
+                applyEmail: formData.get('applyEmail') as string,
+                companyName: formData.get('companyName') as string,
+            }
+        })
+        return {statusCode: 200, job}
+    } catch (error: any) {
+        return {statusCode: 402, message: error.message}
+    }
 }
 
 export const getJobsFromDB = async () => {
-    const jobs = await prisma.job.findMany()
+    const jobs = await (await prisma.job.findMany()).reverse()
     return jobs
 }
 

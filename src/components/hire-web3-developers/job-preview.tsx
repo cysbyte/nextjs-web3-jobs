@@ -1,4 +1,5 @@
-import { useJobDetailStore } from "@/app/store/job-detail-store";
+'use client';
+
 import React, { FC } from "react";
 import {
   SubmitErrorHandler,
@@ -12,6 +13,7 @@ import Image from "next/image";
 interface IProps {
   getValues?: UseFormGetValues<FormFields>;
   onSubmit: (data: FormFields) => Promise<void>;
+  submitError: string | undefined;
   isSubmitting: boolean;
   handleSubmit: (
     onValid: SubmitHandler<FormFields>,
@@ -127,6 +129,10 @@ const JobPreview: FC<IProps> = (props) => {
       >
         Submit
         </button>
+        {props.submitError && <p className=" text-sm text-red-alert mt-2">
+          {props.submitError}
+        </p>
+        }
         <div className="flex justify-end items-center">
           <p className="mt-5 cursor-pointer text-gray-600 hover:text-gray-950 w-fit"
           onClick={props.returnEdit}>

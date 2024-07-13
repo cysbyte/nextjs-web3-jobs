@@ -24,6 +24,8 @@ import LocationTypeRadioGroup from "./location-type-radio-group";
 import PreferredLocationsDropdown from "./preferred-locations-dropdown";
 import { JobDescriptionEditor } from "./job-description-editor";
 import ImageUploadInput from "../shared/image-upload-input";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export type FormFields = {
   jobTitle: string;
@@ -55,6 +57,10 @@ const JobPostForm: FC<IProps> = (props) => {
     LocationTypeReducer,
     initialFormState
   );
+
+  const router = useRouter();
+
+  const [submitError, setSubmitError] = useState<string>()
 
   const {
     register,
@@ -119,16 +125,22 @@ const JobPostForm: FC<IProps> = (props) => {
 
   const onSubmit = useCallback(async (data: FormFields) => {
     if (isSubmitting) return;
-    console.log(data);
+    // console.log(data);
     // setStep('preview');
     const formData = new FormData();
     Object.keys(data).forEach((key, index) =>
       formData.set(key, Object.values(data)[index] as string)
     );
-    const job = await submitJob(formData);
+    const result = await submitJob(formData);
+    if (result.statusCode === 200) {
+      router.push('/')
+    } else {
+      setSubmitError(result.message)
+    }
   }, [isSubmitting]);
 
   const onError = useCallback((error: FieldErrors<FormFields>) => {
+    
     console.log(error);
   }, []);
 
@@ -454,6 +466,7 @@ const JobPostForm: FC<IProps> = (props) => {
           <JobPreview
             getValues={getValues}
             handleSubmit={handleSubmit}
+            submitError={submitError}
             isSubmitting={isSubmitting}
             onSubmit={onSubmit}
             returnEdit={returnEdit}
