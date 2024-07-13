@@ -14,7 +14,7 @@ const Hero:FC = () => {
           <br />
           Web3 Development Job
         </h1>
-        <h6 className="text-sm lg:text-lg xl:text-xl mt-6 w-full text-deep-blue text-center md:text-left ">
+        <h6 className="text-lg lg:text-lg xl:text-xl mt-6 w-full text-deep-blue text-center md:text-left ">
           Find the best Web3 Development jobs at leading companies <br /> &
           hire the best Web3 developers
         </h6>

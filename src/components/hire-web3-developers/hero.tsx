@@ -12,7 +12,7 @@ const Hero:FC = () => {
         <h1 className=" text-[2rem] lg:text-[2.8rem] xl:text-[3.3rem] text-center md:text-left w-full font-[900] leading-tight tracking-wider text-deep-blue ">
           Hire develpers to grow your team
         </h1>
-        <h6 className="text-sm lg:text-lg xl:text-xl mt-6 w-full text-deep-blue text-center md:text-left">
+        <h6 className="text-lg lg:text-lg xl:text-xl mt-6 w-full text-deep-blue text-center md:text-left">
           Find the best Web3 Development jobs at leading companies <br/> & hire the
           best Web3 developers
         </h6>
