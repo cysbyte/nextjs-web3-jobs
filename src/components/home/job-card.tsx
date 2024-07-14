@@ -52,16 +52,16 @@ const JobCard: FC<IProps> = ({ job }) => {
   },[job?.jobTitle])
 
   return (
-    <article className="flex h-auto border-b justify-start items-center bg-slate-50/50">
+    <article className="flex w-full h-auto border-b justify-start items-center bg-slate-50/50">
       <div className="flex gap-5 py-6 w-full">
-        <div className="w-auto h-auto">
-          <Image
+         <div className="w-auto h-auto">
+         {/* <Image
             className=" rounded-full"
             width={40}
             height={40}
             src={companyLogo}
             alt="Company Logo"
-          />
+          /> */}
         </div>
         <div className="h-auto">
           <Link href={`/${generateRole()}/${kebabCase(job?.companyName+'-'+job?.jobTitle)}`} className=" font-semibold text-[1.5rem] hover:text-purple-500 cursor-pointer">
@@ -80,11 +80,11 @@ const JobCard: FC<IProps> = ({ job }) => {
               {job?.maxSalary}
             </p>
           </div>
-          <div className="flex gap-3 text-base text-gray-500 mt-2">
+          <div className="flex flex-wrap gap-3 text-base text-gray-500 mt-2">
             {job?.keywords.split(",").map((item, index) => (
               <div
                 key={item}
-                className="border px-3 py-1 rounded-md border-gray-400 hover:text-purple-700 hover:border-purple-700 cursor-pointer"
+                className="border px-2 py-1 text-nowrap rounded-md border-gray-400 hover:text-purple-700 hover:border-purple-700 cursor-pointer"
               >
                 {item.trim()}
               </div>
