@@ -7,15 +7,22 @@ interface EmailMessageState {
   setMessage: (value: string) => void;
 }
 
-export const useEmailMessage = create<EmailMessageState>((set) => ({
-  message: "",
+export const useEmailMessage = create<EmailMessageState>()(
+  persist(
+    (set) => ({
+      message: "",
 
-  setMessage: (value: string) => {
-    set((state) => {
-      if (state.message === '') {
-        return { message: value };
-      }
-      return state;
-    });
-  },
-}));
+      setMessage: (value: string) => {
+        set((state) => {
+          if (state.message === "") {
+            return { message: value };
+          }
+          return state;
+        });
+      },
+    }),
+    {
+      name: "emailMessageStore",
+    }
+  )
+);
